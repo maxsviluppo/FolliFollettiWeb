@@ -223,6 +223,13 @@
   }
 }
 
+/* Mobile: abbassa testo welcome, cooperativa sociale e logo per una spaziatura perfetta */
+@media (max-width: 767px) {
+  .hero__content {
+    transform: translateY(45px);
+  }
+}
+
 /* Welcome badge above logo - Apparizione lettera per lettera con scia magica */
 .hero__header-badge {
   display: flex;

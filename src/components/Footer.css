@@ -6,6 +6,7 @@
   padding-top: clamp(3.5rem, 6vw, 5.5rem);
   padding-bottom: clamp(2.5rem, 4vw, 3.5rem);
   border-top: none; /* Perfettamente adiacente al fondo del main-content */
+  overflow: hidden; /* Blocca gli accenti luminosi prima/dopo dal debordare verso destra su mobile */
 }
 
 /* Sfondo in trasparenza lievemente diverso: riflessi soft distribuiti verso il basso */

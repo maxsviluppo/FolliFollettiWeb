@@ -26,7 +26,7 @@ export const PhilosophyVideo: React.FC = () => {
             hasAnimatedRef.current = true;
             setHasStarted(true);
             
-            // Disconnettiamo l'observer: viene eseguito solo una volta per sessione
+            // Disconnettiamo l'observer: viene eseguito rigorosamente solo una volta per caricamento
             observer.disconnect();
 
             video.currentTime = 0;
@@ -50,7 +50,7 @@ export const PhilosophyVideo: React.FC = () => {
   }, []);
 
   const handleEnded = () => {
-    // Si blocca permanentemente sull'ultimo fotogramma dell'animazione
+    // Si ferma e si blocca permanentemente sull'ultimo fotogramma (libro aperto con la frase)
     if (videoRef.current) {
       videoRef.current.pause();
     }
@@ -62,12 +62,13 @@ export const PhilosophyVideo: React.FC = () => {
       <div 
         ref={containerRef} 
         className={`philosophy-video-container ${hasStarted ? 'book-opened' : 'book-closed'} ${isEnded ? 'animation-completed' : ''}`}
+        onContextMenu={(e) => e.preventDefault()}
       >
-        {/* Doppia ombra d'appoggio per un realistico effetto tridimensionale "appoggiato" sul fondo */}
+        {/* Ombra di contatto e d'appoggio sul piano d'erba */}
         <div className="book-ground-shadow" aria-hidden="true" />
         <div className="book-contact-crease" aria-hidden="true" />
 
-        {/* Video trasparente: bloccato sul primo fotogramma finché non arriva lo scroll, poi si ferma sull'ultimo fotogramma */}
+        {/* Video puro in sola visualizzazione: senza comandi di sistema, senza tasti di ingrandimento o menu */}
         <video
           ref={videoRef}
           className="philosophy-video-player"
@@ -76,8 +77,14 @@ export const PhilosophyVideo: React.FC = () => {
           autoPlay={false}
           loop={false}
           preload="auto"
+          controls={false}
+          controlsList="nodownload nofullscreen noremoteplayback noplaybackrate"
+          disablePictureInPicture
+          disableRemotePlayback
+          tabIndex={-1}
           poster="/videolibro_first_frame.png"
           onEnded={handleEnded}
+          onContextMenu={(e) => e.preventDefault()}
         >
           <source src="/videolibro_transparent.webm" type="video/webm" />
           <source src="/videolibro.webm" type="video/webm" />

@@ -17,6 +17,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 /* Ombra diffusa sul piano d'appoggio */
@@ -73,6 +75,7 @@
   height: 14px;
 }
 
+/* Video: bloccato in visualizzazione senza comandi di sistema o menu */
 .philosophy-video-player {
   position: relative;
   z-index: 5;
@@ -84,7 +87,27 @@
   background: transparent !important;
   /* Ombra proiettata morbida che segue la sagoma del libro */
   filter: drop-shadow(0 18px 28px rgba(0, 0, 0, 0.52)) drop-shadow(0 35px 50px rgba(0, 0, 0, 0.28));
-  user-select: none;
+  /* Blocca interazioni utente: niente menu contestuale, download, zoom o comandi browser */
+  pointer-events: none !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  -webkit-touch-callout: none !important;
+  outline: none !important;
+}
+
+/* Disabilita qualsiasi overlay o pulsante nativo del motore del browser (Chrome, Edge, Safari, Firefox) */
+.philosophy-video-player::-webkit-media-controls,
+.philosophy-video-player::-webkit-media-controls-enclosure,
+.philosophy-video-player::-webkit-media-controls-panel,
+.philosophy-video-player::-webkit-media-controls-overlay-play-button,
+.philosophy-video-player::-webkit-media-controls-start-playback-button,
+.philosophy-video-player::-internal-media-controls-overlay-cast-button,
+.philosophy-video-player::-webkit-media-controls-picture-in-picture-button,
+.philosophy-video-player::-webkit-media-controls-fullscreen-button {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
 }
 
 @media (max-width: 768px) {
