@@ -1,0 +1,64 @@
+:root {
+  --sky-top: #ffffff;
+  --sky-bottom: #d4e87a;
+  --sky-deep: #9bc53d;
+  --hero-overlay: rgba(25, 50, 15, 0.35);
+  --text-dark: #1a3310;
+  --text-muted: #4a5c38;
+  --accent: #6aab3a;
+  --nav-height: 72px;
+  --radius-lg: 20px;
+  --shadow-soft: 0 12px 40px rgba(46, 130, 180, 0.12);
+  --font-display: 'Outfit', system-ui, sans-serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font-body);
+  color: var(--text-dark);
+  background: linear-gradient(180deg, var(--sky-top) 0%, var(--sky-bottom) 45%, #e8f4a8 100%);
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Eliminate auto-zoom on mobile devices when focusing inputs */
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: 16px !important; /* Prevents auto-zoom on iOS Safari and mobile Chrome */
+  touch-action: manipulation;
+}

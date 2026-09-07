@@ -1,0 +1,676 @@
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100svh;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.hero__media {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145deg, #3d6b2a 0%, #7cb342 50%, #c5e663 100%);
+}
+
+.hero__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
+}
+
+.hero__gradient {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, transparent 40%, rgba(15, 35, 10, 0.12) 100%),
+    radial-gradient(ellipse 75% 65% at 50% 45%, rgba(255, 245, 180, 0.24) 0%, transparent 70%);
+}
+
+.hero__rays {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.hero__ray {
+  position: absolute;
+  top: -10%;
+  left: 50%;
+  width: 8%;
+  height: 120%;
+  transform-origin: top center;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 248, 200, 0.35) 0%,
+    rgba(255, 235, 150, 0.12) 40%,
+    transparent 85%
+  );
+  filter: blur(2px);
+  animation: ray-shimmer 6s ease-in-out infinite;
+}
+
+.hero__ray--1 { transform: translateX(-50%) rotate(-18deg); animation-delay: 0s; }
+.hero__ray--2 { transform: translateX(-50%) rotate(-8deg); width: 6%; animation-delay: 1.2s; }
+.hero__ray--3 { transform: translateX(-50%) rotate(0deg); width: 10%; animation-delay: 0.5s; }
+.hero__ray--4 { transform: translateX(-50%) rotate(10deg); width: 7%; animation-delay: 2s; }
+.hero__ray--5 { transform: translateX(-50%) rotate(20deg); width: 5%; animation-delay: 1.8s; }
+
+@keyframes ray-shimmer {
+  0%, 100% { opacity: 0.35; transform: translateX(-50%) rotate(var(--ray-rot, 0deg)) scaleX(1); }
+  50% { opacity: 0.65; transform: translateX(-50%) rotate(calc(var(--ray-rot, 0deg) + 2deg)) scaleX(1.08); }
+}
+
+.hero__ray--1 { --ray-rot: -18deg; }
+.hero__ray--2 { --ray-rot: -8deg; }
+.hero__ray--3 { --ray-rot: 0deg; }
+.hero__ray--4 { --ray-rot: 10deg; }
+.hero__ray--5 { --ray-rot: 20deg; }
+
+.hero__particles,
+.hero__insects {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.hero__dust {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 245, 180, 0.95) 0%, rgba(255, 230, 120, 0.4) 70%, transparent 100%);
+  box-shadow: 0 0 6px rgba(255, 240, 150, 0.5);
+  animation: dust-float linear infinite;
+  opacity: 0;
+}
+
+@keyframes dust-float {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.6);
+  }
+  10% {
+    opacity: 0.85;
+  }
+  50% {
+    opacity: 1;
+    transform: translate(calc(var(--drift) * 0.5), -28px) scale(1);
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--drift), -55px) scale(0.5);
+  }
+}
+
+/* Lucciole magiche con movimenti casuali e bagliore fatato */
+.hero__fireflies {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.hero__firefly {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffffff 0%, #ffff80 40%, #a3ff00 80%, transparent 100%);
+  box-shadow:
+    0 0 8px rgba(255, 255, 140, 0.95),
+    0 0 16px rgba(180, 255, 60, 0.75),
+    0 0 28px rgba(140, 255, 0, 0.4);
+  animation: firefly-dance ease-in-out infinite alternate, firefly-flicker 2.2s ease-in-out infinite;
+  opacity: 0;
+}
+
+@keyframes firefly-dance {
+  0% {
+    transform: translate(0, 0) scale(0.85);
+  }
+  30% {
+    transform: translate(var(--tx1, 15px), var(--ty1, -20px)) scale(1.15);
+  }
+  65% {
+    transform: translate(var(--tx2, -18px), var(--ty2, -12px)) scale(0.9);
+  }
+  100% {
+    transform: translate(var(--tx3, 20px), var(--ty3, 22px)) scale(1.1);
+  }
+}
+
+@keyframes firefly-flicker {
+  0%, 100% {
+    opacity: 0.2;
+    filter: brightness(0.9);
+  }
+  15% {
+    opacity: 0.95;
+    filter: brightness(1.35);
+  }
+  45% {
+    opacity: 0.35;
+    filter: brightness(1);
+  }
+  60% {
+    opacity: 1;
+    filter: brightness(1.4);
+  }
+  80% {
+    opacity: 0.5;
+    filter: brightness(1.1);
+  }
+}
+
+.hero__glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.45;
+  animation: glow-pulse 8s ease-in-out infinite;
+}
+
+.hero__glow--1 {
+  width: min(55vw, 420px);
+  height: min(55vw, 420px);
+  top: 8%;
+  right: -5%;
+  background: #fff4a8;
+}
+
+.hero__glow--2 {
+  width: min(45vw, 360px);
+  height: min(45vw, 360px);
+  bottom: 18%;
+  left: -8%;
+  background: #b8e86a;
+  animation-delay: 2s;
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.35; transform: scale(1); }
+  50% { opacity: 0.55; transform: scale(1.06); }
+}
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: min(94vw, 860px);
+  padding: 0 1.5rem clamp(4rem, 10vh, 7rem);
+  text-align: center;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Desktop: testo welcome e logo posizionati 100px più in alto */
+@media (min-width: 768px) {
+  .hero__content {
+    transform: translateY(-100px);
+  }
+}
+
+/* Welcome badge above logo - Apparizione lettera per lettera con scia magica */
+.hero__header-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  margin-bottom: 0.85rem;
+  text-align: center;
+  user-select: none;
+  position: relative;
+}
+
+.hero__welcome-title-wrap,
+.hero__coop-subtitle-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero__welcome-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.18rem, 2.7vw, 1.65rem);
+  font-weight: 900;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: #243b14; /* Verde foresta profondo coordinato */
+  text-shadow:
+    0 1px 2px rgba(255, 255, 255, 0.95),
+    0 0 14px rgba(255, 250, 200, 0.75);
+  line-height: 1.15;
+  margin: 0;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.hero__coop-subtitle {
+  font-family: var(--font-display);
+  font-size: clamp(0.74rem, 1.6vw, 0.9rem);
+  font-weight: 800;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: #2f4a1a;
+  text-shadow:
+    0 1px 2px rgba(255, 255, 255, 0.95);
+  line-height: 1.2;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Lettere animate con effetto zoom scenico e comparsa magica */
+.hero__char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(12px) scale(0.3);
+  transform-origin: 50% 65%;
+  filter: blur(4px);
+  animation: char-sparkle-reveal 0.8s cubic-bezier(0.25, 1, 0.35, 1) forwards;
+  will-change: transform, opacity, filter;
+}
+
+@keyframes char-sparkle-reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(18px) scale(0.3);
+    filter: blur(6px) brightness(2.5);
+    text-shadow: 0 0 20px #ffff70, 0 0 40px #a6ff00;
+  }
+  45% {
+    opacity: 1;
+    /* Effetto Zoom scenico accentuato che cattura lo sguardo */
+    transform: translateY(-8px) scale(1.68);
+    filter: blur(0px) brightness(1.75);
+    text-shadow: 0 0 20px #ffffff, 0 0 35px #e5ff54, 0 0 50px #8ce600;
+  }
+  75% {
+    transform: translateY(-2px) scale(1.15);
+    filter: brightness(1.2);
+    text-shadow: 0 0 14px #ffff90, 0 0 24px #99f000;
+  }
+  100% {
+    opacity: 1;
+    /* Ritorno morbido alla sua dimensione naturale */
+    transform: translateY(0) scale(1);
+    filter: blur(0px) brightness(1);
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.95), 0 0 12px rgba(255, 250, 190, 0.65);
+  }
+}
+
+/* Scia magica di lucciole e scintille luminose che attraversa la scritta */
+.hero__welcome-sparkle-trail,
+.hero__coop-sparkle-trail {
+  position: absolute;
+  top: 50%;
+  left: -15%;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(255, 250, 140, 0.9) 35%, rgba(160, 255, 50, 0.5) 65%, transparent 100%);
+  box-shadow:
+    0 0 20px #ffff70,
+    0 0 36px #a6ff00,
+    -12px 2px 14px rgba(255, 240, 100, 0.8),
+    -24px -1px 18px rgba(180, 255, 80, 0.6);
+  opacity: 0;
+  transform: translateY(-50%) scale(0.6);
+}
+
+.hero__welcome-sparkle-trail {
+  animation: sparkle-trail-sweep 1.25s cubic-bezier(0.25, 1, 0.5, 1) 0.15s forwards;
+}
+
+.hero__coop-sparkle-trail {
+  animation: sparkle-trail-sweep 1.4s cubic-bezier(0.25, 1, 0.5, 1) 0.95s forwards;
+}
+
+@keyframes sparkle-trail-sweep {
+  0% {
+    left: -10%;
+    opacity: 0;
+    transform: translateY(-50%) scale(0.5);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(-50%) scale(1.3);
+  }
+  80% {
+    opacity: 0.9;
+    transform: translateY(-50%) scale(1.1);
+  }
+  100% {
+    left: 110%;
+    opacity: 0;
+    transform: translateY(-50%) scale(0.4);
+  }
+}
+
+/* Logo stage & magical light */
+.hero__logo-stage {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.hero__logo-ambient {
+  position: absolute;
+  inset: -15% -15%;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse 65% 55% at 50% 50%,
+    rgba(180, 240, 100, 0.26) 0%,
+    rgba(255, 245, 170, 0.14) 45%,
+    transparent 75%
+  );
+  filter: blur(40px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero__logo-title {
+  position: relative;
+  z-index: 2; /* In front of the swing so the ropes tuck behind the bottom of the letter O */
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+}
+
+.hero__logo-img {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: block;
+  filter:
+    drop-shadow(0 6px 16px rgba(15, 35, 10, 0.28))
+    drop-shadow(0 0 35px rgba(185, 245, 110, 0.3));
+  user-select: none;
+}
+
+/* Altalena: top attached to the bottom of the letter O, level BEHIND the logo */
+.hero__swing-wrap {
+  position: absolute;
+  top: 61.5%;
+  left: 58.2%;
+  width: 13.5%;
+  z-index: 1; /* BEHIND the logo */
+  transform-origin: 50% 0%;
+  animation: fairy-swing 4s ease-in-out infinite alternate;
+  pointer-events: none;
+  filter: drop-shadow(0 6px 14px rgba(10, 30, 8, 0.25));
+}
+
+.hero__swing-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@keyframes fairy-swing {
+  0% {
+    transform: rotate(-6deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(6deg);
+  }
+}
+
+/* Trilli on Leaf Stage */
+.hero__trilli-container {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: clamp(230px, 24vw, 380px);
+  aspect-ratio: 736 / 1104;
+  z-index: 4;
+  pointer-events: none;
+  user-select: none;
+}
+
+.hero__trilli-leaf {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: left bottom;
+  filter: drop-shadow(0 8px 18px rgba(10, 30, 8, 0.3));
+  transform-origin: 0% 100%;
+  animation: trilli-leaf-breathe 7s ease-in-out infinite alternate;
+}
+
+@keyframes trilli-leaf-breathe {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  100% {
+    transform: rotate(0.8deg) scale(1.01);
+  }
+}
+
+.hero__trilli-fairy {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  animation: trilli-hover-suspension 4.8s ease-in-out infinite;
+  filter: drop-shadow(0 10px 22px rgba(15, 35, 10, 0.25));
+}
+
+@keyframes trilli-hover-suspension {
+  0% {
+    transform: translateY(-28px) rotate(0deg);
+  }
+  28% {
+    transform: translateY(-42px) rotate(-1.5deg);
+  }
+  60% {
+    transform: translateY(-22px) rotate(1deg);
+  }
+  82% {
+    transform: translateY(-35px) rotate(-0.5deg);
+  }
+  100% {
+    transform: translateY(-28px) rotate(0deg);
+  }
+}
+
+.hero__trilli-wings {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: left bottom;
+  z-index: 1;
+  transform-origin: 58.4% 24.5%;
+  animation: trilli-wings-rhythmic 3.8s ease-in-out infinite;
+}
+
+@keyframes trilli-wings-rhythmic {
+  /* 0% - 30%: Calm glide / pause */
+  0%, 30% {
+    transform: perspective(600px) rotateY(0deg) scaleX(1) scaleY(1);
+    filter: drop-shadow(0 0 6px rgba(225, 255, 160, 0.4));
+  }
+  /* 31% - 45%: Rapid 4-flap flutter burst */
+  32% {
+    transform: perspective(600px) rotateY(55deg) scaleX(0.35) scaleY(0.92);
+    filter: drop-shadow(0 0 14px rgba(240, 255, 180, 0.85)) brightness(1.2);
+  }
+  34% {
+    transform: perspective(600px) rotateY(-15deg) scaleX(1.08) scaleY(1.02);
+    filter: drop-shadow(0 0 8px rgba(225, 255, 160, 0.5));
+  }
+  36% {
+    transform: perspective(600px) rotateY(60deg) scaleX(0.3) scaleY(0.9);
+    filter: drop-shadow(0 0 16px rgba(240, 255, 180, 0.9)) brightness(1.25);
+  }
+  38% {
+    transform: perspective(600px) rotateY(-10deg) scaleX(1.06) scaleY(1.01);
+    filter: drop-shadow(0 0 8px rgba(225, 255, 160, 0.5));
+  }
+  40% {
+    transform: perspective(600px) rotateY(50deg) scaleX(0.4) scaleY(0.93);
+    filter: drop-shadow(0 0 14px rgba(240, 255, 180, 0.8)) brightness(1.2);
+  }
+  42% {
+    transform: perspective(600px) rotateY(-5deg) scaleX(1.04) scaleY(1.01);
+  }
+  44% {
+    transform: perspective(600px) rotateY(30deg) scaleX(0.65) scaleY(0.96);
+  }
+  46% {
+    transform: perspective(600px) rotateY(0deg) scaleX(1) scaleY(1);
+    filter: drop-shadow(0 0 6px rgba(225, 255, 160, 0.4));
+  }
+  /* 47% - 68%: Second pause / glide */
+  47%, 68% {
+    transform: perspective(600px) rotateY(0deg) scaleX(1) scaleY(1);
+    filter: drop-shadow(0 0 6px rgba(225, 255, 160, 0.4));
+  }
+  /* 69% - 83%: Second rapid flutter burst */
+  70% {
+    transform: perspective(600px) rotateY(55deg) scaleX(0.35) scaleY(0.92);
+    filter: drop-shadow(0 0 14px rgba(240, 255, 180, 0.85)) brightness(1.2);
+  }
+  72% {
+    transform: perspective(600px) rotateY(-15deg) scaleX(1.08) scaleY(1.02);
+    filter: drop-shadow(0 0 8px rgba(225, 255, 160, 0.5));
+  }
+  74% {
+    transform: perspective(600px) rotateY(60deg) scaleX(0.3) scaleY(0.9);
+    filter: drop-shadow(0 0 16px rgba(240, 255, 180, 0.9)) brightness(1.25);
+  }
+  76% {
+    transform: perspective(600px) rotateY(-10deg) scaleX(1.06) scaleY(1.01);
+  }
+  78% {
+    transform: perspective(600px) rotateY(45deg) scaleX(0.45) scaleY(0.94);
+    filter: drop-shadow(0 0 12px rgba(240, 255, 180, 0.75)) brightness(1.15);
+  }
+  80% {
+    transform: perspective(600px) rotateY(-5deg) scaleX(1.03) scaleY(1.01);
+  }
+  82% {
+    transform: perspective(600px) rotateY(20deg) scaleX(0.8) scaleY(0.98);
+  }
+  84% {
+    transform: perspective(600px) rotateY(0deg) scaleX(1) scaleY(1);
+    filter: drop-shadow(0 0 6px rgba(225, 255, 160, 0.4));
+  }
+  /* 85% - 100%: Rest / pause */
+  100% {
+    transform: perspective(600px) rotateY(0deg) scaleX(1) scaleY(1);
+    filter: drop-shadow(0 0 6px rgba(225, 255, 160, 0.4));
+  }
+}
+
+.hero__trilli-body {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: left bottom;
+  z-index: 2;
+}
+
+/* Fairy dust sparks */
+.hero__trilli-sparks {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.hero__trilli-spark {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffffff 0%, #e2ff70 60%, transparent 100%);
+  box-shadow: 0 0 10px #d8ff4f, 0 0 18px #a6ff00;
+  animation: trilli-sparkle 2.5s ease-in-out infinite alternate;
+}
+
+.spark--1 { top: 22%; left: 45%; animation-delay: 0s; width: 8px; height: 8px; }
+.spark--2 { top: 32%; left: 35%; animation-delay: 0.8s; width: 5px; height: 5px; }
+.spark--3 { top: 18%; left: 62%; animation-delay: 1.4s; width: 7px; height: 7px; }
+.spark--4 { top: 38%; left: 52%; animation-delay: 2s; width: 5px; height: 5px; }
+
+@keyframes trilli-sparkle {
+  0% { opacity: 0.2; transform: scale(0.6) translate(0, 0); }
+  50% { opacity: 1; transform: scale(1.3) translate(-3px, -5px); }
+  100% { opacity: 0.3; transform: scale(0.7) translate(3px, -10px); }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+@media (max-width: 768px) {
+  .hero__trilli-container {
+    width: clamp(160px, 32vw, 240px);
+  }
+}
+
+@media (max-width: 640px) {
+  .hero__content {
+    padding-bottom: clamp(5rem, 12vh, 8rem);
+  }
+
+  .hero__image {
+    object-position: center bottom;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__dust,
+  .hero__firefly,
+  .hero__ray,
+  .hero__glow,
+  .hero__char,
+  .hero__welcome-sparkle-trail,
+  .hero__coop-sparkle-trail,
+  .hero__trilli-leaf,
+  .hero__trilli-fairy,
+  .hero__trilli-wings,
+  .hero__trilli-spark {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}

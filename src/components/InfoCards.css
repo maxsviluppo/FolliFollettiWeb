@@ -1,0 +1,348 @@
+.info-section {
+  position: relative;
+  /* Generous, breathable spacing between the sticky navbar and the cards */
+  padding-top: clamp(4.5rem, 8vw, 7rem);
+  padding-bottom: clamp(5rem, 9vw, 8rem);
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #f8fcf0 22%,
+    var(--sky-bottom) 65%,
+    #e0ed9a 100%
+  );
+  overflow: hidden;
+}
+
+/* Header container aligned with grid */
+.info-section__header-container {
+  position: relative;
+  z-index: 2;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.info-section__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: clamp(2rem, 4vw, 3.25rem);
+}
+
+.info-section__title-group {
+  max-width: 840px;
+}
+
+.info-section__eyebrow {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.65rem;
+}
+
+.info-section__title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.2vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--text-dark);
+  letter-spacing: -0.02em;
+  margin-bottom: 0.85rem;
+}
+
+.info-section__desc {
+  font-size: clamp(1rem, 1.8vw, 1.12rem);
+  line-height: 1.65;
+  color: var(--text-muted);
+}
+
+.info-section__desc strong {
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+/* Navigation scroll buttons */
+.info-section__controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.info-section__nav-btn {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: var(--text-dark);
+  border: 1px solid rgba(155, 197, 61, 0.4);
+  box-shadow: 0 4px 14px rgba(45, 80, 20, 0.08);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.info-section__nav-btn:hover {
+  background: var(--accent);
+  color: #ffffff;
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(106, 171, 58, 0.3);
+}
+
+.info-section__nav-btn:active {
+  transform: translateY(0);
+}
+
+/* Edge-to-edge scroll container with hidden scrollbars */
+.info-scroll {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  /* Hide scrollbars on all browsers */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE / Edge */
+  padding-top: 0.5rem;
+  padding-bottom: 1.5rem;
+  scroll-padding-left: max(3rem, calc((100vw - 1280px) / 2 + 2.5rem));
+  scroll-padding-right: max(3rem, calc((100vw - 1280px) / 2 + 2.5rem));
+}
+
+.info-scroll::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* Track running da parte a parte with generous left start padding to separate the first card (Ludoteca) from the page left margin */
+.info-scroll__track {
+  display: flex;
+  gap: 1.75rem;
+  width: max-content;
+  padding-left: max(3rem, calc((100vw - 1280px) / 2 + 2.5rem));
+  padding-right: max(3rem, calc((100vw - 1280px) / 2 + 2.5rem));
+}
+
+/* Vertical rectangular card with sequential entrance animation */
+.info-card {
+  flex: 0 0 auto;
+  width: clamp(290px, 24vw, 330px);
+  min-height: 450px;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2.25rem 2rem 1.85rem;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(155, 197, 61, 0.35);
+  box-shadow: 0 14px 36px rgba(45, 80, 20, 0.07);
+  opacity: 0;
+  transform: translateY(45px) scale(0.96);
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.info-card.info-card--visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.info-card.info-card--visible:hover {
+  transform: translateY(-8px) scale(1);
+  border-color: var(--accent);
+  box-shadow: 0 22px 50px rgba(70, 120, 30, 0.16);
+}
+
+/* Card Top: Category Badge */
+.info-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.info-card__badge {
+  display: inline-block;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(106, 171, 58, 0.1);
+  color: var(--accent);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Card Body */
+.info-card__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.info-card__title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--text-dark);
+  letter-spacing: -0.01em;
+  margin-bottom: 0.85rem;
+}
+
+.info-card__text {
+  font-size: 0.94rem;
+  line-height: 1.58;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+/* Bullet Highlights */
+.info-card__highlights {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px dashed rgba(155, 197, 61, 0.35);
+  margin-bottom: 1.75rem;
+}
+
+.info-card__highlight-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.info-card__bullet {
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(106, 171, 58, 0.18);
+  color: var(--accent);
+  font-size: 0.7rem;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+/* Card Footer Action */
+.info-card__footer {
+  padding-top: 0.25rem;
+}
+
+.info-card__action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.75rem 1.15rem;
+  border-radius: 14px;
+  background: rgba(106, 171, 58, 0.08);
+  color: var(--accent);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.92rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.info-card__arrow {
+  font-size: 1.1rem;
+  transition: transform 0.2s ease;
+}
+
+.info-card:hover .info-card__action {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.info-card:hover .info-card__arrow {
+  transform: translateX(4px);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .info-scroll {
+    scroll-padding-left: 2rem;
+    scroll-padding-right: 1.5rem;
+  }
+
+  .info-scroll__track {
+    padding-left: 2rem;
+    padding-right: 1.5rem;
+    gap: 1.25rem;
+  }
+
+  .info-section__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+
+  .info-card {
+    width: 84vw;
+    min-height: 410px;
+    padding: 1.75rem 1.45rem 1.45rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .info-card {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Sfondo decorativo in basso da parte a parte tono su tono soft e lieve con skylinehome.jpg */
+.info-section__skyline-bg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: clamp(220px, 30vw, 420px);
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.info-section__skyline-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
+  opacity: 0.22; /* Tono su tono soft e lieve */
+  mix-blend-mode: multiply;
+  filter: saturate(0.85) contrast(0.95);
+  -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.4) 65%, transparent 100%);
+  mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.4) 65%, transparent 100%);
+}
+
+.info-section__skyline-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(224, 237, 154, 0.25) 0%, transparent 75%);
+  pointer-events: none;
+}
+

@@ -1,0 +1,143 @@
+/* Nuova Sezione dopo i box - Ampio spazio per i nuovi elementi */
+.features-workspace {
+  position: relative;
+  width: 100%;
+  padding-top: clamp(4.5rem, 7vw, 6.5rem);
+  padding-bottom: clamp(6rem, 10vw, 9rem);
+  background: linear-gradient(
+    180deg,
+    #e0ed9a 0%,
+    #eaf4b0 25%,
+    #f4fad8 60%,
+    #dcf092 100%
+  );
+  overflow: hidden;
+}
+
+.features-workspace__container {
+  position: relative;
+  z-index: 2;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Header della sezione */
+.features-workspace__header {
+  max-width: 780px;
+  margin-bottom: clamp(2rem, 4vw, 3.25rem);
+}
+
+.features-workspace__eyebrow {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent, #6aab3a);
+  margin-bottom: 0.65rem;
+}
+
+.features-workspace__title {
+  font-family: var(--font-display, 'Outfit', sans-serif);
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1.18;
+  color: var(--text-dark, #1a3310);
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.02em;
+}
+
+.features-workspace__desc {
+  font-size: clamp(1rem, 1.8vw, 1.12rem);
+  line-height: 1.65;
+  color: var(--text-muted, #4a5c38);
+}
+
+/* Spazio dedicato ad accogliere i nuovi elementi in elaborazione */
+.features-workspace__canvas {
+  width: 100%;
+  min-height: clamp(280px, 35vw, 420px);
+  background: rgba(255, 255, 255, 0.65);
+  border: 2px dashed rgba(155, 197, 61, 0.45);
+  border-radius: 28px;
+  padding: clamp(2rem, 4vw, 3.5rem);
+  box-shadow: 0 12px 36px rgba(45, 80, 20, 0.05);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 1.25rem;
+  transition: all 0.3s ease;
+}
+
+.features-workspace__canvas:hover {
+  background: rgba(255, 255, 255, 0.78);
+  border-color: rgba(106, 171, 58, 0.65);
+  box-shadow: 0 16px 44px rgba(45, 80, 20, 0.08);
+}
+
+.features-workspace__badge-ready {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #3b5a1f;
+  background: rgba(155, 197, 61, 0.22);
+  border: 1px solid rgba(155, 197, 61, 0.4);
+  padding: 0.4rem 0.95rem;
+  border-radius: 999px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.features-workspace__canvas-title {
+  font-family: var(--font-display, 'Outfit', sans-serif);
+  font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+  font-weight: 700;
+  color: var(--text-dark, #1a3310);
+  max-width: 620px;
+  line-height: 1.35;
+}
+
+.features-workspace__canvas-subtext {
+  font-size: 0.98rem;
+  color: #556c42;
+  max-width: 540px;
+  line-height: 1.6;
+}
+
+/* Sfondo skylinehome.jpg in basso da parte a parte tono su tono soft lieve */
+.features-workspace__skyline-bg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: clamp(220px, 30vw, 420px);
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.features-workspace__skyline-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
+  opacity: 0.22;
+  mix-blend-mode: multiply;
+  filter: saturate(0.85) contrast(0.95);
+  -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.4) 65%, transparent 100%);
+  mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.4) 65%, transparent 100%);
+}
+
+.features-workspace__skyline-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(220, 240, 146, 0.3) 0%, transparent 75%);
+  pointer-events: none;
+}

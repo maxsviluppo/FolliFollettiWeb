@@ -1,0 +1,43 @@
+.slide-footer-cut {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  z-index: 3;
+  line-height: 0;
+  pointer-events: none;
+  width: 100%;
+  height: clamp(80px, 14vw, 160px);
+}
+
+.slide-footer-cut__shape {
+  width: 100%;
+  height: 100%;
+  background-color: var(--sky-top, #ffffff);
+  -webkit-mask-image: url('/formfooter-cut.png');
+  mask-image: url('/formfooter-cut.png');
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: bottom center;
+  mask-position: bottom center;
+}
+
+/* Fallback for browsers that might not support CSS mask */
+@supports not (mask-image: url('')) and not (-webkit-mask-image: url('')) {
+  .slide-footer-cut__shape {
+    background: transparent;
+  }
+
+  .slide-footer-cut__fallback {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+  }
+}
+
+.slide-footer-cut__fallback {
+  display: none;
+}

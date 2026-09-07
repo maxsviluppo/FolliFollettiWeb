@@ -1,0 +1,15 @@
+.meadow-edge {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  z-index: 3;
+  line-height: 0;
+  pointer-events: none;
+}
+
+.meadow-edge__svg {
+  display: block;
+  width: 100%;
+  height: clamp(90px, 18vw, 180px);
+}
