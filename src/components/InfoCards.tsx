@@ -79,6 +79,34 @@ export default function InfoCards() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const handleServiceSelect = (e: Event) => {
+      const customEvent = e as CustomEvent<{ serviceId: number }>;
+      const serviceId = customEvent.detail?.serviceId;
+      if (!serviceId || !scrollRef.current) return;
+
+      const cardEl = document.getElementById(`service-${serviceId}`);
+      if (cardEl) {
+        sectionRef.current?.scrollIntoView({ behavior: 'smooth' });
+        setTimeout(() => {
+          if (!scrollRef.current || !cardEl) return;
+          const containerLeft = scrollRef.current.getBoundingClientRect().left;
+          const cardLeft = cardEl.getBoundingClientRect().left;
+          const currentScroll = scrollRef.current.scrollLeft;
+          const targetScroll = currentScroll + (cardLeft - containerLeft) - 32;
+          scrollRef.current.scrollTo({
+            left: Math.max(0, targetScroll),
+            behavior: 'smooth',
+          });
+          cardEl.focus?.({ preventScroll: true });
+        }, 180);
+      }
+    };
+
+    window.addEventListener('folli:select-service', handleServiceSelect);
+    return () => window.removeEventListener('folli:select-service', handleServiceSelect);
+  }, []);
+
   const handleScroll = (direction: 'left' | 'right') => {
     if (!scrollRef.current) return;
     const scrollAmount = 340;
@@ -108,27 +136,40 @@ export default function InfoCards() {
             </p>
           </div>
 
-          <div className="info-section__controls" aria-label="Navigazione schede">
-            <button
-              type="button"
-              className="info-section__nav-btn"
-              onClick={() => handleScroll('left')}
-              aria-label="Scorri a sinistra"
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M15 18l-6-6 6-6" />
-              </svg>
-            </button>
-            <button
-              type="button"
-              className="info-section__nav-btn"
-              onClick={() => handleScroll('right')}
-              aria-label="Scorri a destra"
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M9 18l6-6-6-6" />
-              </svg>
-            </button>
+          <div className="info-section__controls-wrapper">
+            {/* Foglia decorativa tridimensionale visibile solo nella versione desktop */}
+            <div className="info-section__leaf-decor" aria-hidden="true">
+              <img
+                src="/foglia1.png"
+                alt=""
+                className="info-section__leaf-img"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+
+            <div className="info-section__controls" aria-label="Navigazione schede">
+              <button
+                type="button"
+                className="info-section__nav-btn"
+                onClick={() => handleScroll('left')}
+                aria-label="Scorri a sinistra"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M15 18l-6-6 6-6" />
+                </svg>
+              </button>
+              <button
+                type="button"
+                className="info-section__nav-btn"
+                onClick={() => handleScroll('right')}
+                aria-label="Scorri a destra"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M9 18l6-6-6-6" />
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -145,6 +186,7 @@ export default function InfoCards() {
           {CARDS.map((card, index) => (
             <article
               key={card.id}
+              id={`service-${card.id}`}
               className={`info-card ${isVisible ? 'info-card--visible' : ''}`}
               style={{
                 transitionDelay: `${index * 130}ms`,
@@ -177,18 +219,6 @@ export default function InfoCards() {
             </article>
           ))}
         </div>
-      </div>
-
-      {/* Sfondo decorativo in basso da parte a parte tono su tono soft lieve con skylinehome.jpg */}
-      <div className="info-section__skyline-bg" aria-hidden="true">
-        <img
-          src="/skylinehome.jpg"
-          alt=""
-          className="info-section__skyline-img"
-          loading="lazy"
-          decoding="async"
-        />
-        <div className="info-section__skyline-gradient" />
       </div>
     </section>
   );

@@ -1,16 +1,10 @@
 .info-section {
   position: relative;
+  z-index: 2;
   /* Generous, breathable spacing between the sticky navbar and the cards */
   padding-top: clamp(4.5rem, 8vw, 7rem);
-  padding-bottom: clamp(5rem, 9vw, 8rem);
-  background: linear-gradient(
-    180deg,
-    #ffffff 0%,
-    #f8fcf0 22%,
-    var(--sky-bottom) 65%,
-    #e0ed9a 100%
-  );
-  overflow: hidden;
+  padding-bottom: clamp(2.5rem, 5vw, 4rem);
+  background: transparent;
 }
 
 /* Header container aligned with grid */
@@ -63,6 +57,48 @@
 .info-section__desc strong {
   font-weight: 700;
   color: var(--text-dark);
+}
+
+/* Container per frecce e decorazione foglia tridimensionale */
+.info-section__controls-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* Foglia decorativa tridimensionale dall'alto: visibile SOLO nella versione desktop */
+.info-section__leaf-decor {
+  display: none; /* Nascosta su mobile e tablet */
+  pointer-events: none;
+  user-select: none;
+  z-index: 4;
+}
+
+@media (min-width: 1024px) {
+  .info-section__leaf-decor {
+    display: block;
+    /* Posizionamento assoluto: non altera l'altezza del flex container e NON sposta il testo verso il basso */
+    position: absolute;
+    /* Portata più in basso, subito sopra/a filo con le frecce */
+    bottom: calc(100% - 12px);
+    /* Posizionata bene all'interno senza tagliare il bordo destro */
+    right: 0;
+    /* Dimensione ridotta calibrata per evitare tagli in alto e a destra */
+    width: clamp(180px, 15vw, 250px);
+    perspective: 1000px;
+    filter: drop-shadow(0 18px 28px rgba(25, 55, 10, 0.18))
+            drop-shadow(0 6px 12px rgba(35, 65, 15, 0.10));
+  }
+
+  .info-section__leaf-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    /* Effetto tridimensionale statico dall'alto: senza oscillazione */
+    transform: rotate(-10deg) rotateX(15deg) rotateY(-6deg);
+    transform-origin: center center;
+  }
 }
 
 /* Navigation scroll buttons */
@@ -312,37 +348,5 @@
     transform: none;
     transition: none;
   }
-}
-
-/* Sfondo decorativo in basso da parte a parte tono su tono soft e lieve con skylinehome.jpg */
-.info-section__skyline-bg {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: clamp(220px, 30vw, 420px);
-  pointer-events: none;
-  z-index: 1;
-  overflow: hidden;
-}
-
-.info-section__skyline-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center bottom;
-  opacity: 0.22; /* Tono su tono soft e lieve */
-  mix-blend-mode: multiply;
-  filter: saturate(0.85) contrast(0.95);
-  -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.4) 65%, transparent 100%);
-  mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.4) 65%, transparent 100%);
-}
-
-.info-section__skyline-gradient {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(224, 237, 154, 0.25) 0%, transparent 75%);
-  pointer-events: none;
 }
 

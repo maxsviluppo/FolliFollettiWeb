@@ -1,13 +1,28 @@
-/* Footer - Verde Militare Scuro Gradiente */
+/* Footer - Invertito con Verde Scuro (#1b2f15) in alto (stesso colore ultima sezione) che sfuma dolcemente verso il basso */
 .footer {
   position: relative;
-  background: linear-gradient(175deg, #1b2f15 0%, #142410 45%, #0c1709 100%);
+  background: linear-gradient(180deg, #1b2f15 0%, #1e3818 35%, #24441d 70%, #2b4e22 100%);
   color: #dce7d1;
   padding-top: clamp(3.5rem, 6vw, 5.5rem);
-  padding-bottom: 2rem;
-  overflow: hidden;
-  border-top: 1px solid rgba(155, 197, 61, 0.25);
+  padding-bottom: clamp(2.5rem, 4vw, 3.5rem);
+  border-top: none; /* Perfettamente adiacente al fondo del main-content */
 }
+
+/* Sfondo in trasparenza lievemente diverso: riflessi soft distribuiti verso il basso */
+.footer__bg-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 12% 80%, rgba(106, 171, 58, 0.08) 0%, transparent 45%),
+    radial-gradient(circle at 88% 50%, rgba(164, 219, 74, 0.07) 0%, transparent 45%),
+    radial-gradient(rgba(178, 222, 98, 0.04) 1.2px, transparent 1.2px);
+  background-size: 100% 100%, 100% 100%, 28px 28px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+
+
 
 /* Subtle background glowing accents */
 .footer::before {
@@ -310,66 +325,70 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Bottom Bar */
+/* Bottom Bar: Copyright, Legal Links, Webagency codecafe.it */
 .footer__bottom {
   position: relative;
-  z-index: 2;
-  margin-top: clamp(2rem, 3vw, 2.5rem);
-  padding-top: 1.75rem;
-  border-top: 1px solid rgba(155, 197, 61, 0.18);
+  z-index: 5;
+  margin-top: clamp(2.5rem, 4vw, 3.5rem);
+  padding-top: 2rem;
+  padding-bottom: 0.5rem;
+  border-top: 1px solid rgba(155, 197, 61, 0.35);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem 2rem;
-  font-size: 0.85rem;
-  color: #9eb592;
+  gap: 1.25rem 2rem;
+  font-size: 0.90rem;
+  color: #e4f4d2;
 }
 
 .footer__copyright {
   margin: 0;
+  color: #d2e8bf;
 }
 
 .footer__legal-links {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
+  gap: 1.5rem;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
 .footer__legal-link {
-  color: #b3cca7;
-  text-decoration: none;
-  transition: color 0.2s ease;
+  color: #d6ff7a;
+  font-weight: 600;
+  font-size: 0.92rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
 }
 
 .footer__legal-link:hover {
-  color: #d8ff82;
-  text-decoration: underline;
-  text-underline-offset: 3px;
+  color: #ffffff;
+  transform: translateY(-1px);
 }
 
 .footer__credit {
   margin: 0;
-  color: #9eb592;
+  color: #d2e8bf;
 }
 
 .footer__credit-link {
-  color: #c9e88d;
+  color: #d6ff7a;
   font-weight: 700;
-  text-decoration: none;
-  transition: color 0.2s ease, text-decoration-color 0.2s ease;
-  border-bottom: 1px dashed rgba(201, 232, 141, 0.4);
-  padding-bottom: 1px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+  border-bottom: none;
 }
 
 .footer__credit-link:hover {
   color: #ffffff;
-  border-bottom-style: solid;
-  border-bottom-color: #ffffff;
 }
+
 
 /* Responsive adjustments */
 @media (max-width: 1024px) {

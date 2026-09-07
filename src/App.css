@@ -1,3 +1,56 @@
 .app {
   min-height: 100vh;
 }
+
+/* Sfondo continuo con gradiente che sfuma gradualmente nel verde scuro del footer (#1b2f15) */
+.main-content {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #fcfeee 10%,
+    #f4fad2 24%,
+    #e9f6b5 42%,
+    #cbe782 58%,
+    #8ab846 72%,
+    #4e7c26 84%,
+    #2b4a1b 93%,
+    #1b2f15 100%
+  );
+  overflow: hidden;
+  padding-bottom: clamp(3rem, 6vw, 5.5rem);
+}
+
+
+/* Sfondo decorativo in basso da parte a parte tono su tono soft lieve con skylinehome.jpg */
+.main-skyline-bg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: clamp(230px, 30vw, 420px);
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.main-skyline-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
+  opacity: 0.22; /* Tono su tono soft e lieve */
+  mix-blend-mode: multiply;
+  filter: saturate(0.85) contrast(0.95);
+  -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.4) 65%, transparent 100%);
+  mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.4) 65%, transparent 100%);
+}
+
+.main-skyline-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(221, 239, 142, 0.28) 0%, transparent 75%);
+  pointer-events: none;
+}

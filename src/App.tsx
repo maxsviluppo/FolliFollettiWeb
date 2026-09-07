@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import Hero from './components/Hero';
 import Navbar from './components/Navbar';
 import InfoCards from './components/InfoCards';
+import { PhilosophyVideo } from './components/PhilosophyVideo';
 import Footer from './components/Footer';
-import FeaturesWorkspace from './components/FeaturesWorkspace';
 import PrivacyPage from './components/PrivacyPage';
 import CookiePage from './components/CookiePage';
 import CookieModal from './components/CookieModal';
@@ -31,6 +31,12 @@ export default function App() {
       } else {
         setCurrentRoute('home');
         document.title = 'Folli Folletti | Cooperativa Sociale Napoli - Ludoteca, Campus, Servizi Educativi e Famiglie';
+        if (hash === '#filosofia') {
+          setTimeout(() => {
+            const el = document.getElementById('filosofia');
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+          }, 100);
+        }
       }
     };
 
@@ -99,9 +105,9 @@ export default function App() {
             currentPath="home"
             onNavigateHome={(target) => navigateTo('home', target)}
           />
-          <main>
+          <main className="main-content">
             <InfoCards />
-            <FeaturesWorkspace />
+            <PhilosophyVideo />
           </main>
         </>
       ) : (

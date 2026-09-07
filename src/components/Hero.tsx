@@ -73,7 +73,7 @@ export default function Hero() {
       </div>
 
       <div className="hero__content">
-        {/* Scritta Welcome Cooperativa Sociale che appare lettera per lettera con scia di scintille lucciole luminose */}
+        {/* Scritta Welcome Cooperativa Sociale che appare lettera per lettera velocemente con scia di scintille luminose */}
         <div className="hero__header-badge">
           <div className="hero__welcome-title-wrap">
             <span className="hero__welcome-sparkle-trail" aria-hidden="true" />
@@ -82,7 +82,7 @@ export default function Hero() {
                 <span
                   key={idx}
                   className="hero__char"
-                  style={{ animationDelay: `${0.3 + idx * 0.1}s` }}
+                  style={{ animationDelay: `${0.05 + idx * 0.035}s` }}
                 >
                   {char}
                 </span>
@@ -97,7 +97,7 @@ export default function Hero() {
                 <span
                   key={idx}
                   className="hero__char"
-                  style={{ animationDelay: `${1.1 + idx * 0.045}s` }}
+                  style={{ animationDelay: `${0.32 + idx * 0.018}s` }}
                 >
                   {char === ' ' ? '\u00A0' : char}
                 </span>

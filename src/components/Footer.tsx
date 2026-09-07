@@ -49,6 +49,9 @@ export default function Footer({ onNavigate, onOpenCookieSettings }: FooterProps
 
   return (
     <footer className="footer" role="contentinfo">
+      {/* Sfondo decorativo in trasparenza lieve e raffinato */}
+      <div className="footer__bg-overlay" aria-hidden="true" />
+
       <div className="footer__container">
         <div className="footer__grid">
           {/* Column 1: Brand & Description */}
