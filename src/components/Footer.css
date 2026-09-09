@@ -1,15 +1,15 @@
-/* Footer - Invertito con Verde Scuro (#1b2f15) in alto (stesso colore ultima sezione) che sfuma dolcemente verso il basso */
+/* Footer - In verde gradiente naturale */
 .footer {
   position: relative;
   background: linear-gradient(180deg, #1b2f15 0%, #1e3818 35%, #24441d 70%, #2b4e22 100%);
   color: #dce7d1;
   padding-top: clamp(3.5rem, 6vw, 5.5rem);
   padding-bottom: clamp(2.5rem, 4vw, 3.5rem);
-  border-top: none; /* Perfettamente adiacente al fondo del main-content */
+  border-top: none;
   overflow: hidden; /* Blocca gli accenti luminosi prima/dopo dal debordare verso destra su mobile */
 }
 
-/* Sfondo in trasparenza lievemente diverso: riflessi soft distribuiti verso il basso */
+/* Sfondo in trasparenza con riflessi verdi distribuiti verso il basso */
 .footer__bg-overlay {
   position: absolute;
   inset: 0;
@@ -21,9 +21,6 @@
   pointer-events: none;
   z-index: 1;
 }
-
-
-
 
 /* Subtle background glowing accents */
 .footer::before {

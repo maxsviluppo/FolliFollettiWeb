@@ -2,21 +2,16 @@
   min-height: 100vh;
 }
 
-/* Sfondo continuo con gradiente che sfuma gradualmente nel verde scuro del footer (#1b2f15) */
+/* Sfondo della pagina con gradiente originale da bianco a verde-giallo */
 .main-content {
   position: relative;
   width: 100%;
   background: linear-gradient(
     180deg,
     #ffffff 0%,
-    #fcfeee 10%,
-    #f4fad2 24%,
-    #e9f6b5 42%,
-    #cbe782 58%,
-    #8ab846 72%,
-    #4e7c26 84%,
-    #2b4a1b 93%,
-    #1b2f15 100%
+    #f8fcf0 20%,
+    #ebf5c0 60%,
+    #ddef8e 100%
   );
   overflow: hidden;
   padding-bottom: clamp(3rem, 6vw, 5.5rem);
@@ -51,6 +46,6 @@
 .main-skyline-gradient {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(221, 239, 142, 0.28) 0%, transparent 75%);
+  background: linear-gradient(to top, rgba(230, 205, 155, 0.25) 0%, transparent 75%);
   pointer-events: none;
 }
