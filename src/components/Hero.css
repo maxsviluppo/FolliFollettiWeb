@@ -417,14 +417,14 @@
 /* Altalena: top attached to the bottom of the letter O, level BEHIND the logo */
 .hero__swing-wrap {
   position: absolute;
-  top: 61.5%;
-  left: 58.2%;
-  width: 13.5%;
+  top: 61.2%;
+  left: 55.7%;
+  width: 18.5%;
   z-index: 1; /* BEHIND the logo */
   transform-origin: 50% 0%;
   animation: fairy-swing 4s ease-in-out infinite alternate;
   pointer-events: none;
-  filter: drop-shadow(0 6px 14px rgba(10, 30, 8, 0.25));
+  filter: drop-shadow(0 8px 18px rgba(10, 30, 8, 0.28));
 }
 
 .hero__swing-img {
