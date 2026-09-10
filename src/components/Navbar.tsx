@@ -51,6 +51,12 @@ export default function Navbar({ currentPath = 'home', onNavigateHome }: NavbarP
     const sentinel = sentinelRef.current;
     if (!sentinel) return;
 
+    const checkStuck = () => {
+      if (!sentinelRef.current) return;
+      const rect = sentinelRef.current.getBoundingClientRect();
+      setIsStuck(rect.top <= 0);
+    };
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         setIsStuck(entry.boundingClientRect.top <= 0 && !entry.isIntersecting);
@@ -59,7 +65,13 @@ export default function Navbar({ currentPath = 'home', onNavigateHome }: NavbarP
     );
 
     observer.observe(sentinel);
-    return () => observer.disconnect();
+    window.addEventListener('scroll', checkStuck, { passive: true });
+    checkStuck();
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('scroll', checkStuck);
+    };
   }, []);
 
   const handleLinkClick = (href: string) => (e: React.MouseEvent) => {

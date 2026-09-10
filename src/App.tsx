@@ -106,6 +106,18 @@ export default function App() {
             onNavigateHome={(target) => navigateTo('home', target)}
           />
           <main className="main-content">
+            {/* Sfondo panoramico skyline tono su tono con dissolvenza */}
+            <div className="main-skyline-bg" aria-hidden="true">
+              <img
+                src="/skylinehome.jpg"
+                alt=""
+                className="main-skyline-img"
+                loading="lazy"
+                decoding="async"
+              />
+              <div className="main-skyline-gradient" />
+            </div>
+
             <InfoCards />
             <PhilosophyVideo />
           </main>

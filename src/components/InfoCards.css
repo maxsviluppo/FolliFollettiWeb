@@ -342,6 +342,56 @@
   }
 }
 
+/* Desktop: 2 card nella prima riga e 3 card nella seconda riga, visibili tutte contemporaneamente */
+@media (min-width: 1024px) {
+  .info-section__controls-wrapper {
+    min-height: 48px;
+    min-width: 48px;
+  }
+
+  .info-section__controls {
+    display: none;
+  }
+
+  .info-scroll {
+    overflow: visible;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    scroll-padding-left: 0;
+    scroll-padding-right: 0;
+  }
+
+  .info-scroll__track {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 2rem 1.75rem;
+    width: 100%;
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .info-card {
+    width: 100%;
+    max-width: none;
+    flex: none;
+  }
+
+  /* Prima riga: 2 card */
+  .info-card:nth-child(1),
+  .info-card:nth-child(2) {
+    grid-column: span 3;
+  }
+
+  /* Seconda riga: 3 card */
+  .info-card:nth-child(3),
+  .info-card:nth-child(4),
+  .info-card:nth-child(5) {
+    grid-column: span 2;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .info-card {
     opacity: 1;
@@ -349,4 +399,5 @@
     transition: none;
   }
 }
+
 

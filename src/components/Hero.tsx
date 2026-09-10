@@ -109,6 +109,17 @@ export default function Hero() {
         <div className="hero__logo-stage">
           <div className="hero__logo-ambient" aria-hidden="true" />
 
+          {/* Altalena con fatina in oscillazione continua (loop), appesa sotto la O di 'folletti' al livello inferiore al logo */}
+          <div className="hero__swing-wrap" aria-hidden="true">
+            <img
+              src="/altalena.png"
+              alt=""
+              className="hero__swing-img"
+              loading="eager"
+              decoding="async"
+            />
+          </div>
+
           <h1 className="hero__logo-title">
             <img
               src="/logo-folli-folletti-2.png"
