@@ -132,40 +132,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Trilli flying on a leaf at the bottom-left margin */}
-      <div className="hero__trilli-container" aria-hidden="true">
-        {/* Leaf anchored to bottom-left margin */}
-        <img
-          src="/trilli-leaf-clean.png"
-          alt=""
-          className="hero__trilli-leaf"
-        />
-
-        {/* Hovering Fairy in suspension */}
-        <div className="hero__trilli-fairy">
-          {/* Wings with rhythmic flutter and pauses */}
-          <img
-            src="/trilli-wings-clean.png"
-            alt=""
-            className="hero__trilli-wings"
-          />
-
-          {/* Body and green dress */}
-          <img
-            src="/trilli-fairy-body.png"
-            alt=""
-            className="hero__trilli-body"
-          />
-
-          {/* Fairy dust sparks */}
-          <div className="hero__trilli-sparks">
-            <span className="hero__trilli-spark spark--1" />
-            <span className="hero__trilli-spark spark--2" />
-            <span className="hero__trilli-spark spark--3" />
-            <span className="hero__trilli-spark spark--4" />
-          </div>
-        </div>
-      </div>
 
       <SlideFooterCut />
     </section>
