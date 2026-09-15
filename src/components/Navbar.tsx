@@ -37,9 +37,16 @@ export const NAV_LINKS: NavLinkItem[] = [
 interface NavbarProps {
   currentPath?: 'home' | 'privacy' | 'cookies';
   onNavigateHome?: (hashTarget?: string) => void;
+  logoSrc?: string;
+  isAlwaysWhite?: boolean;
 }
 
-export default function Navbar({ currentPath = 'home', onNavigateHome }: NavbarProps) {
+export default function Navbar({
+  currentPath = 'home',
+  onNavigateHome,
+  logoSrc = '/logosemplice.png',
+  isAlwaysWhite = false,
+}: NavbarProps) {
   const [isStuck, setIsStuck] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(true);
@@ -130,7 +137,9 @@ export default function Navbar({ currentPath = 'home', onNavigateHome }: NavbarP
     <>
       <div ref={sentinelRef} className="navbar-sentinel" aria-hidden="true" />
       <header
-        className={`navbar ${isStuck || currentPath !== 'home' ? 'navbar--stuck' : ''}`}
+        className={`navbar ${isStuck || currentPath !== 'home' ? 'navbar--stuck' : ''} ${
+          isAlwaysWhite ? 'navbar--always-white' : ''
+        }`}
         role="banner"
       >
         <div className="navbar__inner">
@@ -141,7 +150,7 @@ export default function Navbar({ currentPath = 'home', onNavigateHome }: NavbarP
             aria-label="Folli Folletti Home"
           >
             <img
-              src="/logosemplice.png"
+              src={logoSrc}
               alt="Folli Folletti"
               className="navbar__logo-img"
               width="170"

@@ -257,7 +257,7 @@
   font-weight: 900;
   letter-spacing: 0.34em;
   text-transform: uppercase;
-  color: #243b14; /* Verde foresta profondo coordinato */
+  color: #243b14;
   text-shadow:
     0 1px 2px rgba(255, 255, 255, 0.95),
     0 0 14px rgba(255, 250, 200, 0.75);
@@ -303,7 +303,6 @@
   }
   45% {
     opacity: 1;
-    /* Effetto Zoom scenico accentuato che cattura lo sguardo */
     transform: translateY(-8px) scale(1.68);
     filter: blur(0px) brightness(1.75);
     text-shadow: 0 0 20px #ffffff, 0 0 35px #e5ff54, 0 0 50px #8ce600;
@@ -315,7 +314,6 @@
   }
   100% {
     opacity: 1;
-    /* Ritorno morbido alla sua dimensione naturale */
     transform: translateY(0) scale(1);
     filter: blur(0px) brightness(1);
     text-shadow: 0 1px 2px rgba(255, 255, 255, 0.95), 0 0 12px rgba(255, 250, 190, 0.65);
@@ -397,7 +395,7 @@
 
 .hero__logo-title {
   position: relative;
-  z-index: 2; /* In front of the swing so the ropes tuck behind the bottom of the letter O */
+  z-index: 2;
   margin: 0;
   padding: 0;
   line-height: 0;
@@ -414,13 +412,13 @@
   user-select: none;
 }
 
-/* Altalena: top attached to the bottom of the letter O, level BEHIND the logo */
+/* Altalena: appesa sotto la O di 'folletti' */
 .hero__swing-wrap {
   position: absolute;
   top: 61.2%;
   left: 55.7%;
   width: 18.5%;
-  z-index: 1; /* BEHIND the logo */
+  z-index: 1;
   transform-origin: 50% 0%;
   animation: fairy-swing 4s ease-in-out infinite alternate;
   pointer-events: none;
@@ -456,7 +454,6 @@
   white-space: nowrap;
   border-width: 0;
 }
-
 
 @media (max-width: 640px) {
   .hero__content {

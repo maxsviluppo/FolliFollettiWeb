@@ -1,0 +1,388 @@
+/* ==========================================================================
+   SEZIONE SERVIZI BOZZA 2 (folliappesi a sinistra, testo + box singolo a destra)
+   ========================================================================== */
+
+.services-v2 {
+  position: relative;
+  width: 100%;
+  background: #ffffff;
+  padding-top: clamp(4rem, 7vw, 6.5rem);
+  padding-bottom: clamp(4rem, 7vw, 6.5rem);
+  overflow: hidden;
+}
+
+.services-v2__container {
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 4vw, 2.5rem);
+  display: grid;
+  grid-template-columns: minmax(320px, 420px) 1fr;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+  position: relative;
+}
+
+/* ==========================================================================
+   LATO SINISTRO (DESKTOP): Illustrazione folliappesi.png
+   ========================================================================== */
+.services-v2__left-art {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.services-v2__art-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  justify-content: center;
+  filter: drop-shadow(0 20px 40px rgba(18, 55, 12, 0.12));
+}
+
+.services-v2__art-img {
+  width: 100%;
+  height: auto;
+  max-height: 680px;
+  object-fit: contain;
+  display: block;
+  user-select: none;
+}
+
+/* ==========================================================================
+   FILIGRANA SOTTO AL TESTO (SOLO PER MOBILE, NASCOSTA SU DESKTOP)
+   ========================================================================== */
+.services-v2__watermark {
+  display: none;
+  position: absolute;
+  top: clamp(0.5rem, 2vw, 2.5rem);
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(92vw, 640px);
+  pointer-events: none;
+  z-index: 0;
+  justify-content: center;
+  align-items: flex-start;
+  user-select: none;
+}
+
+.services-v2__watermark-img {
+  width: 100%;
+  height: auto;
+  max-height: 560px;
+  object-fit: contain;
+  opacity: 0.08; /* Trasparenza filigrana elegante (almeno 5%) */
+  filter: contrast(1.1);
+}
+
+/* ==========================================================================
+   CONTENUTO (DESKTOP LATO DESTRO / MOBILE PRINCIPALE)
+   ========================================================================== */
+.services-v2__main-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  width: 100%;
+}
+
+.services-v2__header {
+  display: flex;
+  flex-direction: column;
+}
+
+.services-v2__eyebrow {
+  display: inline-block;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent, #6aab3a);
+  margin-bottom: 0.65rem;
+}
+
+.services-v2__title {
+  font-family: var(--font-display, 'Outfit', sans-serif);
+  font-size: clamp(2.1rem, 4vw, 2.85rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--text-dark, #1a3310);
+  letter-spacing: -0.02em;
+  margin: 0 0 1rem 0;
+}
+
+.services-v2__desc {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: clamp(0.98rem, 1.7vw, 1.12rem);
+  line-height: 1.65;
+  color: var(--text-muted, #4a5c38);
+  margin: 0;
+}
+
+.services-v2__desc strong {
+  font-weight: 700;
+  color: var(--text-dark, #1a3310);
+}
+
+/* ==========================================================================
+   CAROUSEL BOX SINGOLO
+   ========================================================================== */
+.services-v2__carousel-stage {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.services-v2__card-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.services-v2__card {
+  background: #ffffff;
+  border-radius: 28px;
+  border: 1px solid rgba(106, 171, 58, 0.22);
+  box-shadow:
+    0 12px 35px -8px rgba(18, 55, 12, 0.09),
+    0 1px 3px rgba(0, 0, 0, 0.04);
+  padding: clamp(1.75rem, 3.5vw, 2.35rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  position: relative;
+  animation: cardFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.services-v2__card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 42px -10px rgba(18, 55, 12, 0.14);
+  border-color: rgba(106, 171, 58, 0.45);
+}
+
+@keyframes cardFadeIn {
+  from {
+    opacity: 0.4;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.services-v2__card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.services-v2__card-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(106, 171, 58, 0.12);
+  color: var(--accent, #488420);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.services-v2__card-counter {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #94a3b8;
+  letter-spacing: 0.08em;
+}
+
+.services-v2__card-title {
+  font-family: var(--font-display, 'Outfit', sans-serif);
+  font-size: clamp(1.4rem, 2.4vw, 1.85rem);
+  font-weight: 800;
+  color: var(--text-dark, #1a3310);
+  margin: 0 0 0.6rem 0;
+  line-height: 1.25;
+}
+
+.services-v2__card-text {
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: var(--text-muted, #4a5c38);
+  margin: 0 0 1.25rem 0;
+}
+
+.services-v2__card-highlights {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.services-v2__card-highlight-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-dark, #1a3310);
+}
+
+.services-v2__card-bullet {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(106, 171, 58, 0.16);
+  color: #3f7918;
+  font-size: 0.72rem;
+  font-weight: 900;
+  flex-shrink: 0;
+}
+
+.services-v2__card-footer {
+  margin-top: 0.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(106, 171, 58, 0.14);
+}
+
+.services-v2__card-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-display, 'Outfit', sans-serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--accent, #488420);
+  text-decoration: none;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.services-v2__card-action:hover {
+  transform: translateX(4px);
+  color: #2b5711;
+}
+
+/* ==========================================================================
+   BARRA CONTROLLI CON ICONE FRECCE
+   ========================================================================== */
+.services-v2__controls-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 0.5rem 0.25rem;
+}
+
+.services-v2__indicators {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.services-v2__indicator-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #cbd5e1;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.services-v2__indicator-dot.is-active {
+  width: 28px;
+  background: var(--accent, #6aab3a);
+  box-shadow: 0 0 10px rgba(106, 171, 58, 0.4);
+}
+
+.services-v2__nav-btns {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.services-v2__nav-btn {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid rgba(106, 171, 58, 0.3);
+  box-shadow: 0 4px 14px rgba(18, 55, 12, 0.08);
+  color: var(--text-dark, #1a3310);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.services-v2__nav-btn:hover {
+  background: var(--accent, #6aab3a);
+  color: #ffffff;
+  border-color: var(--accent, #6aab3a);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(106, 171, 58, 0.3);
+}
+
+.services-v2__nav-btn:active {
+  transform: translateY(0) scale(0.97);
+}
+
+/* ==========================================================================
+   RESPONSIVE: SMARTPHONE & TABLET
+   ========================================================================== */
+@media (max-width: 960px) {
+  .services-v2 {
+    padding-top: clamp(3rem, 6vw, 4.5rem);
+    padding-bottom: clamp(3rem, 6vw, 4.5rem);
+  }
+
+  .services-v2__container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 1040px;
+  }
+
+  /* Su mobile nascondiamo la colonna sinistra e mostriamo la filigrana sotto al testo */
+  .services-v2__left-art {
+    display: none !important;
+  }
+
+  .services-v2__watermark {
+    display: flex !important;
+    width: min(95vw, 480px);
+    top: clamp(0.25rem, 1vw, 1.5rem);
+  }
+
+  .services-v2__watermark-img {
+    max-height: 440px;
+    opacity: 0.07; /* Almeno 5% di trasparenza */
+  }
+
+  .services-v2__main-content {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-v2__watermark {
+    width: 96vw;
+    top: 0;
+  }
+
+  .services-v2__watermark-img {
+    max-height: 380px;
+    opacity: 0.06; /* Trasparenza delicata sotto al testo su smartphone piccoli */
+  }
+}

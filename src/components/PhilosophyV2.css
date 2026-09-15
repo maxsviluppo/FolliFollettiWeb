@@ -1,0 +1,209 @@
+/* ==========================================================================
+   SEZIONE FILOSOFIA BOZZA 2:
+   - DESKTOP: Layout a 2 colonne (testo a sinistra, folletta stesa a destra)
+   - MOBILE: Immagine flottante a destra, metà fuori con testo a contorno (shape-outside)
+   ========================================================================== */
+
+.philosophy-v2 {
+  position: relative;
+  width: 100%;
+  background: #ffffff;
+  padding-top: clamp(3.5rem, 6vw, 5.5rem);
+  padding-bottom: clamp(4rem, 7vw, 6.5rem);
+  overflow: hidden;
+}
+
+.philosophy-v2__container {
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 4vw, 2.5rem);
+  display: grid;
+  grid-template-columns: 1fr minmax(320px, 460px);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+  position: relative;
+}
+
+/* ==========================================================================
+   LATO SINISTRO (DESKTOP): Titolo e Poesia allineati a sinistra
+   ========================================================================== */
+.philosophy-v2__left-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.philosophy-v2__header {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: clamp(1rem, 2.2vw, 1.6rem);
+}
+
+.philosophy-v2__title-img {
+  width: 100%;
+  max-width: clamp(260px, 34vw, 380px);
+  height: auto;
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 12px rgba(20, 50, 15, 0.14));
+}
+
+.philosophy-v2__body {
+  width: 100%;
+  max-width: 720px;
+}
+
+.philosophy-v2__poem {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  text-align: left;
+}
+
+.philosophy-v2__poem-paragraph,
+.philosophy-v2__poem-text {
+  font-family: 'Caveat', 'Playfair Display', cursive, italic, serif;
+  font-size: clamp(1.12rem, 1.65vw, 1.42rem);
+  font-weight: 500;
+  line-height: 1.40;
+  color: #385226;
+  letter-spacing: 0.01em;
+  margin: 0 0 1rem 0;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
+}
+
+.philosophy-v2__signature {
+  text-align: left;
+  margin-top: 0.85rem;
+}
+
+.philosophy-v2__signature-author {
+  font-family: var(--font-display, 'Outfit', sans-serif);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--accent, #6aab3a);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   LATO DESTRO (DESKTOP): Illustrazione follettastesa-cropped.png nella sua colonna
+   ========================================================================== */
+.philosophy-v2__right-art {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.philosophy-v2__art-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  display: flex;
+  justify-content: center;
+  filter: drop-shadow(0 18px 36px rgba(18, 55, 12, 0.12));
+  transition: transform 0.3s ease;
+}
+
+.philosophy-v2__art-wrapper:hover {
+  transform: translateY(-3px);
+}
+
+.philosophy-v2__art-img {
+  width: 100%;
+  height: auto;
+  max-height: 600px;
+  object-fit: contain;
+  display: block;
+  user-select: none;
+}
+
+/* L'elemento float è nascosto su desktop (usato solo su mobile) */
+.philosophy-v2__art-float {
+  display: none;
+}
+
+/* ==========================================================================
+   RESPONSIVE: MOBILE & TABLET (TESTO CHE VA A CAPO POCO PRIMA DEL MARGINE IMMAGINE)
+   ========================================================================== */
+@media (max-width: 900px) {
+  .philosophy-v2 {
+    padding-top: 3rem;
+    padding-bottom: 4rem;
+  }
+
+  .philosophy-v2__container {
+    display: block;
+    gap: 0;
+  }
+
+  .philosophy-v2__left-content {
+    width: 100%;
+  }
+
+  .philosophy-v2__title-img {
+    max-width: 270px;
+  }
+
+  /* Nascondiamo la colonna desktop separata */
+  .philosophy-v2__right-art {
+    display: none !important;
+  }
+
+  /* Attiviamo il float a destra: l'immagine si affianca a destra
+     e il testo a sinistra va a capo poco prima del margine dell'immagine follettastesa */
+  .philosophy-v2__art-float {
+    display: block !important;
+    float: right;
+    width: clamp(190px, 46vw, 290px);
+    /* Sborda parzialmente a destra all'esterno lasciando spazio al testo */
+    margin-right: calc(-0.16 * clamp(190px, 46vw, 290px) - 0.75rem);
+    margin-left: clamp(14px, 3.5vw, 22px);
+    margin-bottom: 0.85rem;
+    filter: drop-shadow(0 14px 28px rgba(18, 55, 12, 0.14));
+  }
+
+  .philosophy-v2__body::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  /* Il testo si allinea naturalmente a sinistra e va a capo prima del margine dell'immagine */
+  .philosophy-v2__poem {
+    text-align: left;
+  }
+
+  .philosophy-v2__poem-paragraph,
+  .philosophy-v2__poem-text {
+    font-size: clamp(1.08rem, 3.2vw, 1.25rem);
+    line-height: 1.42;
+    text-align: left;
+    text-wrap: pretty;
+    margin: 0 0 0.85rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .philosophy-v2__title-img {
+    max-width: 230px;
+  }
+
+  .philosophy-v2__art-float {
+    width: clamp(165px, 46vw, 225px);
+    margin-right: calc(-0.14 * clamp(165px, 46vw, 225px) - 0.5rem);
+    margin-left: clamp(12px, 3vw, 18px);
+    margin-bottom: 0.65rem;
+  }
+
+  .philosophy-v2__poem-paragraph,
+  .philosophy-v2__poem-text {
+    font-size: clamp(1.02rem, 3.5vw, 1.15rem);
+    line-height: 1.38;
+    margin: 0 0 0.75rem 0;
+  }
+}

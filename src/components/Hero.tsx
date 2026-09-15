@@ -2,7 +2,6 @@ import { DUST_PARTICLES, FIREFLIES } from '../constants/heroParticles';
 import SlideFooterCut from './SlideFooterCut';
 import './Hero.css';
 
-const WELCOME_LETTERS = Array.from('WELCOME');
 const SUBTITLE_LETTERS = Array.from('COOPERATIVA SOCIALE');
 
 export default function Hero() {
@@ -73,23 +72,8 @@ export default function Hero() {
       </div>
 
       <div className="hero__content">
-        {/* Scritta Welcome Cooperativa Sociale che appare lettera per lettera velocemente con scia di scintille luminose */}
+        {/* Scritta Cooperativa Sociale che appare lettera per lettera con scia di scintille luminose */}
         <div className="hero__header-badge">
-          <div className="hero__welcome-title-wrap">
-            <span className="hero__welcome-sparkle-trail" aria-hidden="true" />
-            <h2 className="hero__welcome-title">
-              {WELCOME_LETTERS.map((char, idx) => (
-                <span
-                  key={idx}
-                  className="hero__char"
-                  style={{ animationDelay: `${0.05 + idx * 0.035}s` }}
-                >
-                  {char}
-                </span>
-              ))}
-            </h2>
-          </div>
-
           <div className="hero__coop-subtitle-wrap">
             <span className="hero__coop-sparkle-trail" aria-hidden="true" />
             <p className="hero__coop-subtitle">
@@ -97,7 +81,7 @@ export default function Hero() {
                 <span
                   key={idx}
                   className="hero__char"
-                  style={{ animationDelay: `${0.32 + idx * 0.018}s` }}
+                  style={{ animationDelay: `${0.12 + idx * 0.02}s` }}
                 >
                   {char === ' ' ? '\u00A0' : char}
                 </span>
@@ -131,7 +115,6 @@ export default function Hero() {
           </h1>
         </div>
       </div>
-
 
       <SlideFooterCut />
     </section>

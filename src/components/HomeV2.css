@@ -1,0 +1,443 @@
+/* ==========================================================================
+   BOZZA 2: HOME ELEGANTE SU FONDO BIANCO CON LOGO FLUIDO E NAVBAR TOP
+   ========================================================================== */
+
+.home-v2-clean {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #ffffff;
+  position: relative;
+  overflow-x: clip; /* clip non rompe i contesti di scroll o sticky come hidden */
+}
+
+/* ==========================================================================
+   ANCORAGGIO NAVBAR & BLOCCO BARRA BIANCA AL TOP DI PAGINA
+   - Mantiene lo spazio nella pagina (height: 76px) evitando scatti di layout
+   - Quando le categorie arrivano in alto (is-fixed-white-bar), la barra si blocca
+     stabilmente a top: 0 con sfondo bianco solido, linea inferiore e ombra
+   ========================================================================== */
+.home-v2__navbar-anchor {
+  position: relative;
+  width: 100%;
+  height: 76px;
+  z-index: 1000;
+}
+
+.home-v2__navbar-container {
+  position: relative;
+  width: 100%;
+  height: 76px;
+  background: #ffffff;
+  transition: background-color 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+/* Quando le categorie del menu arrivano al top di pagina, blocca nel menu con barra bianca */
+.home-v2__navbar-container.is-fixed-white-bar {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  height: 76px !important;
+  z-index: 1100 !important;
+  background: #ffffff !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08) !important;
+  border-bottom: 1px solid rgba(106, 171, 58, 0.25) !important;
+}
+
+.home-v2__navbar-container .navbar {
+  background: #ffffff !important;
+  height: 76px !important;
+}
+
+.home-v2__navbar-container.is-fixed-white-bar .navbar,
+.home-v2__navbar-container .navbar.navbar--stuck,
+.home-v2__navbar-container .navbar.navbar--always-white {
+  background: #ffffff !important;
+  box-shadow: none !important;
+  border-bottom: none !important;
+}
+
+.home-v2__navbar-container .navbar__logo {
+  visibility: hidden;
+  pointer-events: none;
+  width: clamp(112px, 12vw, 128px);
+}
+
+/* ==========================================================================
+   LOGO FLUTTUANTE AD ALTA FLUIDITÀ
+   - A scroll = 0: È grande (fino a 720px), in alto a sinistra e si sovrappone
+     all'illustrazione fino alla lettera 'e' di 'Folletti'.
+   - Durante lo scroll verso il basso: si rimpicciolisce progressivamente
+     fino a 128px, allineandosi e incastonandosi perfettamente al centro
+     verticale della barra bianca (top: 13.5px, navbar height: 76px) senza uscire.
+   ========================================================================== */
+
+.home-v2__floating-logo-stage {
+  position: fixed;
+  z-index: 1200; /* Sopra alla navbar (z-index: 1100) */
+  pointer-events: none;
+  
+  /* Coordinate interpolate tramite la variabile CSS dinamica --scroll-p (da 0 a 1) */
+  top: calc(clamp(2rem, 7vh, 5rem) * (1 - var(--scroll-p)) + 13.5px * var(--scroll-p));
+  left: calc(clamp(1.5rem, 4.5vw, 5rem) * (1 - var(--scroll-p)) + max(1.25rem, calc((100vw - 1280px) / 2 + 1.5rem)) * var(--scroll-p));
+  width: calc(clamp(460px, 47vw, 700px) * (1 - var(--scroll-p)) + clamp(112px, 12vw, 128px) * var(--scroll-p));
+  
+  transition: filter 0.25s ease;
+  will-change: top, left, width;
+}
+
+.home-v2__floating-logo-stage.is-fixed-in-navbar {
+  top: 13.5px;
+}
+
+.home-v2__floating-logo-link {
+  display: block;
+  width: 100%;
+  pointer-events: auto;
+  text-decoration: none;
+  cursor: pointer;
+  line-height: 0;
+}
+
+.home-v2__floating-logo-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  filter:
+    drop-shadow(0 calc(8px * (1 - var(--scroll-p)) + 2px * var(--scroll-p)) calc(18px * (1 - var(--scroll-p)) + 5px * var(--scroll-p)) rgba(14, 56, 12, calc(0.28 * (1 - var(--scroll-p)) + 0.16 * var(--scroll-p))))
+    drop-shadow(0 calc(2px * (1 - var(--scroll-p)) + 1px * var(--scroll-p)) calc(4px * (1 - var(--scroll-p)) + 2px * var(--scroll-p)) rgba(255, 255, 255, 0.95));
+  transition: transform 0.2s ease;
+}
+
+.home-v2__floating-logo-link:hover .home-v2__floating-logo-img {
+  transform: scale(1.02);
+}
+
+/* ==========================================================================
+   SCRITTA COOPERATIVA SOCIALE SOTTO AL LOGO GRANDE IN ALTO
+   - Visibile e animata lettera per lettera a scroll = 0
+   - Sfuma gradualmente durante lo scroll per lasciare il solo logo compatto nella barra
+   ========================================================================== */
+.home-v2__logo-subtitles {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: clamp(0.25rem, 0.7vw, 0.55rem);
+  opacity: calc(max(0, 1 - var(--scroll-p) * 3));
+  transform: translateY(calc(var(--scroll-p) * -14px));
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+  width: 100%;
+  user-select: none;
+}
+
+.home-v2__coop-word {
+  font-family: var(--font-display, 'Outfit', sans-serif);
+  font-size: clamp(0.78rem, 1.45vw, 1.08rem);
+  font-weight: 800;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #2f4a1a;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.95);
+  display: inline-flex;
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   HERO BOZZA 2 CON IMMAGINE INGRANDITA IN SECONDO PIANO
+   ========================================================================== */
+
+.hero-v2 {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.hero-v2__stage {
+  position: relative;
+  width: 100%;
+  max-width: 1750px;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 1.5rem 1.5rem 1.5rem 2rem;
+  box-sizing: border-box;
+}
+
+.hero-v2__image-wrap {
+  position: relative;
+  display: inline-block;
+  line-height: 0;
+  width: fit-content;
+  height: fit-content;
+  z-index: 1; /* In secondo piano rispetto al logo */
+}
+
+.hero-v2__image {
+  max-width: min(84vw, 1340px);
+  max-height: 94vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  user-select: none;
+  filter: drop-shadow(0 20px 45px rgba(0, 0, 0, 0.09));
+}
+
+/* ==========================================================================
+   FARFALLA BLU ANIMATA IMAGE-1.GIF IN PRIMO PIANO (EFFETTO PROFONDITÀ)
+   - Ingrandita ulteriormente del 30% per un marcato effetto macro in primo piano
+   - Ruotata di 5° verso destra (-7deg)
+   - Posizionata sui fiori più in basso e più a sinistra
+   - Mezza fuori e mezza dentro l'illustrazione (left: 2%, transform: translate(-50%, -50%))
+   ========================================================================== */
+.hero-v2__butterfly {
+  position: absolute;
+  left: 2%;
+  top: 74%;
+  width: clamp(190px, 26vw, 310px);
+  transform: translate(-50%, -50%) rotate(-7deg);
+  pointer-events: none;
+  z-index: 25; /* In primo piano netto rispetto a tutto */
+  animation: hero-butterfly-hover 4.5s ease-in-out infinite alternate;
+}
+
+.hero-v2__butterfly-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  /* Effetto profondità intenso: ombreggiatura realistica da primo piano macro */
+  filter:
+    drop-shadow(0 24px 44px rgba(0, 0, 0, 0.40))
+    drop-shadow(0 8px 18px rgba(12, 40, 10, 0.30));
+}
+
+@keyframes hero-butterfly-hover {
+  0% {
+    transform: translate(-50%, -50%) rotate(-7deg) translateY(0) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(-2deg) translateY(-8px) scale(1.03);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(-9deg) translateY(-3px) scale(0.99);
+  }
+}
+
+/* ==========================================================================
+   SEZIONE CONTENUTO (ServicesCarouselV2 & Filosofia)
+   ========================================================================== */
+
+.home-v2__main-content {
+  position: relative;
+  width: 100%;
+  background: #ffffff;
+  overflow: hidden;
+  padding-bottom: clamp(3rem, 6vw, 5.5rem);
+}
+
+/* ==========================================================================
+   RESPONSIVE: SMARTPHONE & TABLET
+   ========================================================================== */
+
+@media (max-width: 900px) {
+  .hero-v2__stage {
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  /* Spostamento immagine più a destra in esterno per valorizzare la farfalla sui fiori a sinistra */
+  .hero-v2__image-wrap {
+    width: fit-content;
+    height: fit-content;
+    display: inline-block;
+    padding-top: clamp(4rem, 11vh, 7rem);
+    transform: translateX(clamp(55px, 16vw, 120px));
+  }
+
+  .hero-v2__image {
+    max-width: none;
+    width: auto;
+    height: 78vh;
+    min-height: 500px;
+    max-height: 680px;
+    object-fit: contain;
+    flex-shrink: 0;
+    transform: none;
+    filter: drop-shadow(0 14px 30px rgba(0, 0, 0, 0.09));
+  }
+
+  /* RIMOZIONE TOTALE DELLA BARRA BIANCA TOP SU MOBILE */
+  .home-v2__navbar-anchor {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    pointer-events: none !important;
+    visibility: visible !important;
+  }
+
+  .home-v2__navbar-container,
+  .home-v2__navbar-container.is-fixed-white-bar,
+  .home-v2__navbar-container .navbar {
+    height: 0 !important;
+    min-height: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    pointer-events: none !important;
+  }
+
+  .home-v2-clean .navbar__inner {
+    height: 0 !important;
+    padding: 0 !important;
+  }
+
+  .home-v2-clean .navbar__actions {
+    pointer-events: auto !important;
+  }
+
+  /* SU MOBILE: Il logo e il sottotitolo COOPERATIVA SOCIALE iniziano PIÙ GRANDI,
+     poi con lo scroll il sottotitolo sfuma rapidamente e resta solo il logo
+     che si rimpicciolisce e si posiziona in alto a sinistra nella barra trasparente */
+  .home-v2__floating-logo-stage {
+    top: calc(clamp(1.75rem, 5.5vh, 3.2rem) * (1 - var(--scroll-p)) + 12px * var(--scroll-p));
+    left: calc(clamp(1rem, 3.5vw, 1.75rem) * (1 - var(--scroll-p)) + 12px * var(--scroll-p));
+    width: calc(clamp(275px, 76vw, 365px) * (1 - var(--scroll-p)) + clamp(96px, 25vw, 112px) * var(--scroll-p));
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .home-v2__floating-logo-stage.is-fixed-in-navbar {
+    top: 12px;
+    left: 12px;
+    width: clamp(96px, 25vw, 112px);
+  }
+
+  .home-v2__floating-logo-stage.is-fixed-in-navbar .home-v2__logo-subtitles {
+    display: none !important;
+  }
+
+  .home-v2__navbar-container .navbar__logo {
+    display: none !important;
+  }
+
+  /* Icona menu allineata sul primo rigo a destra */
+  .home-v2-clean .navbar__menu-btn {
+    position: fixed !important;
+    top: clamp(10px, 2.5vh, 16px) !important;
+    right: clamp(12px, 3.5vw, 20px) !important;
+    z-index: 2000 !important;
+    width: 44px !important;
+    height: 44px !important;
+    pointer-events: auto !important;
+    background: rgba(255, 255, 255, 0.96) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1.5px solid rgba(106, 171, 58, 0.35) !important;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12) !important;
+  }
+
+  .home-v2-clean .navbar__mobile-drawer {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    max-height: 100vh !important;
+    overflow-y: auto !important;
+    z-index: 1950 !important;
+    pointer-events: auto !important;
+    padding: 5rem 1.5rem 2rem !important;
+    background: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: blur(24px) !important;
+    -webkit-backdrop-filter: blur(24px) !important;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.16) !important;
+    border-bottom: 2px solid rgba(106, 171, 58, 0.3) !important;
+  }
+
+  .home-v2__logo-subtitles {
+    margin-top: clamp(0.35rem, 1vw, 0.6rem);
+    align-items: flex-start;
+    opacity: calc(max(0, 1 - var(--scroll-p) * 2.8));
+    transform: translateY(calc(var(--scroll-p) * -12px));
+    pointer-events: none;
+    transition: opacity 0.15s ease;
+  }
+
+  .home-v2__coop-word {
+    font-size: clamp(0.85rem, 3.2vw, 1.08rem);
+    font-weight: 800;
+    letter-spacing: 0.22em;
+  }
+
+  .hero-v2__butterfly {
+    width: clamp(160px, 34vw, 240px);
+    left: 4%;
+    top: 74%;
+    transform: translate(-50%, -50%) rotate(-7deg);
+  }
+}
+
+@media (max-width: 480px) {
+  /* Su smartphone più piccoli: immagine spinta a destra all'esterno per far risaltare la farfalla */
+  .hero-v2__image-wrap {
+    transform: translateX(clamp(45px, 15vw, 95px));
+  }
+
+  .hero-v2__image {
+    height: 76vh;
+    min-height: 480px;
+    max-height: 620px;
+    transform: none;
+  }
+
+  /* Logo e icona su smartphone: parte grande e poi si rimpicciolisce in alto a sinistra */
+  .home-v2__floating-logo-stage {
+    top: calc(1.75rem * (1 - var(--scroll-p)) + 10px * var(--scroll-p));
+    left: calc(1rem * (1 - var(--scroll-p)) + 10px * var(--scroll-p));
+    width: calc(clamp(250px, 80vw, 330px) * (1 - var(--scroll-p)) + clamp(90px, 25vw, 104px) * var(--scroll-p));
+  }
+
+  .home-v2__floating-logo-stage.is-fixed-in-navbar {
+    top: 10px;
+    left: 10px;
+    width: clamp(90px, 25vw, 104px);
+  }
+
+  .home-v2-clean .navbar__menu-btn {
+    top: 10px !important;
+    right: 12px !important;
+    width: 42px !important;
+    height: 42px !important;
+  }
+
+  .home-v2__coop-word {
+    font-size: clamp(0.74rem, 3.4vw, 0.92rem);
+    letter-spacing: 0.18em;
+  }
+
+  .hero-v2__butterfly {
+    width: clamp(140px, 38vw, 195px);
+    left: 5%;
+    top: 74%;
+    transform: translate(-50%, -50%) rotate(-7deg);
+  }
+}

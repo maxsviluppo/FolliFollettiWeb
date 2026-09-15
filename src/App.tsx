@@ -7,11 +7,26 @@ import Footer from './components/Footer';
 import PrivacyPage from './components/PrivacyPage';
 import CookiePage from './components/CookiePage';
 import CookieModal from './components/CookieModal';
+import DraftSelector from './components/DraftSelector';
+import DraftTopBar from './components/DraftTopBar';
+import HomeV2 from './components/HomeV2';
 import './App.css';
 
 type RouteType = 'home' | 'privacy' | 'cookies';
+type DraftVersion = 'selector' | 'v1' | 'v2';
 
 export default function App() {
+  const [draftVersion, setDraftVersion] = useState<DraftVersion>(() => {
+    const params = new URLSearchParams(window.location.search);
+    const vParam = params.get('v');
+    if (vParam === '1') return 'v1';
+    if (vParam === '2') return 'v2';
+    const hash = window.location.hash.toLowerCase();
+    if (hash.includes('v1')) return 'v1';
+    if (hash.includes('v2')) return 'v2';
+    return 'selector';
+  });
+
   const [currentRoute, setCurrentRoute] = useState<RouteType>('home');
   const [isCookieModalOpen, setIsCookieModalOpen] = useState(false);
 
@@ -95,9 +110,51 @@ export default function App() {
     }
   };
 
+  // 1. Schermata iniziale di accesso che mostra e confronta entrambe le bozze
+  if (draftVersion === 'selector') {
+    return (
+      <DraftSelector
+        onSelectVersion={(v) => {
+          setDraftVersion(v);
+          window.scrollTo({ top: 0, behavior: 'instant' });
+        }}
+      />
+    );
+  }
+
+  // 2. Bozza 2 (Nuova proposta su fondo bianco con hero dedicata, navbar top e categorie)
+  if (draftVersion === 'v2') {
+    return (
+      <>
+        <DraftTopBar
+          currentVersion="v2"
+          onSwitchVersion={(v) => setDraftVersion(v)}
+          onBackToSelector={() => setDraftVersion('selector')}
+        />
+        <HomeV2
+          onNavigate={(page, hash) => navigateTo(page, hash)}
+        />
+        {/* Pannello cookie */}
+        <CookieModal
+          isOpen={isCookieModalOpen}
+          onClose={() => setIsCookieModalOpen(false)}
+          onNavigate={(page) => navigateTo(page)}
+        />
+      </>
+    );
+  }
+
+  // 3. Bozza 1 (Completa e originale con bosco animato, cards e sezioni)
   return (
     <div className="app">
-      {/* Nella Home: la Hero è in cima e la Navbar è subito sotto di essa, diventando sticky allo scroll */}
+      {/* Barra fluttuante per cambiare bozza o tornare alla selezione */}
+      <DraftTopBar
+        currentVersion="v1"
+        onSwitchVersion={(v) => setDraftVersion(v)}
+        onBackToSelector={() => setDraftVersion('selector')}
+      />
+
+      {/* Nella Home Versione 1: la Hero originale è in cima e la Navbar è subito sotto */}
       {currentRoute === 'home' ? (
         <>
           <Hero />
@@ -147,7 +204,7 @@ export default function App() {
         onOpenCookieSettings={() => setIsCookieModalOpen(true)}
       />
 
-      {/* Pannello per accettare i cookie all'avvio, a tema modale minimal e poco invadente */}
+      {/* Pannello cookie */}
       <CookieModal
         isOpen={isCookieModalOpen}
         onClose={() => setIsCookieModalOpen(false)}

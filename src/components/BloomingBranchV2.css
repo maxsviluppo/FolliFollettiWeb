@@ -1,0 +1,144 @@
+/* ==========================================================================
+   DECORAZIONE RAMO FIORITO (Image.gif) IN SMARGINATURA A SINISTRA
+   - Posizionato tra la prima e la seconda sezione
+   - Lenta fioritura (single loop), poi si ferma sul frame finale
+   - Smarginatura a sinistra: il ramo esce naturalmente dal bordo sinistro
+   ========================================================================== */
+
+.blooming-branch-boundary {
+  position: relative;
+  width: 100%;
+  pointer-events: none;
+  z-index: 20;
+  margin-top: -1.5rem;
+  margin-bottom: -1rem;
+}
+
+.blooming-branch {
+  position: relative;
+  width: clamp(300px, 34vw, 480px);
+  /* Smarginatura a sinistra: fuoriesce leggermente oltre il margine sinistro */
+  margin-left: clamp(-2.5rem, -3.5vw, -1rem);
+  pointer-events: auto;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+
+.blooming-branch:hover {
+  transform: scale(1.02) translateX(4px);
+}
+
+.blooming-branch__inner {
+  position: relative;
+  width: 100%;
+  display: inline-block;
+  line-height: 0;
+}
+
+.blooming-branch__img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  filter:
+    drop-shadow(0 14px 28px rgba(18, 55, 12, 0.12))
+    drop-shadow(0 3px 10px rgba(0, 0, 0, 0.06));
+  transition: filter 0.3s ease;
+}
+
+.blooming-branch__img.with-dark-bg {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.22);
+}
+
+/* Controlli minimi e discreti al passaggio del mouse */
+.blooming-branch__controls {
+  position: absolute;
+  bottom: 8px;
+  left: clamp(2rem, 3.5vw, 3rem);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: auto;
+  z-index: 10;
+}
+
+.blooming-branch:hover .blooming-branch__controls,
+.blooming-branch:focus-within .blooming-branch__controls {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.blooming-branch__replay-btn,
+.blooming-branch__mode-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(106, 171, 58, 0.3);
+  color: #1e4514;
+  font-family: var(--font-body, system-ui, sans-serif);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.28rem 0.65rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: background-color 0.2s, color 0.2s, transform 0.15s, border-color 0.2s;
+}
+
+.blooming-branch__replay-btn:hover,
+.blooming-branch__mode-btn:hover {
+  background: #6aab3a;
+  color: #ffffff;
+  border-color: #6aab3a;
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   RESPONSIVE: TABLET & SMARTPHONE
+   ========================================================================== */
+
+@media (max-width: 900px) {
+  .blooming-branch-boundary {
+    margin-top: -0.5rem;
+    margin-bottom: 0;
+  }
+
+  .blooming-branch {
+    width: clamp(260px, 48vw, 360px);
+    margin-left: -1rem;
+  }
+
+  .blooming-branch__controls {
+    opacity: 0.85; /* Visibile su touch devices */
+    transform: translateY(0);
+    bottom: 4px;
+    left: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .blooming-branch {
+    width: clamp(230px, 68vw, 300px);
+    margin-left: -0.85rem;
+  }
+
+  .blooming-branch__controls {
+    left: 0.85rem;
+    gap: 0.3rem;
+  }
+
+  .blooming-branch__replay-btn,
+  .blooming-branch__mode-btn {
+    font-size: 0.68rem;
+    padding: 0.22rem 0.5rem;
+  }
+}
