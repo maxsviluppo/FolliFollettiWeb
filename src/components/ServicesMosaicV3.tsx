@@ -129,13 +129,47 @@ export default function ServicesMosaicV3({ onOpenContactForm }: ServicesMosaicV3
 
   const openServiceModal = (service: ServiceDetail) => {
     setSelectedService(service);
-    document.body.style.overflow = 'hidden';
   };
 
   const closeServiceModal = () => {
     setSelectedService(null);
-    document.body.style.overflow = '';
   };
+
+  // Blocco rigoroso dello scroll di sfondo (html + body + touchmove + ESC key)
+  useEffect(() => {
+    if (selectedService) {
+      const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
+      if (scrollBarWidth > 0) {
+        document.body.style.paddingRight = `${scrollBarWidth}px`;
+      }
+
+      const preventTouchScroll = (e: TouchEvent) => {
+        const target = e.target as HTMLElement | null;
+        if (target && !target.closest('.service-modal')) {
+          e.preventDefault();
+        }
+      };
+
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') {
+          closeServiceModal();
+        }
+      };
+
+      document.addEventListener('touchmove', preventTouchScroll, { passive: false });
+      window.addEventListener('keydown', handleKeyDown);
+
+      return () => {
+        document.documentElement.style.overflow = '';
+        document.body.style.overflow = '';
+        document.body.style.paddingRight = '';
+        document.removeEventListener('touchmove', preventTouchScroll);
+        window.removeEventListener('keydown', handleKeyDown);
+      };
+    }
+  }, [selectedService]);
 
   useEffect(() => {
     const handleOpenEvent = (e: Event) => {

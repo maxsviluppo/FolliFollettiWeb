@@ -461,6 +461,7 @@
   box-sizing: border-box;
   overflow-y: auto;
   overscroll-behavior: contain;
+  touch-action: none;
   animation: modalFadeIn 0.25s ease-out;
 }
 
@@ -482,6 +483,9 @@
   flex-direction: column;
   margin: auto;
   box-sizing: border-box;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
 }
 
 @keyframes modalSlideUp {
