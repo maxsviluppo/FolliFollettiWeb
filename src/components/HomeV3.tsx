@@ -13,7 +13,7 @@ const SERVICE_CATEGORIES = [
   { slug: 'educativa', name: 'Educativa' },
   { slug: 'campus', name: 'Campus' },
   { slug: 'tutoraggio', name: 'Tutoraggio' },
-  { slug: 'consulenze', name: 'Consulenze' },
+  { slug: 'psicologia', name: 'Consulenze' },
 ];
 
 export default function HomeV3({ onNavigate }: HomeV3Props) {
@@ -70,8 +70,11 @@ export default function HomeV3({ onNavigate }: HomeV3Props) {
   }, []);
 
   const handleCategoryClick = (slug: string) => {
+    // Normalizza slug tra consulenze e psicologia
+    const targetSlug = slug === 'consulenze' ? 'psicologia' : slug;
+
     // 1. Apri direttamente il modale di dettaglio del servizio richiesto
-    window.dispatchEvent(new CustomEvent('folli:open-service-modal', { detail: { slug } }));
+    window.dispatchEvent(new CustomEvent('folli:open-service-modal', { detail: { slug: targetSlug } }));
 
     // 2. Opzionale: scrolla delicatamente verso la sezione del servizio in background
     const mobileTarget = document.getElementById('service-item-mobile-' + slug);

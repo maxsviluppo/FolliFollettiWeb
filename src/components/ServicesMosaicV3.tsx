@@ -140,9 +140,10 @@ export default function ServicesMosaicV3({ onOpenContactForm }: ServicesMosaicV3
   useEffect(() => {
     const handleOpenEvent = (e: Event) => {
       const ce = e as CustomEvent<{ slug: string }>;
-      const slug = ce.detail?.slug;
-      if (slug) {
-        const found = SERVICES_DATA.find((s) => s.slug === slug);
+      const rawSlug = ce.detail?.slug?.toLowerCase();
+      if (rawSlug) {
+        const slug = rawSlug === 'consulenze' ? 'psicologia' : rawSlug;
+        const found = SERVICES_DATA.find((s) => s.slug === slug || (slug === 'psicologia' && s.id === 5));
         if (found) {
           openServiceModal(found);
         }
@@ -357,7 +358,7 @@ export default function ServicesMosaicV3({ onOpenContactForm }: ServicesMosaicV3
 
           {/* 5. CONSULENZE PSICOLOGICHE */}
           <article
-            id="service-item-consulenze"
+            id="service-item-psicologia"
             className="mosaic-card mosaic-card--compact"
             onClick={() => openServiceModal(psicologia)}
             role="button"
