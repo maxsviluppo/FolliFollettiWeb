@@ -73,3 +73,18 @@ select {
   font-size: 16px !important; /* Prevents auto-zoom on iOS Safari and mobile Chrome */
   touch-action: manipulation;
 }
+
+/* Nascondi la barra di scorrimento verticale in modalita mobile */
+@media (max-width: 959px) {
+  html, body {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+  }
+
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+}

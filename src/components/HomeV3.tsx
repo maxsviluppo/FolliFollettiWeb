@@ -18,6 +18,7 @@ const SERVICE_CATEGORIES = [
 
 export default function HomeV3({ onNavigate }: HomeV3Props) {
   const [showCategoriesBar, setShowCategoriesBar] = useState(false);
+  const [isNavbarScrolled, setIsNavbarScrolled] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     nome: '',
@@ -40,6 +41,9 @@ export default function HomeV3({ onNavigate }: HomeV3Props) {
     const onScroll = () => {
       const y = window.pageYOffset || document.documentElement.scrollTop;
       const diff = y - lastY;
+
+      // Navbar trasparente in cima, opaca/frosted glass quando si scende
+      setIsNavbarScrolled(y > 30);
 
       // In cima alla pagina (< 80px), nascondi sempre la barra
       if (y < 80) {
@@ -107,8 +111,11 @@ export default function HomeV3({ onNavigate }: HomeV3Props) {
   return (
     <div className="home-v3-root">
       
-      {/* NAVBAR TOP PULITA & LUMINOSA SU FONDO BIANCO */}
-      <header className="home-v3__navbar" role="banner">
+      {/* NAVBAR TOP: TRASPARENTE IN CIMA, OPACA TRASPARENTE ALLO SCROLL */}
+      <header
+        className={`home-v3__navbar ${isNavbarScrolled ? 'home-v3__navbar--scrolled' : 'home-v3__navbar--transparent'}`}
+        role="banner"
+      >
         <div className="home-v3__navbar-container">
           
           {/* Logo e Titolo */}
