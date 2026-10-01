@@ -8,22 +8,25 @@ import PrivacyPage from './components/PrivacyPage';
 import CookiePage from './components/CookiePage';
 import CookieModal from './components/CookieModal';
 import DraftSelector from './components/DraftSelector';
-import DraftTopBar from './components/DraftTopBar';
+import DraftTopBar, { DraftVersion } from './components/DraftTopBar';
 import HomeV2 from './components/HomeV2';
+import HomeV3 from './components/HomeV3';
 import './App.css';
 
 type RouteType = 'home' | 'privacy' | 'cookies';
-type DraftVersion = 'selector' | 'v1' | 'v2';
+type AppDraftVersion = 'selector' | DraftVersion;
 
 export default function App() {
-  const [draftVersion, setDraftVersion] = useState<DraftVersion>(() => {
+  const [draftVersion, setDraftVersion] = useState<AppDraftVersion>(() => {
     const params = new URLSearchParams(window.location.search);
     const vParam = params.get('v');
     if (vParam === '1') return 'v1';
     if (vParam === '2') return 'v2';
+    if (vParam === '3') return 'v3';
     const hash = window.location.hash.toLowerCase();
-    if (hash.includes('v1')) return 'v1';
+    if (hash.includes('v3')) return 'v3';
     if (hash.includes('v2')) return 'v2';
+    if (hash.includes('v1')) return 'v1';
     return 'selector';
   });
 
@@ -55,10 +58,8 @@ export default function App() {
       }
     };
 
-    // Initial check
     handleRoute();
 
-    // Listen for hash & history changes
     window.addEventListener('hashchange', handleRoute);
     window.addEventListener('popstate', handleRoute);
 
@@ -68,7 +69,7 @@ export default function App() {
     };
   }, []);
 
-  // Mostra il pannello cookie all'avvio solo se l'utente non ha ancora espresso il consenso
+  // Mostra il pannello cookie all'avvio solo se non ancora espresso
   useEffect(() => {
     try {
       const stored = localStorage.getItem('folli_folletti_cookie_consent');
@@ -99,7 +100,7 @@ export default function App() {
       setCurrentRoute('home');
       document.title = 'Folli Folletti | Cooperativa Sociale Napoli - Ludoteca, Campus, Servizi Educativi e Famiglie';
 
-      if (!hashTarget || hashTarget === '#home' || hashTarget === '#hero') {
+      if (!hashTarget || hashTarget === '#home' || hashTarget === '#hero' || hashTarget === '#hero-v3') {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
         setTimeout(() => {
@@ -110,7 +111,7 @@ export default function App() {
     }
   };
 
-  // 1. Schermata iniziale di accesso che mostra e confronta entrambe le bozze
+  // 1. Schermata iniziale di confronto e selezione bozze
   if (draftVersion === 'selector') {
     return (
       <DraftSelector
@@ -122,7 +123,28 @@ export default function App() {
     );
   }
 
-  // 2. Bozza 2 (Nuova proposta su fondo bianco con hero dedicata, navbar top e categorie)
+  // 2. Bozza 3 (VETRINA 5 SERVIZI: MOSAICO DESKTOP & BANNER VINCENT MOBILE)
+  if (draftVersion === 'v3') {
+    return (
+      <>
+        <DraftTopBar
+          currentVersion="v3"
+          onSwitchVersion={(v) => setDraftVersion(v)}
+          onBackToSelector={() => setDraftVersion('selector')}
+        />
+        <HomeV3
+          onNavigate={(page, hash) => navigateTo(page, hash)}
+        />
+        <CookieModal
+          isOpen={isCookieModalOpen}
+          onClose={() => setIsCookieModalOpen(false)}
+          onNavigate={(page) => navigateTo(page)}
+        />
+      </>
+    );
+  }
+
+  // 3. Bozza 2 (Nuova proposta su fondo bianco con hero dedicata e categorie)
   if (draftVersion === 'v2') {
     return (
       <>
@@ -134,7 +156,6 @@ export default function App() {
         <HomeV2
           onNavigate={(page, hash) => navigateTo(page, hash)}
         />
-        {/* Pannello cookie */}
         <CookieModal
           isOpen={isCookieModalOpen}
           onClose={() => setIsCookieModalOpen(false)}
@@ -144,17 +165,15 @@ export default function App() {
     );
   }
 
-  // 3. Bozza 1 (Completa e originale con bosco animato, cards e sezioni)
+  // 4. Bozza 1 (Completa e originale con bosco scuro, altalena animata e cards)
   return (
     <div className="app">
-      {/* Barra fluttuante per cambiare bozza o tornare alla selezione */}
       <DraftTopBar
         currentVersion="v1"
         onSwitchVersion={(v) => setDraftVersion(v)}
         onBackToSelector={() => setDraftVersion('selector')}
       />
 
-      {/* Nella Home Versione 1: la Hero originale è in cima e la Navbar è subito sotto */}
       {currentRoute === 'home' ? (
         <>
           <Hero />
@@ -163,7 +182,6 @@ export default function App() {
             onNavigateHome={(target) => navigateTo('home', target)}
           />
           <main className="main-content">
-            {/* Sfondo panoramico skyline tono su tono con dissolvenza */}
             <div className="main-skyline-bg" aria-hidden="true">
               <img
                 src="/skylinehome.jpg"
@@ -181,7 +199,6 @@ export default function App() {
         </>
       ) : (
         <>
-          {/* Nelle pagine interne (Privacy e Cookie): Navbar sempre visibile in cima */}
           <Navbar
             currentPath={currentRoute}
             onNavigateHome={(target) => navigateTo('home', target)}
@@ -198,13 +215,11 @@ export default function App() {
         </>
       )}
 
-      {/* Footer presente su tutte le pagine con link alle impostazioni cookie */}
       <Footer
         onNavigate={(page) => navigateTo(page)}
         onOpenCookieSettings={() => setIsCookieModalOpen(true)}
       />
 
-      {/* Pannello cookie */}
       <CookieModal
         isOpen={isCookieModalOpen}
         onClose={() => setIsCookieModalOpen(false)}
