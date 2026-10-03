@@ -35,7 +35,7 @@ export const SERVICES_DATA: ServiceDetail[] = [
     "badge": "Autorizzata Comune di Napoli",
     "title": "Ludoteca",
     "subtitle": "Gioco Strutturato, Laboratori di Potenziamento e Social Skill",
-    "shortDesc": "Spazio accreditato e sicuro con percorsi integrati di potenziamento cognitivo e didattico, social skill training, animazione ed eventi.",
+    "shortDesc": "Spazio accreditato con laboratori di potenziamento cognitivo, gioco e social skill.",
     "fullDesc": "La nostra ludoteca, ufficialmente autorizzata dal Comune di Napoli, è un ambiente colorato, igienizzato e protetto dove ogni bambino trova stimoli su misura per la propria crescita. Oltre al gioco libero e strutturato con educatori qualificati, la struttura integra laboratori specialistici di potenziamento cognitivo per lettura, scrittura e calcolo, percorsi di Social Skill Training e servizi di animazione per feste ed eventi privati.",
     "ageGroup": "Bambini e ragazzi dai 3 ai 12 anni",
     "keyFeature": "Struttura autorizzata & Laboratori di Potenziamento",
@@ -95,7 +95,7 @@ export const SERVICES_DATA: ServiceDetail[] = [
     "badge": "Percorsi 6-18 Anni",
     "title": "Educativa Territoriale",
     "subtitle": "Doposcuola Specialistico, Recupero Debiti e Formazione",
-    "shortDesc": "Doposcuola specialistico pomeridiano per medie e superiori, recupero debiti estivo, preparazione esami e corso \"L'Apprendimento su Misura\".",
+    "shortDesc": "Doposcuola specialistico medie e superiori e corsi di recupero debiti estivi.",
     "fullDesc": "L’Educativa Territoriale è il nostro fiore all’occhiello per l’accompagnamento allo studio e alla crescita dei ragazzi dai 6 ai 18 anni. Combina un doposcuola specialistico quotidiano su tutte le materie per studenti di scuola media e superiore, percorsi estivi intensivi per il recupero dei debiti scolastici e preparazione agli esami di Stato, oltre all'esclusivo corso formativo di metodo \"L'Apprendimento su Misura\".",
     "ageGroup": "Ragazzi dai 6 ai 18 anni (Primaria, Medie e Superiori)",
     "keyFeature": "Piani Educativi Individualizzati (PEI) & Raccordo Scuola-Famiglia",
@@ -156,7 +156,7 @@ export const SERVICES_DATA: ServiceDetail[] = [
     "badge": "Estate & Inverno",
     "title": "Campus Estivi e Invernali",
     "subtitle": "Natura, Sport, Acquapark e Sezione Speciale Viaggi Culturali",
-    "shortDesc": "Campus attivi in tutte le vacanze scolastiche (8:00-16:00) con uscite in acquapark, natura, sport e la speciale sezione \"Campus on the Road\".",
+    "shortDesc": "Vacanze scolastiche tra natura, sport, acquapark e viaggi on the road.",
     "fullDesc": "I nostri Campus trasformano ogni pausa scolastica in un'avventura educativa memorabile. Attivi durante l'estate (da giugno a settembre), a Natale e a Pasqua per bambini e ragazzi dai 3 ai 16 anni, uniscono sport, gite in acquapark e laboratori creativi all'esclusiva sezione dei \"Viaggi Culturali On the Road\", pensata per sviluppare autonomia e maturità attraverso viaggi residenziali di più giorni.",
     "ageGroup": "Bambini e ragazzi dai 3 ai 16 anni (fasce 3-10 e 11+ anni)",
     "keyFeature": "Attività all'aria aperta, Acquapark & Viaggi Culturali On the Road",
@@ -207,7 +207,7 @@ export const SERVICES_DATA: ServiceDetail[] = [
     "badge": "Specialistico BES & DSA",
     "title": "Tutoraggio BES e DSA",
     "subtitle": "Metodo di Studio, Strumenti Compensativi e Screening DSA",
-    "shortDesc": "Supporto specialistico per dislessia, discalculia, disortografia e BES, con strumenti digitali, supporto PDP e servizio di Screening DSA precoce.",
+    "shortDesc": "Metodo di studio, strumenti compensativi digitali e screening precoce.",
     "fullDesc": "Un servizio ad alta specializzazione dedicato agli studenti con Disturbi Specifici dell’Apprendimento e Bisogni Educativi Speciali. Guidati da tutor qualificati con master in psicopatologia dell’apprendimento, i ragazzi imparano a utilizzare software compensativi digitali, mappe multimediali e strategie metacognitive. Il servizio integra inoltre lo Screening DSA per l'individuazione precoce dei segnali di difficoltà.",
     "ageGroup": "Studenti di Scuola Primaria e Secondaria (I e II grado)",
     "keyFeature": "Tutor con Master DSA, Strumenti Compensativi & Screening Precoce",
@@ -258,7 +258,7 @@ export const SERVICES_DATA: ServiceDetail[] = [
     "badge": "Spazio Ascolto & Consulenze",
     "title": "Spazio Ascolto e Consulenze Pedagogiche",
     "subtitle": "Ascolto, Consulenza e Condivisione con la Pedagogista",
-    "shortDesc": "Spazio protetto di ascolto e consulenza per difficoltà scolastiche, relazionali, affettive, supporto a genitori, insegnanti e ragazzi BES.",
+    "shortDesc": "Spazio protetto di ascolto e sostegno per genitori, ragazzi e scuola.",
     "fullDesc": "Uno spazio protetto di ascolto, consulenza e condivisione nel quale trovare accoglienza e ricevere indicazioni utili su eventuali difficoltà scolastiche, relazionali e affettive dei bambini e ragazzi. Un luogo per confrontarsi su preoccupazioni, dubbi o difficoltà delle figure educative di riferimento o per ricevere informazioni sui principali servizi e risorse presenti sul territorio. La consulenza offre la possibilità di riflettere sull’azione educativa in un tempo stabilito: il qui ed ora.",
     "ageGroup": "Genitori, Bambini e Ragazzi",
     "keyFeature": "Ascolto Protetto, Consulenza Pedagogica & Supporto BES",
@@ -397,14 +397,13 @@ export default function ServicesMosaicV3({ onOpenContactForm }: ServicesMosaicV3
 
           <p className="services-mosaic-v3__subtitle">
             Dalla ludoteca autorizzata dal Comune di Napoli al supporto scolastico, screening DSA, campus e consulenze.
-            <span className="services-mosaic-v3__subtitle-hint"> Clicca o tocca ciascun servizio per scoprirne dettagli, orari e moduli integrati.</span>
           </p>
         </div>
 
-        {/* 1. VERSIONE DESKTOP: MOSAICO SIMMETRICO E ORDINATO A 5 BOX (2 sopra più grandi, 3 sotto più compatti) */}
+                {/* 1. VERSIONE DESKTOP: MOSAICO SIMMETRICO E ORDINATO A 5 BOX */}
         <div className="services-mosaic-v3__desktop-grid" role="region" aria-label="Mosaico Servizi Desktop">
           
-          {/* RIGA SUPERIORE: 2 BOX PANORAMICI PIÙ GRANDI (50% ciascuno) */}
+          {/* RIGA 1 (2 Box Grandi Panoramici - 50% ciascuno) */}
           {/* 1. LUDOTECA */}
           <article
             id="service-item-ludoteca"
@@ -428,8 +427,9 @@ export default function ServicesMosaicV3({ onOpenContactForm }: ServicesMosaicV3
             />
             <div className="mosaic-card__overlay mosaic-card__overlay--hero" />
 
+            {/* 1. IN ALTO AL BOX: Banner Trasparente Opaco Verde con il Tema */}
             <div className="mosaic-card__top">
-              <span className="mosaic-card__badge mosaic-card__badge--accent">
+              <span className="mosaic-card__theme-badge">
                 {ludoteca.category}
               </span>
               <div className="mosaic-card__arrow-btn" aria-hidden="true">
@@ -441,24 +441,24 @@ export default function ServicesMosaicV3({ onOpenContactForm }: ServicesMosaicV3
             </div>
 
             <div className="mosaic-card__bottom">
-              <span className="mosaic-card__eyebrow">
+              {/* 2. SOTTO AL BANNER IN VERDE CHIARO: Breve frase accreditamento e fasce d'età */}
+              <span className="mosaic-card__green-phrase">
                 {ludoteca.badge} &bull; {ludoteca.ageGroup}
               </span>
-              <h3 className="mosaic-card__title mosaic-card__title--large">
+
+              {/* 3. TITOLO DEL SERVIZIO IN BIANCO */}
+              <h3 className="mosaic-card__title">
                 {ludoteca.title}
               </h3>
-              <p className="mosaic-card__desc">
-                {ludoteca.shortDesc}
-              </p>
 
-              <div className="mosaic-card__pills">
-                {ludoteca.tags.map((tag, idx) => (
-                  <span key={idx} className="mosaic-card__pill">{tag}</span>
-                ))}
-              </div>
+              {/* 4. SOTTOTITOLO */}
+              <span className="mosaic-card__subtitle">
+                {ludoteca.subtitle}
+              </span>
 
+              {/* 6. PULSANTE LINK PAGINA: Ben visibile, più in alto e vicino al testo */}
               <div className="mosaic-card__footer-cta">
-                <span>Scopri orari, laboratori e dettagli</span>
+                <span>Scopri orari e dettagli</span>
                 <span className="mosaic-card__cta-arrow" aria-hidden="true">&rarr;</span>
               </div>
             </div>
@@ -487,8 +487,9 @@ export default function ServicesMosaicV3({ onOpenContactForm }: ServicesMosaicV3
             />
             <div className="mosaic-card__overlay mosaic-card__overlay--hero" />
 
+            {/* 1. IN ALTO AL BOX: Banner Trasparente Opaco Verde con il Tema */}
             <div className="mosaic-card__top">
-              <span className="mosaic-card__badge">
+              <span className="mosaic-card__theme-badge">
                 {educativa.category}
               </span>
               <div className="mosaic-card__arrow-btn" aria-hidden="true">
@@ -500,20 +501,22 @@ export default function ServicesMosaicV3({ onOpenContactForm }: ServicesMosaicV3
             </div>
 
             <div className="mosaic-card__bottom">
-              <span className="mosaic-card__eyebrow">
+              {/* 2. SOTTO AL BANNER IN VERDE CHIARO */}
+              <span className="mosaic-card__green-phrase">
                 {educativa.badge} &bull; {educativa.ageGroup}
               </span>
-              <h3 className="mosaic-card__title mosaic-card__title--large">
+
+              {/* 3. TITOLO DEL SERVIZIO IN BIANCO */}
+              <h3 className="mosaic-card__title">
                 {educativa.title}
               </h3>
-              <p className="mosaic-card__desc">
-                {educativa.shortDesc}
-              </p>
-              <div className="mosaic-card__pills">
-                {educativa.tags.slice(0, 3).map((tag, idx) => (
-                  <span key={idx} className="mosaic-card__pill">{tag}</span>
-                ))}
-              </div>
+
+              {/* 4. SOTTOTITOLO */}
+              <span className="mosaic-card__subtitle">
+                {educativa.subtitle}
+              </span>
+
+              {/* 6. PULSANTE LINK PAGINA: Ben visibile, più in alto e vicino al testo */}
               <div className="mosaic-card__footer-cta">
                 <span>Dettagli doposcuola e corsi</span>
                 <span className="mosaic-card__cta-arrow" aria-hidden="true">&rarr;</span>
@@ -521,8 +524,8 @@ export default function ServicesMosaicV3({ onOpenContactForm }: ServicesMosaicV3
             </div>
           </article>
 
-          {/* RIGA INFERIORE: 3 BOX COMPATTI SIMMETRICI (33.3% ciascuno) */}
-          {/* 3. CAMPUS ESTIVI E INVERNALI (+ VIAGGI CULTURALI) */}
+          {/* RIGA 2 (3 Box Compatti Simmetrici - 33.3% ciascuno) */}
+          {/* 3. CAMPUS ESTIVI E INVERNALI */}
           <article
             id="service-item-campus"
             className="mosaic-card mosaic-card--compact mosaic-card--compact-1"
@@ -545,8 +548,9 @@ export default function ServicesMosaicV3({ onOpenContactForm }: ServicesMosaicV3
             />
             <div className="mosaic-card__overlay" />
 
+            {/* 1. IN ALTO AL BOX: Banner Trasparente Opaco Verde con il Tema */}
             <div className="mosaic-card__top">
-              <span className="mosaic-card__badge">
+              <span className="mosaic-card__theme-badge">
                 {campus.category}
               </span>
               <div className="mosaic-card__arrow-btn" aria-hidden="true">
@@ -558,20 +562,22 @@ export default function ServicesMosaicV3({ onOpenContactForm }: ServicesMosaicV3
             </div>
 
             <div className="mosaic-card__bottom">
-              <span className="mosaic-card__eyebrow">
+              {/* 2. SOTTO AL BANNER IN VERDE CHIARO */}
+              <span className="mosaic-card__green-phrase">
                 {campus.badge} &bull; {campus.ageGroup}
               </span>
+
+              {/* 3. TITOLO DEL SERVIZIO IN BIANCO */}
               <h3 className="mosaic-card__title">
                 {campus.title}
               </h3>
-              <p className="mosaic-card__desc">
-                {campus.shortDesc}
-              </p>
-              <div className="mosaic-card__pills">
-                {campus.tags.slice(0, 3).map((tag, idx) => (
-                  <span key={idx} className="mosaic-card__pill">{tag}</span>
-                ))}
-              </div>
+
+              {/* 4. SOTTOTITOLO */}
+              <span className="mosaic-card__subtitle">
+                {campus.subtitle}
+              </span>
+
+              {/* 6. PULSANTE LINK PAGINA: Ben visibile, più in alto e vicino al testo */}
               <div className="mosaic-card__footer-cta">
                 <span>Scopri programmi e viaggi</span>
                 <span className="mosaic-card__cta-arrow" aria-hidden="true">&rarr;</span>
@@ -579,7 +585,7 @@ export default function ServicesMosaicV3({ onOpenContactForm }: ServicesMosaicV3
             </div>
           </article>
 
-          {/* 4. TUTORAGGIO BES E DSA (+ SCREENING DSA) */}
+          {/* 4. TUTORAGGIO BES E DSA */}
           <article
             id="service-item-tutoraggio"
             className="mosaic-card mosaic-card--compact mosaic-card--compact-2"
@@ -602,8 +608,9 @@ export default function ServicesMosaicV3({ onOpenContactForm }: ServicesMosaicV3
             />
             <div className="mosaic-card__overlay" />
 
+            {/* 1. IN ALTO AL BOX: Banner Trasparente Opaco Verde con il Tema */}
             <div className="mosaic-card__top">
-              <span className="mosaic-card__badge mosaic-card__badge--accent">
+              <span className="mosaic-card__theme-badge">
                 {tutoraggio.category}
               </span>
               <div className="mosaic-card__arrow-btn" aria-hidden="true">
@@ -615,20 +622,22 @@ export default function ServicesMosaicV3({ onOpenContactForm }: ServicesMosaicV3
             </div>
 
             <div className="mosaic-card__bottom">
-              <span className="mosaic-card__eyebrow">
+              {/* 2. SOTTO AL BANNER IN VERDE CHIARO */}
+              <span className="mosaic-card__green-phrase">
                 {tutoraggio.badge} &bull; {tutoraggio.ageGroup}
               </span>
+
+              {/* 3. TITOLO DEL SERVIZIO IN BIANCO */}
               <h3 className="mosaic-card__title">
                 {tutoraggio.title}
               </h3>
-              <p className="mosaic-card__desc">
-                {tutoraggio.shortDesc}
-              </p>
-              <div className="mosaic-card__pills">
-                {tutoraggio.tags.slice(0, 3).map((tag, idx) => (
-                  <span key={idx} className="mosaic-card__pill">{tag}</span>
-                ))}
-              </div>
+
+              {/* 4. SOTTOTITOLO */}
+              <span className="mosaic-card__subtitle">
+                {tutoraggio.subtitle}
+              </span>
+
+              {/* 6. PULSANTE LINK PAGINA: Ben visibile, più in alto e vicino al testo */}
               <div className="mosaic-card__footer-cta">
                 <span>Dettagli e screening DSA</span>
                 <span className="mosaic-card__cta-arrow" aria-hidden="true">&rarr;</span>
@@ -636,7 +645,7 @@ export default function ServicesMosaicV3({ onOpenContactForm }: ServicesMosaicV3
             </div>
           </article>
 
-          {/* 5. CONSULENZE PSICOLOGICHE / PEDAGOGICHE (+ SPAZIO ASCOLTO) */}
+          {/* 5. CONSULENZE PEDAGOGICHE */}
           <article
             id="service-item-psicologia"
             className="mosaic-card mosaic-card--compact mosaic-card--compact-3"
@@ -659,8 +668,9 @@ export default function ServicesMosaicV3({ onOpenContactForm }: ServicesMosaicV3
             />
             <div className="mosaic-card__overlay" />
 
+            {/* 1. IN ALTO AL BOX: Banner Trasparente Opaco Verde con il Tema */}
             <div className="mosaic-card__top">
-              <span className="mosaic-card__badge">
+              <span className="mosaic-card__theme-badge">
                 {psicologia.category}
               </span>
               <div className="mosaic-card__arrow-btn" aria-hidden="true">
@@ -672,20 +682,22 @@ export default function ServicesMosaicV3({ onOpenContactForm }: ServicesMosaicV3
             </div>
 
             <div className="mosaic-card__bottom">
-              <span className="mosaic-card__eyebrow">
+              {/* 2. SOTTO AL BANNER IN VERDE CHIARO */}
+              <span className="mosaic-card__green-phrase">
                 {psicologia.badge} &bull; {psicologia.ageGroup}
               </span>
+
+              {/* 3. TITOLO DEL SERVIZIO IN BIANCO */}
               <h3 className="mosaic-card__title">
                 {psicologia.title}
               </h3>
-              <p className="mosaic-card__desc">
-                {psicologia.shortDesc}
-              </p>
-              <div className="mosaic-card__pills">
-                {psicologia.tags.slice(0, 3).map((tag, idx) => (
-                  <span key={idx} className="mosaic-card__pill">{tag}</span>
-                ))}
-              </div>
+
+              {/* 4. SOTTOTITOLO */}
+              <span className="mosaic-card__subtitle">
+                {psicologia.subtitle}
+              </span>
+
+              {/* 6. PULSANTE LINK PAGINA: Ben visibile, più in alto e vicino al testo */}
               <div className="mosaic-card__footer-cta">
                 <span>Dettagli e spazio ascolto</span>
                 <span className="mosaic-card__cta-arrow" aria-hidden="true">&rarr;</span>
@@ -695,7 +707,7 @@ export default function ServicesMosaicV3({ onOpenContactForm }: ServicesMosaicV3
 
         </div>
 
-        {/* 2. VERSIONE MOBILE: BANNER ACCATTIVANTI AD ALTO IMPATTO (Visibile < 960px) */}
+                {/* 2. VERSIONE MOBILE: BANNER ACCATTIVANTI AD ALTO IMPATTO (Visibile < 960px) */}
         <div className="services-mosaic-v3__mobile-stack" role="region" aria-label="Elenco Servizi Mobile">
           {SERVICES_DATA.map((service, index) => (
             <article
@@ -721,8 +733,9 @@ export default function ServicesMosaicV3({ onOpenContactForm }: ServicesMosaicV3
               />
               <div className="mobile-service-banner__gradient" />
 
+              {/* 1. IN ALTO AL BOX: Banner Trasparente Opaco Verde con il Tema */}
               <div className="mobile-service-banner__top">
-                <span className="mobile-service-banner__badge">
+                <span className="mobile-service-banner__theme-badge">
                   {service.category}
                 </span>
 
@@ -734,19 +747,24 @@ export default function ServicesMosaicV3({ onOpenContactForm }: ServicesMosaicV3
                 </div>
               </div>
 
+              {/* CONTENUTO */}
               <div className="mobile-service-banner__bottom">
-                <span className="mobile-service-banner__eyebrow">
+                {/* 2. SOTTO AL BANNER IN VERDE CHIARO COME IL BANNER */}
+                <span className="mobile-service-banner__green-phrase">
                   {service.badge} &bull; {service.ageGroup}
                 </span>
+
+                {/* 3. TITOLO DEL SERVIZIO IN BIANCO */}
                 <h3 className="mobile-service-banner__title">
                   {service.title}
                 </h3>
-                <div className="mobile-service-banner__pills">
-                  {service.tags.slice(0, 3).map((tag, idx) => (
-                    <span key={idx} className="mobile-service-banner__pill">{tag}</span>
-                  ))}
+
+                {/* 4. SOTTOTITOLO */}
+                <span className="mobile-service-banner__subtitle">
+                  {service.subtitle}
+                </span>
+
                 </div>
-              </div>
             </article>
           ))}
         </div>
