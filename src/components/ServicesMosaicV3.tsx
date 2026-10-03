@@ -85,7 +85,7 @@ export const SERVICES_DATA: ServiceDetail[] = [
         ]
       }
     ],
-    "image": "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=1200&q=80",
+    "image": "/ludoteca-magica.jpeg",
     "whatsappText": "Salve, vorrei maggiori informazioni sulle attività della Ludoteca e sui Laboratori di Potenziamento di Folli Folletti."
   },
   {
@@ -146,7 +146,7 @@ export const SERVICES_DATA: ServiceDetail[] = [
         ]
       }
     ],
-    "image": "https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1200&q=80",
+    "image": "/educativa-territoriale.jpeg",
     "whatsappText": "Salve, vorrei informazioni sul Doposcuola Specialistico e sui percorsi di Educativa Territoriale di Folli Folletti."
   },
   {
@@ -197,7 +197,7 @@ export const SERVICES_DATA: ServiceDetail[] = [
         ]
       }
     ],
-    "image": "https://images.unsplash.com/photo-1472162072942-cd5147eb3902?auto=format&fit=crop&w=1200&q=80",
+    "image": "/campus-viaggi.jpeg",
     "whatsappText": "Salve, vorrei dettagli su programmi, periodi, costi dei Campus e sui Viaggi Culturali di Folli Folletti."
   },
   {
@@ -248,7 +248,7 @@ export const SERVICES_DATA: ServiceDetail[] = [
         ]
       }
     ],
-    "image": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1200&q=80",
+    "image": "/tutoraggio-bes-dsa.jpeg",
     "whatsappText": "Salve, vorrei informazioni sul Tutoraggio Specialistico BES/DSA o prenotare uno Screening DSA presso Folli Folletti."
   },
   {
