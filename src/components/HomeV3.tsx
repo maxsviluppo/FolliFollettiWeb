@@ -101,6 +101,23 @@ export default function HomeV3({ onNavigate }: HomeV3Props) {
     }
   };
 
+    const handleOpenContactForm = (serviceSlug?: string) => {
+    if (serviceSlug) {
+      const slugMap: Record<string, string> = {
+        ludoteca: 'Ludoteca',
+        educativa: 'Educativa',
+        campus: 'Campus',
+        tutoraggio: 'Tutoraggio',
+        psicologia: 'Psicologia',
+      };
+      const mapped = slugMap[serviceSlug.toLowerCase()];
+      if (mapped) {
+        setFormData((prev) => ({ ...prev, servizio: mapped }));
+      }
+    }
+    scrollToSection('contatti');
+  };
+
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
     if (el) {
@@ -213,7 +230,7 @@ export default function HomeV3({ onNavigate }: HomeV3Props) {
       <HeroV3 onExploreServices={() => scrollToSection('servizi')} />
 
       {/* 2. VETRINA SERVIZI: MOSAICO DESKTOP & BANNER VINCENT MOBILE */}
-      <ServicesMosaicV3 onOpenContactForm={() => scrollToSection('contatti')} />
+      <ServicesMosaicV3 onOpenContactForm={(slug) => handleOpenContactForm(slug)} />
 
       {/* 3. SEZIONE "PERCHÉ FOLLI FOLLETTI" (PULITA SU FONDO BIANCO) */}
       <section id="perche-noi" className="home-v3__values-section" aria-labelledby="values-heading">

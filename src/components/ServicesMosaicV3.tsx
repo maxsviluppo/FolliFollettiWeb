@@ -1,5 +1,12 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './ServicesMosaicV3.css';
+
+export interface ServiceModule {
+  title: string;
+  badge?: string;
+  description: string;
+  points?: string[];
+}
 
 export interface ServiceDetail {
   id: number;
@@ -12,116 +19,295 @@ export interface ServiceDetail {
   fullDesc: string;
   ageGroup: string;
   keyFeature: string;
+  schedule: string;
+  tags: string[];
   highlights: string[];
+  modules: ServiceModule[];
   image: string;
   whatsappText: string;
 }
 
 export const SERVICES_DATA: ServiceDetail[] = [
   {
-    id: 1,
-    slug: 'ludoteca',
-    category: 'Spazio & Gioco',
-    badge: 'Fiore all’Occhiello',
-    title: 'Ludoteca',
-    subtitle: 'Autorizzata dal Comune di Napoli',
-    shortDesc: 'Spazio stimolante e sicuro dedicato al gioco libero e strutturato, laboratori creativi e socializzazione per ogni fascia d’età.',
-    fullDesc: 'La nostra ludoteca, autorizzata dal Comune di Napoli, è un luogo protetto, colorato e ricco di stimoli dove ogni bambino può esplorare la propria creatività. Con laboratori manuali, giochi di società, psicomotricità e animazione qualificata, favoriamo la cooperazione e lo sviluppo armonico in totale serenità.',
-    ageGroup: 'Bambini dai 3 ai 12 anni',
-    keyFeature: 'Struttura autorizzata e certificata',
-    highlights: [
-      'Laboratori artistici, manuali ed espressivi quotidiani',
-      'Area giochi sicura e igienizzata secondo gli standard più rigorosi',
-      'Presenza costante di educatrici e animatori qualificati',
-      'Feste di compleanno a tema ed eventi per famiglie',
+    "id": 1,
+    "slug": "ludoteca",
+    "category": "Spazio, Gioco & Potenziamento",
+    "badge": "Autorizzata Comune di Napoli",
+    "title": "Ludoteca",
+    "subtitle": "Gioco Strutturato, Laboratori di Potenziamento e Social Skill",
+    "shortDesc": "Spazio accreditato e sicuro con percorsi integrati di potenziamento cognitivo e didattico, social skill training, animazione ed eventi.",
+    "fullDesc": "La nostra ludoteca, ufficialmente autorizzata dal Comune di Napoli, è un ambiente colorato, igienizzato e protetto dove ogni bambino trova stimoli su misura per la propria crescita. Oltre al gioco libero e strutturato con educatori qualificati, la struttura integra laboratori specialistici di potenziamento cognitivo per lettura, scrittura e calcolo, percorsi di Social Skill Training e servizi di animazione per feste ed eventi privati.",
+    "ageGroup": "Bambini e ragazzi dai 3 ai 12 anni",
+    "keyFeature": "Struttura autorizzata & Laboratori di Potenziamento",
+    "schedule": "Lunedì – Venerdì: 08:30 – 19:30 | Sabato per eventi su prenotazione",
+    "tags": [
+      "Laboratori Potenziamento",
+      "Social Skill Training",
+      "Feste & Animazione",
+      "Gioco Guidato"
     ],
-    image: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=1200&q=80',
-    whatsappText: 'Salve, vorrei ricevere maggiori informazioni sulle attività e iscrizioni della Ludoteca Folli Folletti.',
+    "highlights": [
+      "Struttura autorizzata dal Comune di Napoli nel rispetto dei più alti standard di sicurezza",
+      "Laboratori di Potenziamento Didattico e Cognitivo (lettura, calcolo, memoria e attenzione)",
+      "Social Skill Training: percorsi di gruppo per la gestione emotiva e l'inclusione tra pari",
+      "Educatrici e animatori professionisti costantemente presenti in sala",
+      "Feste di compleanno a tema ed eventi privati con animazione dinamica, magia e balloon art"
+    ],
+    "modules": [
+      {
+        "title": "Laboratori di Potenziamento Didattico e Cognitivo",
+        "badge": "Sezione Integrata",
+        "description": "Esercizi e percorsi ludico-educativi progettati per stimolare e potenziare lettura, scrittura, calcolo numerico, comprensione del testo, memoria di lavoro e attenzione focalizzata. Le attività si svolgono senza l'ansia del voto, rendendo l'apprendimento un'esperienza piacevole e gratificante.",
+        "points": [
+          "Potenziamento delle funzioni esecutive, memoria e concentrazione",
+          "Attività mirate su prerequisiti scolastici, lettura e calcolo rapido",
+          "Metodologia attiva ed esperienziale che valorizza i progressi individuali"
+        ]
+      },
+      {
+        "title": "Social Skill Training & Regolazione Emotiva",
+        "badge": "Competenze Relazionali",
+        "description": "Piccoli gruppi guidati da specialisti dell'età evolutiva per favorire la socializzazione positiva, l'ascolto reciproco, la conversazione, l'assertività e la gestione costruttiva delle frustrazioni e dei conflitti tra compagni.",
+        "points": [
+          "Sviluppo dell'empatia, della cooperazione e del rispetto dei turni",
+          "Strategie per superare timidezza, chiusura o impulsività",
+          "Attività guidate in un clima di fiducia e inclusione totale"
+        ]
+      },
+      {
+        "title": "Feste di Compleanno ed Eventi Privati",
+        "badge": "Animazione Professionale",
+        "description": "Uno spazio accogliente e sicuro a disposizione esclusiva delle famiglie per festeggiare ricorrenze speciali, con animazione dinamica o statica su misura, spettacoli di micromagia, giochi a squadre, balloon art, allestimenti a tema e sweet table curati nei minimi dettagli.",
+        "points": [
+          "Allestimenti personalizzati secondo i gusti del festeggiato",
+          "Animatori qualificati con esperienza pluriennale",
+          "Spazi ampi, igienizzati e a norma per il massimo comfort dei genitori"
+        ]
+      }
+    ],
+    "image": "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=1200&q=80",
+    "whatsappText": "Salve, vorrei maggiori informazioni sulle attività della Ludoteca e sui Laboratori di Potenziamento di Folli Folletti."
   },
   {
-    id: 2,
-    slug: 'educativa',
-    category: 'Crescita & Sviluppo',
-    badge: 'Percorsi 6-18 Anni',
-    title: 'Educativa Territoriale',
-    subtitle: 'Supporto per Minori e Adolescenti',
-    shortDesc: 'Percorsi educativi personalizzati volti a sostenere l’autonomia, le relazioni e lo sviluppo emotivo dei ragazzi.',
-    fullDesc: 'L’Educativa Territoriale accompagna bambini e adolescenti nel loro cammino di crescita personale e scolastica. Attraverso progetti personalizzati e il lavoro di rete tra scuola, famiglia ed équipe multidisciplinare, costruiamo autostima, contrastiamo la dispersione e facilitiamo la socializzazione costruttiva.',
-    ageGroup: 'Ragazzi dai 6 ai 18 anni',
-    keyFeature: 'Piani educativi individualizzati (PEI)',
-    highlights: [
-      'Educatori professionali qualificati e tutor dedicati',
-      'Potenziamento delle competenze relazionali ed emotive',
-      'Costante raccordo con docenti e servizi del territorio',
-      'Attività laboratoriali di gruppo per favorire l’inclusione',
+    "id": 2,
+    "slug": "educativa",
+    "category": "Supporto Scolastico & Crescita",
+    "badge": "Percorsi 6-18 Anni",
+    "title": "Educativa Territoriale",
+    "subtitle": "Doposcuola Specialistico, Recupero Debiti e Formazione",
+    "shortDesc": "Doposcuola specialistico pomeridiano per medie e superiori, recupero debiti estivo, preparazione esami e corso \"L'Apprendimento su Misura\".",
+    "fullDesc": "L’Educativa Territoriale è il nostro fiore all’occhiello per l’accompagnamento allo studio e alla crescita dei ragazzi dai 6 ai 18 anni. Combina un doposcuola specialistico quotidiano su tutte le materie per studenti di scuola media e superiore, percorsi estivi intensivi per il recupero dei debiti scolastici e preparazione agli esami di Stato, oltre all'esclusivo corso formativo di metodo \"L'Apprendimento su Misura\".",
+    "ageGroup": "Ragazzi dai 6 ai 18 anni (Primaria, Medie e Superiori)",
+    "keyFeature": "Piani Educativi Individualizzati (PEI) & Raccordo Scuola-Famiglia",
+    "schedule": "Lunedì – Venerdì: 13:30 – 19:30 / 20:00",
+    "tags": [
+      "Doposcuola Medie & Superiori",
+      "Recupero Debiti Estivo",
+      "Prep. Esami Licenza & Maturità",
+      "Corso Metodo su Misura"
     ],
-    image: 'https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1200&q=80',
-    whatsappText: 'Salve, vorrei informazioni sui percorsi di Educativa Territoriale dai 6 ai 18 anni.',
+    "highlights": [
+      "Doposcuola specialistico su tutte le materie (umanistiche, scientifiche e linguistiche)",
+      "Orario prolungato dal lunedì al venerdì dalle 13:30 alle 19:30/20:00",
+      "Corsi estivi di recupero debiti scolastici e potenziamento da giugno a settembre",
+      "Preparazione specifica e simulazioni d'esame per Terza Media e Maturità",
+      "Corso formativo esclusivo \"L'Apprendimento su Misura\" (8 incontri da 3 ore)",
+      "Costante raccordo con i docenti di classe e supporto ai genitori"
+    ],
+    "modules": [
+      {
+        "title": "Doposcuola Specialistico Pomeridiano (Medie e Superiori)",
+        "badge": "Tutte le Materie",
+        "description": "Attivo tutti i pomeriggi feriali dalle 13:30 alle 19:30/20:00. In piccoli gruppi omogenei, educatori dedicati guidano gli studenti nell'organizzazione autonoma dei compiti, nell'acquisizione di un metodo di studio solido e nella preparazione di verifiche scritte e interrogazioni orali.",
+        "points": [
+          "Supporto completo su materie letterarie, matematiche e lingue straniere",
+          "Pianificazione settimanale dei carichi di studio per evitare accumuli",
+          "Clima sereno e collaborativo che favorisce concentrazione e autostima"
+        ]
+      },
+      {
+        "title": "Potenziamento Estivo e Recupero Debiti Formativi",
+        "badge": "Giugno – Settembre",
+        "description": "Percorsi intensivi nei mesi estivi per colmare tempestivamente lacune disciplinari, preparare al meglio le prove di recupero dei debiti scolastici delle scuole superiori e accompagnare i ragazzi verso la maturità e l'esame di terza media con sicurezza e metodo.",
+        "points": [
+          "Ripasso mirato sui programmi ministeriali e sui punti critici",
+          "Simulazioni di prove scritte e colloqui orali con feedback costruttivo",
+          "Consolidamento delle competenze di base prima del nuovo anno scolastico"
+        ]
+      },
+      {
+        "title": "Corso Formativo \"L'Apprendimento su Misura\"",
+        "badge": "8 Incontri da 3 Ore",
+        "description": "Un percorso pratico ed esperienziale pensato per fornire agli studenti gli strumenti concreti per studiare meglio in meno tempo: imparare a gestire il tempo, selezionare le informazioni essenziali, usare schemi efficaci, potenziare la memoria a lungo termine ed esporre con chiarezza.",
+        "points": [
+          "Gestione autonoma e pianificazione strategica dello studio",
+          "Tecniche di lettura rapida, selezione delle parole-chiave e schematizzazione",
+          "Strategie per potenziare attenzione, memoria ed esposizione verbale"
+        ]
+      }
+    ],
+    "image": "https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1200&q=80",
+    "whatsappText": "Salve, vorrei informazioni sul Doposcuola Specialistico e sui percorsi di Educativa Territoriale di Folli Folletti."
   },
   {
-    id: 3,
-    slug: 'campus',
-    category: 'Esperienze & Vacanze',
-    badge: 'Estate & Inverno',
-    title: 'Campus Estivi e Invernali',
-    subtitle: 'Natura, Sport e Avventura',
-    shortDesc: 'Esperienze ricche di laboratori, natura, sport e gite durante le pause scolastiche per crescere in gruppo.',
-    fullDesc: 'Durante le vacanze estive e invernali, i nostri Campus trasformano ogni giornata in un’avventura indimenticabile. Tra giochi all’aperto, sport, laboratori naturalistici e teatrali, i giovani riscoprono il piacere dello svago attivo e condiviso, offrendo una soluzione flessibile e affidabile alle famiglie lavoratrici.',
-    ageGroup: 'Bambini e ragazzi dai 4 ai 14 anni',
-    keyFeature: 'Flessibilità oraria e attività all’aperto',
-    highlights: [
-      'Sport, piscina e giochi motori guidati all’aria aperta',
-      'Laboratori tematici (ecologia, cucina, scienze e teatro)',
-      'Flessibilità d’ingresso anticipato e uscita posticipata',
-      'Pranzo genuino e merende selezionate con massima cura',
+    "id": 3,
+    "slug": "campus",
+    "category": "Esperienze, Natura & Viaggi",
+    "badge": "Estate & Inverno",
+    "title": "Campus Estivi e Invernali",
+    "subtitle": "Natura, Sport, Acquapark e Sezione Speciale Viaggi Culturali",
+    "shortDesc": "Campus attivi in tutte le vacanze scolastiche (8:00-16:00) con uscite in acquapark, natura, sport e la speciale sezione \"Campus on the Road\".",
+    "fullDesc": "I nostri Campus trasformano ogni pausa scolastica in un'avventura educativa memorabile. Attivi durante l'estate (da giugno a settembre), a Natale e a Pasqua per bambini e ragazzi dai 3 ai 16 anni, uniscono sport, gite in acquapark e laboratori creativi all'esclusiva sezione dei \"Viaggi Culturali On the Road\", pensata per sviluppare autonomia e maturità attraverso viaggi residenziali di più giorni.",
+    "ageGroup": "Bambini e ragazzi dai 3 ai 16 anni (fasce 3-10 e 11+ anni)",
+    "keyFeature": "Attività all'aria aperta, Acquapark & Viaggi Culturali On the Road",
+    "schedule": "Lunedì – Venerdì: 08:00 – 16:00 (con ingresso anticipato e posticipato)",
+    "tags": [
+      "Campus Estivo & Invernale",
+      "Viaggi Culturali On the Road",
+      "Acquapark & Mare",
+      "Sport & Laboratori"
     ],
-    image: 'https://images.unsplash.com/photo-1472162072942-cd5147eb3902?auto=format&fit=crop&w=1200&q=80',
-    whatsappText: 'Salve, vorrei dettagli su programmi, periodi e costi dei Campus Folli Folletti.',
+    "highlights": [
+      "Attivo durante tutte le chiusure scolastiche: estate, vacanze natalizie e pasquali",
+      "Uscite settimanali entusiasmanti: acquapark, piscina, mare, canoa, snorkeling e gite in barca",
+      "Sezione speciale dedicata ai Viaggi Culturali \"On the Road\" per ragazzi",
+      "Gruppi suddivisi per fasce d'età omogenee (3-10 anni e 11+ anni)",
+      "Laboratori creativi, teatrali, scientifici, ecologici e tornei sportivi all'aperto",
+      "Pranzo sano, merende bilanciate e massima flessibilità oraria per i genitori"
+    ],
+    "modules": [
+      {
+        "title": "Campus Estivo & Invernale in Sede e all'Aperto",
+        "badge": "Fasce 3-10 e 11+ Anni",
+        "description": "Un programma ricco ed equilibrato dal lunedì al venerdì (08:00 - 16:00). Le giornate alternano laboratori tematici in sede (teatro, scienze, musica, arte) a magnifiche giornate all'aperto con uscite in parchi acquatici, piscina, escursioni naturalistiche e visite guidate alla scoperta della città.",
+        "points": [
+          "Acquapark e attività sportive all'aria aperta in totale sicurezza",
+          "Educatori qualificati con rapporto educatore/bambino ottimale",
+          "Flessibilità d'orario con ingressi anticipati e prolungamenti pomeridiani"
+        ]
+      },
+      {
+        "title": "Sezione Speciale: Viaggi Culturali (\"Campus on the Road\")",
+        "badge": "Integrazione Esclusiva",
+        "description": "Viaggi ed esperienze residenziali di più giorni in Italia e all'estero per bambini e ragazzi. Attraverso la metodologia \"on the road\", il programma e le attività vengono costruite insieme ai partecipanti giorno per giorno, trasformando il viaggio in una potente palestra di vita.",
+        "points": [
+          "Sviluppo dell'autonomia affettiva e della responsabilità personale lontano da casa",
+          "Educazione alla cooperazione, allo spirito di gruppo e all'adattamento",
+          "Itinerari culturali, artistici e naturalistici di altissimo valore formativo"
+        ]
+      }
+    ],
+    "image": "https://images.unsplash.com/photo-1472162072942-cd5147eb3902?auto=format&fit=crop&w=1200&q=80",
+    "whatsappText": "Salve, vorrei dettagli su programmi, periodi, costi dei Campus e sui Viaggi Culturali di Folli Folletti."
   },
   {
-    id: 4,
-    slug: 'tutoraggio',
-    category: 'Apprendimento & Metodo',
-    badge: 'Specialistico BES & DSA',
-    title: 'Tutoraggio BES e DSA',
-    subtitle: 'Metodo di Studio Personalizzato',
-    shortDesc: 'Supporto specialistico allo studio per valorizzare i punti di forza e promuovere la piena autonomia.',
-    fullDesc: 'Intervento specialistico mirato per allievi con Bisogni Educativi Speciali e Disturbi Specifici dell’Apprendimento (dislessia, discalculia, disortografia, disgrafia). Attraverso strategie metacognitive e software compensativi digitali, aiutiamo ogni studente a sviluppare un metodo di studio efficace, sereno e motivante.',
-    ageGroup: 'Studenti di Scuola Primaria e Secondaria',
-    keyFeature: 'Strumenti compensativi e metodo metacognitivo',
-    highlights: [
-      'Tutor esperti con master in psicopatologia dell’apprendimento',
-      'Utilizzo guidato di software didattici e mappe concettuali',
-      'Sviluppo dell’autonomia e dell’autoefficacia scolastica',
-      'Incontri di raccordo con gli insegnanti per PDP/PEI',
+    "id": 4,
+    "slug": "tutoraggio",
+    "category": "Apprendimento & Metodo",
+    "badge": "Specialistico BES & DSA",
+    "title": "Tutoraggio BES e DSA",
+    "subtitle": "Metodo di Studio, Strumenti Compensativi e Screening DSA",
+    "shortDesc": "Supporto specialistico per dislessia, discalculia, disortografia e BES, con strumenti digitali, supporto PDP e servizio di Screening DSA precoce.",
+    "fullDesc": "Un servizio ad alta specializzazione dedicato agli studenti con Disturbi Specifici dell’Apprendimento e Bisogni Educativi Speciali. Guidati da tutor qualificati con master in psicopatologia dell’apprendimento, i ragazzi imparano a utilizzare software compensativi digitali, mappe multimediali e strategie metacognitive. Il servizio integra inoltre lo Screening DSA per l'individuazione precoce dei segnali di difficoltà.",
+    "ageGroup": "Studenti di Scuola Primaria e Secondaria (I e II grado)",
+    "keyFeature": "Tutor con Master DSA, Strumenti Compensativi & Screening Precoce",
+    "schedule": "Pomeriggi dal Lunedì al Venerdì su appuntamento personalizzato",
+    "tags": [
+      "Screening DSA Precoce",
+      "Strumenti Compensativi Digitali",
+      "Supporto PDP Docenti",
+      "Metodo Metacognitivo"
     ],
-    image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1200&q=80',
-    whatsappText: 'Salve, vorrei prenotare un colloquio per il Tutoraggio specialistico BES e DSA.',
+    "highlights": [
+      "Tutor specialisti con formazione accreditata in psicopatologia dell’apprendimento",
+      "Utilizzo guidato di software didattici, sintesi vocale e mappe concettuali interattive",
+      "Servizio specialistico integrato di Screening DSA per l'identificazione precoce",
+      "Incontri di raccordo costante con i docenti di classe per la stesura e verifica del PDP",
+      "Sviluppo del senso di autoefficacia, autostima e autonomia scolastica",
+      "Colloqui periodici di monitoraggio e orientamento per le famiglie"
+    ],
+    "modules": [
+      {
+        "title": "Tutoraggio Specialistico & Strumenti Compensativi",
+        "badge": "Metodo & Autonomia",
+        "description": "Intervento individuale o in piccolissimo gruppo mirato per dislessia, discalculia, disortografia e disgrafia. Lo studente viene guidato all'utilizzo autonomo di software compensativi, sintesi vocale e mappe concettuali, dimezzando i tempi di svolgimento dei compiti e azzerando la frustrazione.",
+        "points": [
+          "Apprendimento strategico con strumenti digitali e sintesi vocale",
+          "Costruzione guidata di mappe concettuali per interrogazioni e verifiche",
+          "Collaborazione attiva con gli insegnanti di classe per l'applicazione del PDP"
+        ]
+      },
+      {
+        "title": "Servizio Specialistico: Screening DSA",
+        "badge": "Identificazione Precoce",
+        "description": "Un servizio fondamentale per l'individuazione precoce di indicatori di rischio legati ai DSA (lettura, scrittura, calcolo). Tramite la somministrazione di test standardizzati, i nostri professionisti rilevano tempestivamente punti di forza e aree di fragilità, programmando subito percorsi di potenziamento mirati.",
+        "points": [
+          "Rilevazione tempestiva dei campanelli d'allarme nei primi anni di scuola",
+          "Relazione tecnica chiara e condivisa con la famiglia e con la scuola",
+          "Pianificazione immediata di cicli di potenziamento e orientamento diagnostico"
+        ]
+      }
+    ],
+    "image": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1200&q=80",
+    "whatsappText": "Salve, vorrei informazioni sul Tutoraggio Specialistico BES/DSA o prenotare uno Screening DSA presso Folli Folletti."
   },
   {
-    id: 5,
-    slug: 'psicologia',
-    category: 'Benessere & Ascolto',
-    badge: 'Supporto Famiglie',
-    title: 'Consulenze Psicologiche',
-    subtitle: 'Spazio Protetto per Minori e Genitori',
-    shortDesc: 'Spazio di ascolto professionale e orientamento per affrontare ogni fase di crescita con serenità.',
-    fullDesc: 'Un ambiente protetto, accogliente e confidenziale dove accogliere dubbi, fatiche relazionali o momenti di transizione della vita familiare. I nostri psicologi dell’età evolutiva offrono percorsi di sostegno mirati al benessere del minore e alla valorizzazione delle risorse educative dei genitori.',
-    ageGroup: 'Minori, Genitori e Nuclei Familiari',
-    keyFeature: 'Massima riservatezza ed équipe iscritta all’Albo',
-    highlights: [
-      'Colloqui clinici di consulenza psicologica individuale e familiare',
-      'Sostegno alla genitorialità e gestione dei cambiamenti evolutivi',
-      'Orientamento e supporto emotivo per ansia o difficoltà relazionali',
-      'Totale riservatezza, etica e rispetto della privacy',
+    "id": 5,
+    "slug": "psicologia",
+    "category": "Benessere, Ascolto & Famiglie",
+    "badge": "Spazio Ascolto & Consulenze",
+    "title": "Spazio Ascolto e Consulenze Pedagogiche",
+    "subtitle": "Ascolto, Consulenza e Condivisione con la Pedagogista",
+    "shortDesc": "Spazio protetto di ascolto e consulenza per difficoltà scolastiche, relazionali, affettive, supporto a genitori, insegnanti e ragazzi BES.",
+    "fullDesc": "Uno spazio protetto di ascolto, consulenza e condivisione nel quale trovare accoglienza e ricevere indicazioni utili su eventuali difficoltà scolastiche, relazionali e affettive dei bambini e ragazzi. Un luogo per confrontarsi su preoccupazioni, dubbi o difficoltà delle figure educative di riferimento o per ricevere informazioni sui principali servizi e risorse presenti sul territorio. La consulenza offre la possibilità di riflettere sull’azione educativa in un tempo stabilito: il qui ed ora.",
+    "ageGroup": "Genitori, Bambini e Ragazzi",
+    "keyFeature": "Ascolto Protetto, Consulenza Pedagogica & Supporto BES",
+    "schedule": "Su appuntamento (Lunedì – Sabato)",
+    "tags": [
+      "Spazio Ascolto",
+      "Consulenze Pedagogiche",
+      "Supporto Genitori & Docenti",
+      "Orientamento BES"
     ],
-    image: 'https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?auto=format&fit=crop&w=1200&q=80',
-    whatsappText: 'Salve, vorrei informazioni e fissare un primo colloquio per una consulenza psicologica.',
-  },
+    "highlights": [
+      "Spazio protetto di ascolto, consulenza e condivisione per bambini, ragazzi e genitori",
+      "Accoglienza e indicazioni utili su difficoltà scolastiche, relazionali e affettive",
+      "Confronto su dubbi e preoccupazioni delle figure educative di riferimento",
+      "Orientamento sui principali servizi e risorse specialistiche presenti sul territorio",
+      "Riflessione mirata sull’azione educativa in un tempo stabilito: il qui ed ora",
+      "Colloqui dedicati su appuntamento in sede e online"
+    ],
+    "modules": [
+      {
+        "title": "Quando chiedere un consulto con la pedagogista:",
+        "badge": "Ambiti di Consulenza",
+        "description": "La consulenza pedagogica offre un orientamento concreto e personalizzato nelle diverse situazioni educative ed evolutive:",
+        "points": [
+          "Difficoltà con figli adolescenti (regole, conflitti, autonomia, uso del cellulare)",
+          "Problemi a scuola, metodo di studio, motivazione e orientamento",
+          "Supporto a genitori e insegnanti per strategie educative condivise",
+          "Dubbio sulla necessità di intraprendere o meno un percorso diagnostico, sostegno nella fase successiva alla restituzione della diagnosi e supporto sul \"che fare\" a casa, a scuola e nella vita quotidiana per sostenere ed aiutare un ragazzo BES",
+          "Momenti di cambiamento: nascita di un fratellino, separazioni, trasloco, ecc."
+        ]
+      },
+      {
+        "title": "A chi si rivolge e modalità di accesso",
+        "badge": "Destinatari",
+        "description": "Il servizio accoglie Genitori, Bambini e Ragazzi con percorsi mirati nel massimo rispetto della riservatezza.",
+        "points": [
+          "A chi si rivolge: Genitori, Bambini e Ragazzi",
+          "Colloqui individuali in sede a Napoli e consulenze online",
+          "Per prenotare o richiedere informazioni usa i pulsanti di collegamento rapido qui sotto o il modulo contatti del sito"
+        ]
+      }
+    ],
+    "image": "https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?auto=format&fit=crop&w=1200&q=80",
+    "whatsappText": "Salve, vorrei fissare un appuntamento per lo Spazio Ascolto e Consulenze Pedagogiche."
+  }
 ];
 
 interface ServicesMosaicV3Props {
-  onOpenContactForm?: () => void;
+  onOpenContactForm?: (serviceSlug?: string) => void;
 }
 
 export default function ServicesMosaicV3({ onOpenContactForm }: ServicesMosaicV3Props) {
@@ -210,8 +396,8 @@ export default function ServicesMosaicV3({ onOpenContactForm }: ServicesMosaicV3
           </h2>
 
           <p className="services-mosaic-v3__subtitle">
-            Dalla ludoteca autorizzata dal Comune di Napoli al supporto scolastico e psicologico.
-            <span className="services-mosaic-v3__subtitle-hint"> Clicca o tocca ciascun servizio per scoprirne dettagli e orari.</span>
+            Dalla ludoteca autorizzata dal Comune di Napoli al supporto scolastico, screening DSA, campus e consulenze.
+            <span className="services-mosaic-v3__subtitle-hint"> Clicca o tocca ciascun servizio per scoprirne dettagli, orari e moduli integrati.</span>
           </p>
         </div>
 
@@ -254,186 +440,266 @@ export default function ServicesMosaicV3({ onOpenContactForm }: ServicesMosaicV3
             </div>
 
             <div className="mosaic-card__bottom">
-              <span className="mosaic-card__eyebrow">{ludoteca.subtitle}</span>
-              <h3 className="mosaic-card__title mosaic-card__title--large">{ludoteca.title}</h3>
-              <p className="mosaic-card__desc">{ludoteca.shortDesc}</p>
-              
-              <div className="mosaic-card__highlights-row">
-                <span className="mosaic-card__chip">&#10003; Dai 3 ai 12 anni</span>
-                <span className="mosaic-card__chip">&#10003; Laboratori & Feste</span>
+              <span className="mosaic-card__eyebrow">
+                {ludoteca.badge} &bull; {ludoteca.ageGroup}
+              </span>
+              <h3 className="mosaic-card__title mosaic-card__title--hero">
+                {ludoteca.title}
+              </h3>
+              <p className="mosaic-card__desc">
+                {ludoteca.shortDesc}
+              </p>
+
+              {/* Tag Pills dei moduli integrati */}
+              <div className="mosaic-card__pills">
+                {ludoteca.tags.map((tag, idx) => (
+                  <span key={idx} className="mosaic-card__pill">{tag}</span>
+                ))}
               </div>
 
-              <div className="mosaic-card__cta-btn">
-                <span>Scopri il servizio</span>
-                <span aria-hidden="true">&rarr;</span>
+              <div className="mosaic-card__footer-cta">
+                <span>Scopri orari, laboratori e dettagli</span>
+                <span className="mosaic-card__cta-arrow" aria-hidden="true">&rarr;</span>
               </div>
             </div>
           </article>
 
-          {/* 2. EDUCATIVA TERRITORIALE */}
-          <article
-            id="service-item-educativa"
-            className="mosaic-card mosaic-card--compact"
-            onClick={() => openServiceModal(educativa)}
-            role="button"
-            tabIndex={0}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                openServiceModal(educativa);
-              }
-            }}
-            aria-label={'Dettagli ' + educativa.title}
-          >
-            <img
-              src={educativa.image}
-              alt={educativa.title}
-              className="mosaic-card__bg-img"
-              loading="lazy"
-            />
-            <div className="mosaic-card__overlay" />
+          {/* Griglia a 4 Riqudri a Destra */}
+          <div className="services-mosaic-v3__right-grid">
+            
+            {/* 2. EDUCATIVA TERRITORIALE */}
+            <article
+              id="service-item-educativa"
+              className="mosaic-card"
+              onClick={() => openServiceModal(educativa)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  openServiceModal(educativa);
+                }
+              }}
+              aria-label={'Dettagli ' + educativa.title}
+            >
+              <img
+                src={educativa.image}
+                alt={educativa.title}
+                className="mosaic-card__bg-img"
+                loading="eager"
+              />
+              <div className="mosaic-card__overlay" />
 
-            <div className="mosaic-card__top">
-              <span className="mosaic-card__badge">{educativa.category}</span>
-              <div className="mosaic-card__arrow-btn" aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="7" y1="17" x2="17" y2="7"></line>
-                  <polyline points="7 7 17 7 17 17"></polyline>
-                </svg>
+              <div className="mosaic-card__top">
+                <span className="mosaic-card__badge">
+                  {educativa.category}
+                </span>
+                <div className="mosaic-card__arrow-btn" aria-hidden="true">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </div>
               </div>
-            </div>
 
-            <div className="mosaic-card__bottom">
-              <span className="mosaic-card__eyebrow">{educativa.badge}</span>
-              <h3 className="mosaic-card__title">{educativa.title}</h3>
-              <p className="mosaic-card__desc-compact">{educativa.subtitle}</p>
-            </div>
-          </article>
-
-          {/* 3. CAMPUS ESTIVI & INVERNALI */}
-          <article
-            id="service-item-campus"
-            className="mosaic-card mosaic-card--compact"
-            onClick={() => openServiceModal(campus)}
-            role="button"
-            tabIndex={0}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                openServiceModal(campus);
-              }
-            }}
-            aria-label={'Dettagli ' + campus.title}
-          >
-            <img
-              src={campus.image}
-              alt={campus.title}
-              className="mosaic-card__bg-img"
-              loading="lazy"
-            />
-            <div className="mosaic-card__overlay" />
-
-            <div className="mosaic-card__top">
-              <span className="mosaic-card__badge">{campus.category}</span>
-              <div className="mosaic-card__arrow-btn" aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="7" y1="17" x2="17" y2="7"></line>
-                  <polyline points="7 7 17 7 17 17"></polyline>
-                </svg>
+              <div className="mosaic-card__bottom">
+                <span className="mosaic-card__eyebrow">
+                  {educativa.badge} &bull; {educativa.ageGroup}
+                </span>
+                <h3 className="mosaic-card__title">
+                  {educativa.title}
+                </h3>
+                <p className="mosaic-card__desc">
+                  {educativa.shortDesc}
+                </p>
+                <div className="mosaic-card__pills">
+                  {educativa.tags.slice(0, 3).map((tag, idx) => (
+                    <span key={idx} className="mosaic-card__pill">{tag}</span>
+                  ))}
+                </div>
+                <div className="mosaic-card__footer-cta">
+                  <span>Dettagli e orari</span>
+                  <span className="mosaic-card__cta-arrow" aria-hidden="true">&rarr;</span>
+                </div>
               </div>
-            </div>
+            </article>
 
-            <div className="mosaic-card__bottom">
-              <span className="mosaic-card__eyebrow">{campus.badge}</span>
-              <h3 className="mosaic-card__title">{campus.title}</h3>
-              <p className="mosaic-card__desc-compact">{campus.subtitle}</p>
-            </div>
-          </article>
+            {/* 3. CAMPUS ESTIVI E INVERNALI (+ VIAGGI CULTURALI) */}
+            <article
+              id="service-item-campus"
+              className="mosaic-card"
+              onClick={() => openServiceModal(campus)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  openServiceModal(campus);
+                }
+              }}
+              aria-label={'Dettagli ' + campus.title}
+            >
+              <img
+                src={campus.image}
+                alt={campus.title}
+                className="mosaic-card__bg-img"
+                loading="lazy"
+              />
+              <div className="mosaic-card__overlay" />
 
-          {/* 4. TUTORAGGIO BES E DSA */}
-          <article
-            id="service-item-tutoraggio"
-            className="mosaic-card mosaic-card--compact"
-            onClick={() => openServiceModal(tutoraggio)}
-            role="button"
-            tabIndex={0}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                openServiceModal(tutoraggio);
-              }
-            }}
-            aria-label={'Dettagli ' + tutoraggio.title}
-          >
-            <img
-              src={tutoraggio.image}
-              alt={tutoraggio.title}
-              className="mosaic-card__bg-img"
-              loading="lazy"
-            />
-            <div className="mosaic-card__overlay" />
-
-            <div className="mosaic-card__top">
-              <span className="mosaic-card__badge">{tutoraggio.category}</span>
-              <div className="mosaic-card__arrow-btn" aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="7" y1="17" x2="17" y2="7"></line>
-                  <polyline points="7 7 17 7 17 17"></polyline>
-                </svg>
+              <div className="mosaic-card__top">
+                <span className="mosaic-card__badge">
+                  {campus.category}
+                </span>
+                <div className="mosaic-card__arrow-btn" aria-hidden="true">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </div>
               </div>
-            </div>
 
-            <div className="mosaic-card__bottom">
-              <span className="mosaic-card__eyebrow">{tutoraggio.badge}</span>
-              <h3 className="mosaic-card__title">{tutoraggio.title}</h3>
-              <p className="mosaic-card__desc-compact">{tutoraggio.subtitle}</p>
-            </div>
-          </article>
-
-          {/* 5. CONSULENZE PSICOLOGICHE */}
-          <article
-            id="service-item-psicologia"
-            className="mosaic-card mosaic-card--compact"
-            onClick={() => openServiceModal(psicologia)}
-            role="button"
-            tabIndex={0}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                openServiceModal(psicologia);
-              }
-            }}
-            aria-label={'Dettagli ' + psicologia.title}
-          >
-            <img
-              src={psicologia.image}
-              alt={psicologia.title}
-              className="mosaic-card__bg-img"
-              loading="lazy"
-            />
-            <div className="mosaic-card__overlay" />
-
-            <div className="mosaic-card__top">
-              <span className="mosaic-card__badge">{psicologia.category}</span>
-              <div className="mosaic-card__arrow-btn" aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="7" y1="17" x2="17" y2="7"></line>
-                  <polyline points="7 7 17 7 17 17"></polyline>
-                </svg>
+              <div className="mosaic-card__bottom">
+                <span className="mosaic-card__eyebrow">
+                  {campus.badge} &bull; {campus.ageGroup}
+                </span>
+                <h3 className="mosaic-card__title">
+                  {campus.title}
+                </h3>
+                <p className="mosaic-card__desc">
+                  {campus.shortDesc}
+                </p>
+                <div className="mosaic-card__pills">
+                  {campus.tags.slice(0, 3).map((tag, idx) => (
+                    <span key={idx} className="mosaic-card__pill">{tag}</span>
+                  ))}
+                </div>
+                <div className="mosaic-card__footer-cta">
+                  <span>Scopri programmi e viaggi</span>
+                  <span className="mosaic-card__cta-arrow" aria-hidden="true">&rarr;</span>
+                </div>
               </div>
-            </div>
+            </article>
 
-            <div className="mosaic-card__bottom">
-              <span className="mosaic-card__eyebrow">{psicologia.badge}</span>
-              <h3 className="mosaic-card__title">{psicologia.title}</h3>
-              <p className="mosaic-card__desc-compact">{psicologia.subtitle}</p>
-            </div>
-          </article>
+            {/* 4. TUTORAGGIO BES E DSA (+ SCREENING DSA) */}
+            <article
+              id="service-item-tutoraggio"
+              className="mosaic-card"
+              onClick={() => openServiceModal(tutoraggio)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  openServiceModal(tutoraggio);
+                }
+              }}
+              aria-label={'Dettagli ' + tutoraggio.title}
+            >
+              <img
+                src={tutoraggio.image}
+                alt={tutoraggio.title}
+                className="mosaic-card__bg-img"
+                loading="lazy"
+              />
+              <div className="mosaic-card__overlay" />
 
+              <div className="mosaic-card__top">
+                <span className="mosaic-card__badge mosaic-card__badge--accent">
+                  {tutoraggio.category}
+                </span>
+                <div className="mosaic-card__arrow-btn" aria-hidden="true">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </div>
+              </div>
+
+              <div className="mosaic-card__bottom">
+                <span className="mosaic-card__eyebrow">
+                  {tutoraggio.badge} &bull; {tutoraggio.ageGroup}
+                </span>
+                <h3 className="mosaic-card__title">
+                  {tutoraggio.title}
+                </h3>
+                <p className="mosaic-card__desc">
+                  {tutoraggio.shortDesc}
+                </p>
+                <div className="mosaic-card__pills">
+                  {tutoraggio.tags.slice(0, 3).map((tag, idx) => (
+                    <span key={idx} className="mosaic-card__pill">{tag}</span>
+                  ))}
+                </div>
+                <div className="mosaic-card__footer-cta">
+                  <span>Dettagli e screening DSA</span>
+                  <span className="mosaic-card__cta-arrow" aria-hidden="true">&rarr;</span>
+                </div>
+              </div>
+            </article>
+
+            {/* 5. CONSULENZE PSICOLOGICHE (+ SPAZIO ASCOLTO) */}
+            <article
+              id="service-item-psicologia"
+              className="mosaic-card"
+              onClick={() => openServiceModal(psicologia)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  openServiceModal(psicologia);
+                }
+              }}
+              aria-label={'Dettagli ' + psicologia.title}
+            >
+              <img
+                src={psicologia.image}
+                alt={psicologia.title}
+                className="mosaic-card__bg-img"
+                loading="lazy"
+              />
+              <div className="mosaic-card__overlay" />
+
+              <div className="mosaic-card__top">
+                <span className="mosaic-card__badge">
+                  {psicologia.category}
+                </span>
+                <div className="mosaic-card__arrow-btn" aria-hidden="true">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </div>
+              </div>
+
+              <div className="mosaic-card__bottom">
+                <span className="mosaic-card__eyebrow">
+                  {psicologia.badge} &bull; {psicologia.ageGroup}
+                </span>
+                <h3 className="mosaic-card__title">
+                  {psicologia.title}
+                </h3>
+                <p className="mosaic-card__desc">
+                  {psicologia.shortDesc}
+                </p>
+                <div className="mosaic-card__pills">
+                  {psicologia.tags.slice(0, 3).map((tag, idx) => (
+                    <span key={idx} className="mosaic-card__pill">{tag}</span>
+                  ))}
+                </div>
+                <div className="mosaic-card__footer-cta">
+                  <span>Dettagli e spazio ascolto</span>
+                  <span className="mosaic-card__cta-arrow" aria-hidden="true">&rarr;</span>
+                </div>
+              </div>
+            </article>
+
+          </div>
         </div>
 
-        {/* 2. VERSIONE MOBILE: BANNER ORIZZONTALI SOVRAPPOSTI (STILE VINCENT STORE) */}
-        <div className="services-mosaic-v3__mobile-banners" role="region" aria-label="Banner Servizi Mobile">
+        {/* 2. VERSIONE MOBILE: BANNER ACCATTIVANTI AD ALTO IMPATTO (Visibile < 960px) */}
+        <div className="services-mosaic-v3__mobile-stack" role="region" aria-label="Elenco Servizi Mobile">
           {SERVICES_DATA.map((service, index) => (
             <article
               key={service.id}
@@ -478,6 +744,11 @@ export default function ServicesMosaicV3({ onOpenContactForm }: ServicesMosaicV3
                 <h3 className="mobile-service-banner__title">
                   {service.title}
                 </h3>
+                <div className="mobile-service-banner__pills">
+                  {service.tags.slice(0, 3).map((tag, idx) => (
+                    <span key={idx} className="mobile-service-banner__pill">{tag}</span>
+                  ))}
+                </div>
               </div>
             </article>
           ))}
@@ -492,6 +763,20 @@ export default function ServicesMosaicV3({ onOpenContactForm }: ServicesMosaicV3
             className="service-modal"
             onClick={(e) => e.stopPropagation()}
           >
+            {/* Pulsante di Chiusura Primario Flottante Sempre in Primo Piano */}
+            <button
+              type="button"
+              className="service-modal__close-btn"
+              onClick={closeServiceModal}
+              aria-label="Chiudi finestra"
+              title="Chiudi finestra"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+
             <div className="service-modal__header">
               <img
                 src={selectedService.image}
@@ -504,18 +789,6 @@ export default function ServicesMosaicV3({ onOpenContactForm }: ServicesMosaicV3
                 <span className="service-modal__tag">
                   {selectedService.category}
                 </span>
-
-                <button
-                  type="button"
-                  className="service-modal__close-btn"
-                  onClick={closeServiceModal}
-                  aria-label="Chiudi finestra"
-                >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                  </svg>
-                </button>
               </div>
 
               <div className="service-modal__header-bottom">
@@ -527,24 +800,59 @@ export default function ServicesMosaicV3({ onOpenContactForm }: ServicesMosaicV3
             </div>
 
             <div className="service-modal__body">
+              {/* Meta strip informativo con Orari e Destinatari */}
               <div className="service-modal__meta-strip">
                 <div className="service-modal__meta-item">
                   <span className="service-modal__meta-label">Destinatari</span>
                   <strong className="service-modal__meta-value">{selectedService.ageGroup}</strong>
                 </div>
                 <div className="service-modal__meta-item">
-                  <span className="service-modal__meta-label">Caratteristica chiave</span>
+                  <span className="service-modal__meta-label">Orari & Giorni</span>
+                  <strong className="service-modal__meta-value">{selectedService.schedule}</strong>
+                </div>
+                <div className="service-modal__meta-item">
+                  <span className="service-modal__meta-label">Caratteristica Chiave</span>
                   <strong className="service-modal__meta-value">{selectedService.keyFeature}</strong>
                 </div>
               </div>
 
+              {/* Descrizione Generale */}
               <div className="service-modal__desc-block">
-                <h4 className="service-modal__subheading">Descrizione del Servizio</h4>
+                <h4 className="service-modal__subheading">Presentazione del Servizio</h4>
                 <p className="service-modal__text">{selectedService.fullDesc}</p>
               </div>
 
+              {/* Sezione Speciale: Moduli Integrati dal Vecchio Sito */}
+              {selectedService.modules && selectedService.modules.length > 0 && (
+                <div className="service-modal__modules-section">
+                  <h4 className="service-modal__subheading">Aree e Moduli di Intervento</h4>
+                  <div className="service-modal__modules-grid">
+                    {selectedService.modules.map((mod, idx) => (
+                      <div key={idx} className="service-modal__module-card">
+                        <div className="service-modal__module-header">
+                          <h5 className="service-modal__module-title">{mod.title}</h5>
+                          {mod.badge && <span className="service-modal__module-badge">{mod.badge}</span>}
+                        </div>
+                        <p className="service-modal__module-desc">{mod.description}</p>
+                        {mod.points && mod.points.length > 0 && (
+                          <ul className="service-modal__module-points">
+                            {mod.points.map((pt, pIdx) => (
+                              <li key={pIdx}>
+                                <span className="service-modal__check-bullet" aria-hidden="true">&#10003;</span>
+                                <span>{pt}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Punti di Forza e Attività */}
               <div className="service-modal__highlights-block">
-                <h4 className="service-modal__subheading">Caratteristiche e Attività</h4>
+                <h4 className="service-modal__subheading">Punti di Forza ed Elementi Distintivi</h4>
                 <ul className="service-modal__list">
                   {selectedService.highlights.map((h, i) => (
                     <li key={i} className="service-modal__list-item">
@@ -555,27 +863,35 @@ export default function ServicesMosaicV3({ onOpenContactForm }: ServicesMosaicV3
                 </ul>
               </div>
 
+              {/* Pulsanti Azione e Contatto */}
               <div className="service-modal__actions">
-                <button
-                  type="button"
-                  className="service-modal__btn service-modal__btn--primary"
-                  onClick={() => {
-                    closeServiceModal();
-                    // Indirizza alla futura pagina dedicata del servizio
-                    window.location.hash = `#servizio-${selectedService.slug}`;
-                  }}
-                  title={`Scopri di più su ${selectedService.title}`}
-                >
-                  <span>Scopri di più</span>
-                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                    <polyline points="12 5 19 12 12 19"></polyline>
-                  </svg>
-                </button>
+                {/* Collegamenti Rapidi di Chiamata */}
+                <div className="service-modal__quick-call-row">
+                  <span className="service-modal__quick-call-label">Collegamenti Rapidi:</span>
+                  <div className="service-modal__call-links-group">
+                    {selectedService.slug === 'psicologia' ? (
+                    <>
+                      <a href="tel:3455964494" className="service-modal__call-link" title="Chiama la Pedagogista">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                        <span>Chiama Cellulare</span>
+                      </a>
+                      <a href="tel:0815921176" className="service-modal__call-link" title="Chiama la Sede">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                        <span>Chiama Sede</span>
+                      </a>
+                    </>
+                  ) : (
+                    <a href="tel:0815921176" className="service-modal__call-link" title="Chiama la Sede">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                      <span>Chiama Sede</span>
+                    </a>
+                  )}
+                  </div>
+                </div>
 
                 <div className="service-modal__actions-row">
                   <a
-                    href={'https://wa.me/390815921176?text=' + encodeURIComponent(selectedService.whatsappText)}
+                    href={'https://wa.me/' + (selectedService.slug === 'psicologia' ? '393455964494' : '390815921176') + '?text=' + encodeURIComponent(selectedService.whatsappText)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="service-modal__btn service-modal__btn--wa"
@@ -583,23 +899,33 @@ export default function ServicesMosaicV3({ onOpenContactForm }: ServicesMosaicV3
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
                     </svg>
-                    <span>WhatsApp</span>
+                    <span>Contatta su WhatsApp</span>
                   </a>
 
                   <button
                     type="button"
                     className="service-modal__btn service-modal__btn--secondary"
                     onClick={() => {
+                      const serviceToPass = selectedService.slug;
                       closeServiceModal();
                       if (onOpenContactForm) {
-                        onOpenContactForm();
+                        onOpenContactForm(serviceToPass);
                       } else {
                         const el = document.getElementById('contatti');
                         if (el) el.scrollIntoView({ behavior: 'smooth' });
                       }
                     }}
                   >
-                    <span>Invia Richiesta</span>
+                    <span>Prenota Colloquio / Richiedi Info</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    className="service-modal__btn service-modal__btn--close"
+                    onClick={closeServiceModal}
+                    title="Chiudi questa finestra"
+                  >
+                    <span>Chiudi Scheda</span>
                   </button>
                 </div>
               </div>

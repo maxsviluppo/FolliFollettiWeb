@@ -314,17 +314,23 @@
 /* --------------------------------------------------------------------------
    2. MOBILE BANNERS (Stile Vincent Store - Visibile < 960px)
    -------------------------------------------------------------------------- */
+
+.services-mosaic-v3__mobile-stack,
 .services-mosaic-v3__mobile-banners {
   display: flex;
   flex-direction: column;
-  gap: 13px;
+  gap: 18px;
+  margin-top: 14px;
+  margin-bottom: 24px;
 }
 
 @media (min-width: 960px) {
+  .services-mosaic-v3__mobile-stack,
   .services-mosaic-v3__mobile-banners {
     display: none;
   }
 }
+
 
 .mobile-service-banner {
   position: relative;
@@ -601,12 +607,12 @@
 
 .service-modal__meta-strip {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 12px;
   background: #f7faf3;
-  border: 1px solid #e5efdb;
+  border: 1px solid #e2edda;
   border-radius: 14px;
-  padding: 12px 16px;
+  padding: 14px 16px;
 }
 
 .service-modal__meta-item {
@@ -778,113 +784,275 @@
 }
 
 /* Adattamento Mobile Perfetto per i Modali dei Servizi (Centrati e Proporzionati) */
+/* ==========================================================================
+   OTTIMIZZAZIONE MOBILE: MODALE ALLUNGATO, SPAZIOSO E CHIUSURA SEMPRE ACCESSIBILE
+   ========================================================================== */
 @media (max-width: 600px) {
   .service-modal-overlay {
-    padding: 10px;
+    padding: 10px 8px;
     align-items: center;
   }
 
   .service-modal {
     width: 100%;
     max-width: 100%;
-    max-height: 85vh;
-    border-radius: 18px;
+    height: 92vh;
+    max-height: 92vh;
+    border-radius: 20px;
     margin: auto;
+    position: relative;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
   }
 
+  /* Pulsante X Flottante in Primo Piano: MAI COPERTO */
+  .service-modal__close-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 99;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(10, 22, 7, 0.82);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1.5px solid rgba(255, 255, 255, 0.6);
+    color: #ffffff;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Header più alto, proporzionato e arioso */
   .service-modal__header {
-    height: 135px;
-    padding: 12px 14px;
+    height: 190px;
+    min-height: 190px;
+    padding: 14px 14px 16px 14px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-shrink: 0;
+  }
+
+  .service-modal__header-top {
+    padding-right: 48px; /* Spazio di sicurezza garantito per la X */
+    display: flex;
+    align-items: center;
   }
 
   .service-modal__tag {
-    font-size: 10px;
-    padding: 3px 10px;
+    font-size: 10.5px;
+    padding: 4px 11px;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
-  .service-modal__close-btn {
-    width: 32px;
-    height: 32px;
+  .service-modal__header-bottom {
+    margin-top: auto;
   }
 
   .service-modal__eyebrow {
-    font-size: 10.5px;
+    font-size: 11px;
+    margin-bottom: 3px;
+    color: #bce98c;
+    letter-spacing: 0.08em;
   }
 
   .service-modal__title {
-    font-size: 19px;
-    line-height: 1.18;
+    font-size: 20px;
+    line-height: 1.22;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
   }
 
+  /* Corpo del modale: distanziamento ottimale tra i blocchi */
   .service-modal__body {
-    padding: 14px 12px;
-    gap: 12px;
+    padding: 18px 14px 26px 14px;
+    gap: 16px;
+    flex: 1;
+    overflow-y: visible;
   }
 
+  /* Meta Strip strutturato a card con icone */
   .service-modal__meta-strip {
-    padding: 8px 10px;
+    display: flex;
+    flex-direction: column;
     gap: 8px;
-    border-radius: 10px;
+    padding: 12px 14px;
+    background: #f6faf2;
+    border-radius: 12px;
+    border: 1px solid #e1ecda;
+  }
+
+  .service-modal__meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
   }
 
   .service-modal__meta-label {
     font-size: 10px;
+    font-weight: 700;
+    color: #5d754c;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
   }
 
   .service-modal__meta-value {
-    font-size: 12px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #1a3511;
+    line-height: 1.35;
   }
 
   .service-modal__subheading {
-    font-size: 12.5px;
-    margin-bottom: 4px;
+    font-size: 13px;
+    font-weight: 800;
+    color: #17320e;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
 
   .service-modal__text {
-    font-size: 13px;
-    line-height: 1.45;
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: #354928;
   }
 
-  .service-modal__list {
+  /* Moduli d'intervento e sezioni di approfondimento */
+  .service-modal__modules-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .service-modal__module-card {
+    padding: 12px 14px;
+    border-radius: 12px;
+    background: #fcfdfa;
+    border: 1px solid #e1ebd9;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+  }
+
+  .service-modal__module-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #18330e;
+  }
+
+  .service-modal__module-badge {
+    font-size: 10px;
+    padding: 2px 8px;
+  }
+
+  .service-modal__module-desc {
+    font-size: 12.5px;
+    line-height: 1.45;
+    color: #425838;
+    margin: 6px 0;
+  }
+
+  .service-modal__module-points {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 6px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .service-modal__module-point {
+    display: flex;
+    align-items: flex-start;
     gap: 6px;
+    font-size: 12px;
+    line-height: 1.35;
+    color: #33482a;
+  }
+
+  /* Punti di forza ed elementi distintivi */
+  .service-modal__list {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    padding: 0;
+    list-style: none;
   }
 
   .service-modal__list-item {
     font-size: 12.5px;
-    gap: 7px;
-    line-height: 1.35;
+    line-height: 1.4;
+    padding: 8px 10px;
+    background: #f6faf1;
+    border-radius: 10px;
+    border: 1px solid #e3edd9;
+    gap: 8px;
+    color: #2c4220;
   }
 
   .service-modal__check-bullet {
     width: 18px;
     height: 18px;
     font-size: 10px;
+    flex-shrink: 0;
   }
 
-  .service-modal__actions {
+  /* Collegamenti Rapidi e Chiamate Dirette */
+  .service-modal__quick-call-row {
+    display: flex;
+    flex-direction: column;
     gap: 8px;
-    padding-top: 10px;
+    padding: 12px 12px;
+    background: #f4f8f0;
+    border-radius: 12px;
+    border: 1px solid #e1ecda;
+  }
+
+  .service-modal__quick-call-label {
+    font-size: 11px;
+    font-weight: 800;
+    color: #27481a;
+  }
+
+  .service-modal__call-links-group {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .service-modal__call-link {
+    flex: 1 1 calc(50% - 4px);
+    min-height: 40px;
+    font-size: 12px;
+    padding: 8px 10px;
+    justify-content: center;
+    border-radius: 10px;
+  }
+
+  /* Pulsanti d'azione a tutta larghezza e comodi per il tocco */
+  .service-modal__actions {
+    gap: 10px;
+    padding-top: 14px;
+    margin-top: 4px;
+    border-top: 1px solid #eef3e8;
   }
 
   .service-modal__actions-row {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 8px;
     width: 100%;
   }
 
   .service-modal__btn {
-    min-width: 0;
-    flex: 1 1 0;
-    padding: 10px 6px;
-    font-size: 12px;
-    border-radius: 10px;
-    gap: 5px;
-  }
-
-  .service-modal__btn--primary {
     width: 100%;
+    min-height: 44px;
+    padding: 12px 14px;
     font-size: 13.5px;
-    padding: 11px 12px;
+    border-radius: 12px;
+    justify-content: center;
   }
 }
