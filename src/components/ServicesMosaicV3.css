@@ -77,7 +77,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   1. DESKTOP GRID (Mosaico ad Incastro a 5 Riquadri - Visibile >= 960px)
+   1. DESKTOP GRID (Mosaico Simmetrico e Ordinato a 5 Box: 2 Grandi Sopra, 3 Compatti Sotto)
    -------------------------------------------------------------------------- */
 .services-mosaic-v3__desktop-grid {
   display: none;
@@ -86,9 +86,48 @@
 @media (min-width: 960px) {
   .services-mosaic-v3__desktop-grid {
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 255px 255px;
-    gap: 18px;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 290px 270px;
+    gap: 20px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* RIGA 1: 2 Box Grandi Panoramici Simmetrici (3 colonne ciascuno = 50% larghezza) */
+  .mosaic-card--wide-1 {
+    grid-column: 1 / span 3;
+    grid-row: 1;
+    height: 290px;
+    padding: 26px 28px;
+  }
+
+  .mosaic-card--wide-2 {
+    grid-column: 4 / span 3;
+    grid-row: 1;
+    height: 290px;
+    padding: 26px 28px;
+  }
+
+  /* RIGA 2: 3 Box Compatti Simmetrici (2 colonne ciascuno = 33.33% larghezza) */
+  .mosaic-card--compact-1 {
+    grid-column: 1 / span 2;
+    grid-row: 2;
+    height: 270px;
+    padding: 20px 22px;
+  }
+
+  .mosaic-card--compact-2 {
+    grid-column: 3 / span 2;
+    grid-row: 2;
+    height: 270px;
+    padding: 20px 22px;
+  }
+
+  .mosaic-card--compact-3 {
+    grid-column: 5 / span 2;
+    grid-row: 2;
+    height: 270px;
+    padding: 20px 22px;
   }
 }
 
@@ -300,15 +339,13 @@
 }
 
 /* Assegnazione celle nel Mosaico Desktop */
-.mosaic-card--hero {
-  grid-column: span 4;
-  grid-row: span 2;
-  padding: 30px;
+/* Regole Card Mosaico */
+.mosaic-card--wide {
+  box-sizing: border-box;
 }
 
 .mosaic-card--compact {
-  grid-column: span 4;
-  grid-row: span 1;
+  box-sizing: border-box;
 }
 
 /* --------------------------------------------------------------------------
@@ -1054,5 +1091,327 @@
     font-size: 13.5px;
     border-radius: 12px;
     justify-content: center;
+  }
+}
+
+
+/* Titolo Hero e CTA Mosaico Desktop */
+.mosaic-card__title--hero {
+  font-family: var(--font-display, 'Outfit', sans-serif);
+  font-size: clamp(26px, 2.4vw, 34px);
+  line-height: 1.15;
+  margin-bottom: 8px;
+  font-weight: 800;
+  color: #ffffff;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.mosaic-card__footer-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display, 'Outfit', sans-serif);
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  margin-top: 10px;
+  transition: all 0.25s ease;
+  width: fit-content;
+}
+
+.mosaic-card:hover .mosaic-card__footer-cta {
+  background: #ffffff;
+  color: #172c10;
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+}
+
+.mosaic-card__cta-arrow {
+  font-size: 14px;
+  transition: transform 0.25s ease;
+}
+
+.mosaic-card:hover .mosaic-card__cta-arrow {
+  transform: translateX(3px);
+}
+
+
+/* ==========================================================================
+   MODALE DESKTOP (>= 960px): GRANDE, SPAZIOSO, IMMAGINE TOP E COMANDI IN BASSO
+   ========================================================================== */
+@media (min-width: 960px) {
+  .service-modal-overlay {
+    padding: 24px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .service-modal {
+    max-width: 960px;
+    width: 92%;
+    max-height: 88vh;
+    border-radius: 24px;
+    box-shadow: 0 32px 80px rgba(0, 0, 0, 0.45);
+    position: relative;
+    overflow-y: auto;
+  }
+
+  /* Header Top Panoramico con Immagine in Evidenza */
+  .service-modal__header {
+    height: 260px;
+    min-height: 260px;
+    padding: 24px 30px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+  }
+
+  .service-modal__header-top {
+    padding-right: 60px; /* Spazio di sicurezza garantito per la X */
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 3;
+  }
+
+  .service-modal__tag {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    padding: 5px 14px;
+    border-radius: 999px;
+  }
+
+  .service-modal__close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(10, 22, 7, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1.5px solid rgba(255, 255, 255, 0.55);
+    color: #ffffff;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    z-index: 99;
+  }
+
+  .service-modal__close-btn:hover {
+    background: #172c10;
+    border-color: #ffffff;
+    transform: scale(1.1) rotate(90deg);
+  }
+
+  .service-modal__header-bottom {
+    position: relative;
+    z-index: 3;
+    margin-top: auto;
+  }
+
+  .service-modal__eyebrow {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: #bce98c;
+    margin-bottom: 5px;
+  }
+
+  .service-modal__title {
+    font-size: 34px;
+    line-height: 1.15;
+    font-weight: 800;
+    color: #ffffff;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.65);
+    margin: 0;
+  }
+
+  /* Corpo Organizzato, Formattato e Arioso */
+  .service-modal__body {
+    padding: 30px 36px 36px;
+    gap: 26px;
+  }
+
+  /* Meta Strip a 3 Riqudri Orizzontali */
+  .service-modal__meta-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    padding: 18px 22px;
+    border-radius: 16px;
+    background: #f6faf2;
+    border: 1px solid #dfebd8;
+  }
+
+  .service-modal__meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .service-modal__meta-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #557245;
+  }
+
+  .service-modal__meta-value {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: #17330d;
+    line-height: 1.35;
+  }
+
+  .service-modal__subheading {
+    font-size: 14.5px;
+    font-weight: 800;
+    color: #17320e;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .service-modal__text {
+    font-size: 15.5px;
+    line-height: 1.7;
+    color: #354a29;
+  }
+
+  /* Aree e Moduli di Intervento a 2 Colonne Affiancate */
+  .service-modal__modules-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+
+  .service-modal__module-card {
+    padding: 20px 22px;
+    border-radius: 16px;
+    background: #fcfdfa;
+    border: 1px solid #e1ebd9;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    gap: 10px;
+  }
+
+  .service-modal__module-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #18330e;
+  }
+
+  .service-modal__module-badge {
+    font-size: 10.5px;
+    padding: 3px 10px;
+  }
+
+  .service-modal__module-desc {
+    font-size: 14px;
+    line-height: 1.55;
+    color: #3f5535;
+  }
+
+  .service-modal__module-points {
+    gap: 6px;
+    margin-top: 8px;
+  }
+
+  .service-modal__module-points li {
+    font-size: 13px;
+    line-height: 1.4;
+    gap: 8px;
+  }
+
+  /* Punti di Forza a 2 Colonne */
+  .service-modal__list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    list-style: none;
+    padding: 0;
+  }
+
+  .service-modal__list-item {
+    font-size: 13.5px;
+    line-height: 1.45;
+    padding: 12px 16px;
+    border-radius: 12px;
+    background: #f7faf3;
+    border: 1px solid #e1ecda;
+    color: #27401c;
+    gap: 10px;
+  }
+
+  /* Comandi e Azioni in Basso su Desktop */
+  .service-modal__actions {
+    margin-top: 10px;
+    padding-top: 22px;
+    border-top: 1px solid #eef3e8;
+    gap: 16px;
+  }
+
+  .service-modal__quick-call-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 22px;
+    border-radius: 14px;
+    background: #f4f8f0;
+    border: 1px solid #e1ecda;
+  }
+
+  .service-modal__quick-call-label {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #27491a;
+  }
+
+  .service-modal__call-links-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .service-modal__call-link {
+    font-size: 13px;
+    font-weight: 700;
+    padding: 8px 16px;
+    border-radius: 999px;
+  }
+
+  .service-modal__actions-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+  }
+
+  .service-modal__btn {
+    min-height: 48px;
+    padding: 14px 24px;
+    font-size: 14.5px;
+    font-weight: 700;
+    border-radius: 14px;
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .service-modal__btn--close {
+    flex: 0 0 130px;
   }
 }

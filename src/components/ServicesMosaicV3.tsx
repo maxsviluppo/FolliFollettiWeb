@@ -401,13 +401,14 @@ export default function ServicesMosaicV3({ onOpenContactForm }: ServicesMosaicV3
           </p>
         </div>
 
-        {/* 1. VERSIONE DESKTOP: MOSAICO A 5 BOX AD INCASTRO (Visibile >= 960px) */}
+        {/* 1. VERSIONE DESKTOP: MOSAICO SIMMETRICO E ORDINATO A 5 BOX (2 sopra più grandi, 3 sotto più compatti) */}
         <div className="services-mosaic-v3__desktop-grid" role="region" aria-label="Mosaico Servizi Desktop">
           
-          {/* 1. LUDOTECA - Box Hero a Sinistra a Tutta Altezza */}
+          {/* RIGA SUPERIORE: 2 BOX PANORAMICI PIÙ GRANDI (50% ciascuno) */}
+          {/* 1. LUDOTECA */}
           <article
             id="service-item-ludoteca"
-            className="mosaic-card mosaic-card--hero"
+            className="mosaic-card mosaic-card--wide mosaic-card--wide-1"
             onClick={() => openServiceModal(ludoteca)}
             role="button"
             tabIndex={0}
@@ -443,14 +444,13 @@ export default function ServicesMosaicV3({ onOpenContactForm }: ServicesMosaicV3
               <span className="mosaic-card__eyebrow">
                 {ludoteca.badge} &bull; {ludoteca.ageGroup}
               </span>
-              <h3 className="mosaic-card__title mosaic-card__title--hero">
+              <h3 className="mosaic-card__title mosaic-card__title--large">
                 {ludoteca.title}
               </h3>
               <p className="mosaic-card__desc">
                 {ludoteca.shortDesc}
               </p>
 
-              {/* Tag Pills dei moduli integrati */}
               <div className="mosaic-card__pills">
                 {ludoteca.tags.map((tag, idx) => (
                   <span key={idx} className="mosaic-card__pill">{tag}</span>
@@ -464,238 +464,235 @@ export default function ServicesMosaicV3({ onOpenContactForm }: ServicesMosaicV3
             </div>
           </article>
 
-          {/* Griglia a 4 Riqudri a Destra */}
-          <div className="services-mosaic-v3__right-grid">
-            
-            {/* 2. EDUCATIVA TERRITORIALE */}
-            <article
-              id="service-item-educativa"
-              className="mosaic-card"
-              onClick={() => openServiceModal(educativa)}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault();
-                  openServiceModal(educativa);
-                }
-              }}
-              aria-label={'Dettagli ' + educativa.title}
-            >
-              <img
-                src={educativa.image}
-                alt={educativa.title}
-                className="mosaic-card__bg-img"
-                loading="eager"
-              />
-              <div className="mosaic-card__overlay" />
+          {/* 2. EDUCATIVA TERRITORIALE */}
+          <article
+            id="service-item-educativa"
+            className="mosaic-card mosaic-card--wide mosaic-card--wide-2"
+            onClick={() => openServiceModal(educativa)}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openServiceModal(educativa);
+              }
+            }}
+            aria-label={'Dettagli ' + educativa.title}
+          >
+            <img
+              src={educativa.image}
+              alt={educativa.title}
+              className="mosaic-card__bg-img"
+              loading="eager"
+            />
+            <div className="mosaic-card__overlay mosaic-card__overlay--hero" />
 
-              <div className="mosaic-card__top">
-                <span className="mosaic-card__badge">
-                  {educativa.category}
-                </span>
-                <div className="mosaic-card__arrow-btn" aria-hidden="true">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="7" y1="17" x2="17" y2="7"></line>
-                    <polyline points="7 7 17 7 17 17"></polyline>
-                  </svg>
-                </div>
+            <div className="mosaic-card__top">
+              <span className="mosaic-card__badge">
+                {educativa.category}
+              </span>
+              <div className="mosaic-card__arrow-btn" aria-hidden="true">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
               </div>
+            </div>
 
-              <div className="mosaic-card__bottom">
-                <span className="mosaic-card__eyebrow">
-                  {educativa.badge} &bull; {educativa.ageGroup}
-                </span>
-                <h3 className="mosaic-card__title">
-                  {educativa.title}
-                </h3>
-                <p className="mosaic-card__desc">
-                  {educativa.shortDesc}
-                </p>
-                <div className="mosaic-card__pills">
-                  {educativa.tags.slice(0, 3).map((tag, idx) => (
-                    <span key={idx} className="mosaic-card__pill">{tag}</span>
-                  ))}
-                </div>
-                <div className="mosaic-card__footer-cta">
-                  <span>Dettagli e orari</span>
-                  <span className="mosaic-card__cta-arrow" aria-hidden="true">&rarr;</span>
-                </div>
+            <div className="mosaic-card__bottom">
+              <span className="mosaic-card__eyebrow">
+                {educativa.badge} &bull; {educativa.ageGroup}
+              </span>
+              <h3 className="mosaic-card__title mosaic-card__title--large">
+                {educativa.title}
+              </h3>
+              <p className="mosaic-card__desc">
+                {educativa.shortDesc}
+              </p>
+              <div className="mosaic-card__pills">
+                {educativa.tags.slice(0, 3).map((tag, idx) => (
+                  <span key={idx} className="mosaic-card__pill">{tag}</span>
+                ))}
               </div>
-            </article>
-
-            {/* 3. CAMPUS ESTIVI E INVERNALI (+ VIAGGI CULTURALI) */}
-            <article
-              id="service-item-campus"
-              className="mosaic-card"
-              onClick={() => openServiceModal(campus)}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault();
-                  openServiceModal(campus);
-                }
-              }}
-              aria-label={'Dettagli ' + campus.title}
-            >
-              <img
-                src={campus.image}
-                alt={campus.title}
-                className="mosaic-card__bg-img"
-                loading="lazy"
-              />
-              <div className="mosaic-card__overlay" />
-
-              <div className="mosaic-card__top">
-                <span className="mosaic-card__badge">
-                  {campus.category}
-                </span>
-                <div className="mosaic-card__arrow-btn" aria-hidden="true">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="7" y1="17" x2="17" y2="7"></line>
-                    <polyline points="7 7 17 7 17 17"></polyline>
-                  </svg>
-                </div>
+              <div className="mosaic-card__footer-cta">
+                <span>Dettagli doposcuola e corsi</span>
+                <span className="mosaic-card__cta-arrow" aria-hidden="true">&rarr;</span>
               </div>
+            </div>
+          </article>
 
-              <div className="mosaic-card__bottom">
-                <span className="mosaic-card__eyebrow">
-                  {campus.badge} &bull; {campus.ageGroup}
-                </span>
-                <h3 className="mosaic-card__title">
-                  {campus.title}
-                </h3>
-                <p className="mosaic-card__desc">
-                  {campus.shortDesc}
-                </p>
-                <div className="mosaic-card__pills">
-                  {campus.tags.slice(0, 3).map((tag, idx) => (
-                    <span key={idx} className="mosaic-card__pill">{tag}</span>
-                  ))}
-                </div>
-                <div className="mosaic-card__footer-cta">
-                  <span>Scopri programmi e viaggi</span>
-                  <span className="mosaic-card__cta-arrow" aria-hidden="true">&rarr;</span>
-                </div>
+          {/* RIGA INFERIORE: 3 BOX COMPATTI SIMMETRICI (33.3% ciascuno) */}
+          {/* 3. CAMPUS ESTIVI E INVERNALI (+ VIAGGI CULTURALI) */}
+          <article
+            id="service-item-campus"
+            className="mosaic-card mosaic-card--compact mosaic-card--compact-1"
+            onClick={() => openServiceModal(campus)}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openServiceModal(campus);
+              }
+            }}
+            aria-label={'Dettagli ' + campus.title}
+          >
+            <img
+              src={campus.image}
+              alt={campus.title}
+              className="mosaic-card__bg-img"
+              loading="lazy"
+            />
+            <div className="mosaic-card__overlay" />
+
+            <div className="mosaic-card__top">
+              <span className="mosaic-card__badge">
+                {campus.category}
+              </span>
+              <div className="mosaic-card__arrow-btn" aria-hidden="true">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
               </div>
-            </article>
+            </div>
 
-            {/* 4. TUTORAGGIO BES E DSA (+ SCREENING DSA) */}
-            <article
-              id="service-item-tutoraggio"
-              className="mosaic-card"
-              onClick={() => openServiceModal(tutoraggio)}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault();
-                  openServiceModal(tutoraggio);
-                }
-              }}
-              aria-label={'Dettagli ' + tutoraggio.title}
-            >
-              <img
-                src={tutoraggio.image}
-                alt={tutoraggio.title}
-                className="mosaic-card__bg-img"
-                loading="lazy"
-              />
-              <div className="mosaic-card__overlay" />
-
-              <div className="mosaic-card__top">
-                <span className="mosaic-card__badge mosaic-card__badge--accent">
-                  {tutoraggio.category}
-                </span>
-                <div className="mosaic-card__arrow-btn" aria-hidden="true">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="7" y1="17" x2="17" y2="7"></line>
-                    <polyline points="7 7 17 7 17 17"></polyline>
-                  </svg>
-                </div>
+            <div className="mosaic-card__bottom">
+              <span className="mosaic-card__eyebrow">
+                {campus.badge} &bull; {campus.ageGroup}
+              </span>
+              <h3 className="mosaic-card__title">
+                {campus.title}
+              </h3>
+              <p className="mosaic-card__desc">
+                {campus.shortDesc}
+              </p>
+              <div className="mosaic-card__pills">
+                {campus.tags.slice(0, 3).map((tag, idx) => (
+                  <span key={idx} className="mosaic-card__pill">{tag}</span>
+                ))}
               </div>
-
-              <div className="mosaic-card__bottom">
-                <span className="mosaic-card__eyebrow">
-                  {tutoraggio.badge} &bull; {tutoraggio.ageGroup}
-                </span>
-                <h3 className="mosaic-card__title">
-                  {tutoraggio.title}
-                </h3>
-                <p className="mosaic-card__desc">
-                  {tutoraggio.shortDesc}
-                </p>
-                <div className="mosaic-card__pills">
-                  {tutoraggio.tags.slice(0, 3).map((tag, idx) => (
-                    <span key={idx} className="mosaic-card__pill">{tag}</span>
-                  ))}
-                </div>
-                <div className="mosaic-card__footer-cta">
-                  <span>Dettagli e screening DSA</span>
-                  <span className="mosaic-card__cta-arrow" aria-hidden="true">&rarr;</span>
-                </div>
+              <div className="mosaic-card__footer-cta">
+                <span>Scopri programmi e viaggi</span>
+                <span className="mosaic-card__cta-arrow" aria-hidden="true">&rarr;</span>
               </div>
-            </article>
+            </div>
+          </article>
 
-            {/* 5. CONSULENZE PSICOLOGICHE (+ SPAZIO ASCOLTO) */}
-            <article
-              id="service-item-psicologia"
-              className="mosaic-card"
-              onClick={() => openServiceModal(psicologia)}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault();
-                  openServiceModal(psicologia);
-                }
-              }}
-              aria-label={'Dettagli ' + psicologia.title}
-            >
-              <img
-                src={psicologia.image}
-                alt={psicologia.title}
-                className="mosaic-card__bg-img"
-                loading="lazy"
-              />
-              <div className="mosaic-card__overlay" />
+          {/* 4. TUTORAGGIO BES E DSA (+ SCREENING DSA) */}
+          <article
+            id="service-item-tutoraggio"
+            className="mosaic-card mosaic-card--compact mosaic-card--compact-2"
+            onClick={() => openServiceModal(tutoraggio)}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openServiceModal(tutoraggio);
+              }
+            }}
+            aria-label={'Dettagli ' + tutoraggio.title}
+          >
+            <img
+              src={tutoraggio.image}
+              alt={tutoraggio.title}
+              className="mosaic-card__bg-img"
+              loading="lazy"
+            />
+            <div className="mosaic-card__overlay" />
 
-              <div className="mosaic-card__top">
-                <span className="mosaic-card__badge">
-                  {psicologia.category}
-                </span>
-                <div className="mosaic-card__arrow-btn" aria-hidden="true">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="7" y1="17" x2="17" y2="7"></line>
-                    <polyline points="7 7 17 7 17 17"></polyline>
-                  </svg>
-                </div>
+            <div className="mosaic-card__top">
+              <span className="mosaic-card__badge mosaic-card__badge--accent">
+                {tutoraggio.category}
+              </span>
+              <div className="mosaic-card__arrow-btn" aria-hidden="true">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
               </div>
+            </div>
 
-              <div className="mosaic-card__bottom">
-                <span className="mosaic-card__eyebrow">
-                  {psicologia.badge} &bull; {psicologia.ageGroup}
-                </span>
-                <h3 className="mosaic-card__title">
-                  {psicologia.title}
-                </h3>
-                <p className="mosaic-card__desc">
-                  {psicologia.shortDesc}
-                </p>
-                <div className="mosaic-card__pills">
-                  {psicologia.tags.slice(0, 3).map((tag, idx) => (
-                    <span key={idx} className="mosaic-card__pill">{tag}</span>
-                  ))}
-                </div>
-                <div className="mosaic-card__footer-cta">
-                  <span>Dettagli e spazio ascolto</span>
-                  <span className="mosaic-card__cta-arrow" aria-hidden="true">&rarr;</span>
-                </div>
+            <div className="mosaic-card__bottom">
+              <span className="mosaic-card__eyebrow">
+                {tutoraggio.badge} &bull; {tutoraggio.ageGroup}
+              </span>
+              <h3 className="mosaic-card__title">
+                {tutoraggio.title}
+              </h3>
+              <p className="mosaic-card__desc">
+                {tutoraggio.shortDesc}
+              </p>
+              <div className="mosaic-card__pills">
+                {tutoraggio.tags.slice(0, 3).map((tag, idx) => (
+                  <span key={idx} className="mosaic-card__pill">{tag}</span>
+                ))}
               </div>
-            </article>
+              <div className="mosaic-card__footer-cta">
+                <span>Dettagli e screening DSA</span>
+                <span className="mosaic-card__cta-arrow" aria-hidden="true">&rarr;</span>
+              </div>
+            </div>
+          </article>
 
-          </div>
+          {/* 5. CONSULENZE PSICOLOGICHE / PEDAGOGICHE (+ SPAZIO ASCOLTO) */}
+          <article
+            id="service-item-psicologia"
+            className="mosaic-card mosaic-card--compact mosaic-card--compact-3"
+            onClick={() => openServiceModal(psicologia)}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openServiceModal(psicologia);
+              }
+            }}
+            aria-label={'Dettagli ' + psicologia.title}
+          >
+            <img
+              src={psicologia.image}
+              alt={psicologia.title}
+              className="mosaic-card__bg-img"
+              loading="lazy"
+            />
+            <div className="mosaic-card__overlay" />
+
+            <div className="mosaic-card__top">
+              <span className="mosaic-card__badge">
+                {psicologia.category}
+              </span>
+              <div className="mosaic-card__arrow-btn" aria-hidden="true">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </div>
+            </div>
+
+            <div className="mosaic-card__bottom">
+              <span className="mosaic-card__eyebrow">
+                {psicologia.badge} &bull; {psicologia.ageGroup}
+              </span>
+              <h3 className="mosaic-card__title">
+                {psicologia.title}
+              </h3>
+              <p className="mosaic-card__desc">
+                {psicologia.shortDesc}
+              </p>
+              <div className="mosaic-card__pills">
+                {psicologia.tags.slice(0, 3).map((tag, idx) => (
+                  <span key={idx} className="mosaic-card__pill">{tag}</span>
+                ))}
+              </div>
+              <div className="mosaic-card__footer-cta">
+                <span>Dettagli e spazio ascolto</span>
+                <span className="mosaic-card__cta-arrow" aria-hidden="true">&rarr;</span>
+              </div>
+            </div>
+          </article>
+
         </div>
 
         {/* 2. VERSIONE MOBILE: BANNER ACCATTIVANTI AD ALTO IMPATTO (Visibile < 960px) */}
