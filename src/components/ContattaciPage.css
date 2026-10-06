@@ -1,0 +1,205 @@
+.contattaci-page {
+  background: #ffffff;
+  color: #172c10;
+  min-height: 100vh;
+  --contattaci-header-height: 72px;
+  padding-top: var(--contattaci-header-height);
+}
+
+.contattaci-page__header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+.contattaci-page__hero {
+  position: relative;
+  min-height: 42vh;
+  max-height: 520px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+
+.contattaci-page__hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.contattaci-page__hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 240, 0.25) 0%,
+    rgba(12, 28, 8, 0.35) 50%,
+    rgba(8, 22, 6, 0.78) 100%
+  );
+  z-index: 1;
+}
+
+.contattaci-page__hero-overlay--light {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(20, 40, 12, 0.12) 55%,
+    rgba(8, 22, 6, 0.55) 100%
+  );
+}
+
+.contattaci-page__philosophy-block {
+  width: 100%;
+  background: #ffffff;
+  padding: 0 20px 40px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.contattaci-page__philosophy-banner {
+  line-height: 0;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.contattaci-page__philosophy-banner-img {
+  display: block;
+  width: 60%;
+  max-width: 660px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.contattaci-page__quote {
+  max-width: 720px;
+  margin: 0 auto 16px;
+  padding: 0;
+  border: none;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: clamp(16px, 2vw, 19px);
+  line-height: 1.65;
+  color: #2a4518;
+  font-style: italic;
+  text-align: center;
+}
+
+.contattaci-page__quote-author {
+  font-family: var(--font-display, 'Outfit', sans-serif);
+  font-size: 15px;
+  font-weight: 700;
+  color: #4f852b;
+  margin: 0;
+  text-align: center;
+}
+
+.contattaci-page__hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 32px 20px 48px;
+}
+
+.contattaci-page__hero-eyebrow {
+  display: inline-block;
+  font-family: var(--font-display, 'Outfit', sans-serif);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #d4f5a8;
+  margin-bottom: 10px;
+}
+
+.contattaci-page__hero-title {
+  font-family: var(--font-display, 'Outfit', sans-serif);
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.15;
+  margin: 0;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.35);
+}
+
+.contattaci-page__wave {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  line-height: 0;
+}
+
+.contattaci-page__wave svg {
+  display: block;
+  width: 100%;
+  height: 48px;
+}
+
+.contattaci-page__body {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px 72px;
+}
+
+.contattaci-page__story {
+  display: grid;
+  gap: 32px;
+  margin-bottom: 56px;
+}
+
+.contattaci-page__story--solo {
+  max-width: 820px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contattaci-page__story-text p {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: #3a5230;
+  margin: 0 0 16px;
+}
+
+.contattaci-page__mission {
+  background: #f4faf0;
+  border: 1px solid rgba(155, 197, 61, 0.35);
+  border-radius: 20px;
+  padding: 28px 24px;
+  margin-bottom: 56px;
+  text-align: center;
+}
+
+.contattaci-page__mission p {
+  margin: 12px 0 0;
+  font-size: 1.08rem;
+  line-height: 1.6;
+  color: #2d4a1e;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contattaci-page__contact-section {
+  scroll-margin-top: calc(var(--contattaci-header-height) + 16px);
+}
+
+.contattaci-page__cells {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin-top: 4px;
+}
+
+.contattaci-page__cells a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

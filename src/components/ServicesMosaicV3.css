@@ -169,9 +169,9 @@
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(0, 0, 0, 0.18) 0%,
-    rgba(10, 24, 8, 0.42) 45%,
-    rgba(10, 24, 8, 0.92) 100%
+    rgba(0, 0, 0, 0.13) 0%,
+    rgba(10, 24, 8, 0.29) 45%,
+    rgba(10, 24, 8, 0.64) 100%
   );
   z-index: 2;
   transition: background 0.35s ease;
@@ -180,18 +180,18 @@
 .mosaic-card:hover .mosaic-card__overlay {
   background: linear-gradient(
     180deg,
-    rgba(0, 0, 0, 0.24) 0%,
-    rgba(10, 24, 8, 0.52) 45%,
-    rgba(10, 24, 8, 0.95) 100%
+    rgba(0, 0, 0, 0.17) 0%,
+    rgba(10, 24, 8, 0.36) 45%,
+    rgba(10, 24, 8, 0.67) 100%
   );
 }
 
 .mosaic-card__overlay--hero {
   background: linear-gradient(
     180deg,
-    rgba(0, 0, 0, 0.12) 0%,
-    rgba(10, 24, 8, 0.35) 40%,
-    rgba(10, 24, 8, 0.94) 100%
+    rgba(0, 0, 0, 0.08) 0%,
+    rgba(10, 24, 8, 0.25) 40%,
+    rgba(10, 24, 8, 0.66) 100%
   );
 }
 
@@ -355,6 +355,9 @@
   gap: 18px;
   margin-top: 14px;
   margin-bottom: 24px;
+  width: calc(100% + 10px);
+  margin-left: -5px;
+  margin-right: -5px;
 }
 
 @media (min-width: 960px) {
@@ -367,7 +370,7 @@
 
 .mobile-service-banner {
   position: relative;
-  min-height: 185px;
+  min-height: 204px;
   height: auto;
   border-radius: 20px;
   overflow: hidden;
@@ -403,9 +406,9 @@
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(10, 24, 8, 0.94) 0%,
-    rgba(10, 24, 8, 0.48) 55%,
-    rgba(0, 0, 0, 0.16) 100%
+    rgba(10, 24, 8, 0.66) 0%,
+    rgba(10, 24, 8, 0.34) 55%,
+    rgba(0, 0, 0, 0.11) 100%
   );
   z-index: 2;
 }
@@ -1152,10 +1155,16 @@
   margin-bottom: 0;
 }
 
-/* Mobile banner description */
-.mobile-service-banner {
-  min-height: 154px;
-  height: auto;
+/* Mobile banner: +10% altezza (solo viewport mobile, banner visibili < 960px) */
+@media (max-width: 959px) {
+  .mobile-service-banner {
+    min-height: calc(154px * 1.1);
+    height: auto;
+  }
+
+  .mobile-service-banner__img {
+    object-position: center 38%;
+  }
 }
 
 .mobile-service-banner__desc {

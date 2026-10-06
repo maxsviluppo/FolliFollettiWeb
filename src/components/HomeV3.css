@@ -166,6 +166,45 @@
   gap: 12px;
 }
 
+.home-v3__nav-actions--end {
+  margin-left: auto;
+}
+
+.home-v3__nav-call-btn--green {
+  background: #3c771f;
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 4px 14px rgba(60, 119, 31, 0.25);
+}
+
+.home-v3__nav-call-btn--green:hover {
+  background: #33671a;
+  color: #ffffff;
+}
+
+.home-v3__navbar--transparent .home-v3__nav-call-btn--green {
+  background: #3c771f;
+  color: #ffffff;
+  border: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.home-v3__nav-cta-btn--link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.home-v3__nav-cta-btn--current {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+  opacity: 0.92;
+}
+
 .home-v3__nav-call-btn {
   display: inline-flex;
   align-items: center;

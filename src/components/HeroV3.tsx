@@ -1,22 +1,7 @@
 import React from 'react';
 import './HeroV3.css';
 
-interface HeroV3Props {
-  onExploreServices?: () => void;
-}
-
-export default function HeroV3({ onExploreServices }: HeroV3Props) {
-  const scrollToServices = () => {
-    if (onExploreServices) {
-      onExploreServices();
-    } else {
-      const el = document.getElementById('servizi');
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-  };
-
+export default function HeroV3() {
   return (
     <section id="hero-v3" className="hero-v3" aria-label="Benvenuti a Folli Folletti">
       {/* 1. SLIDE RETTANGOLARE CLASSICA CON BOSCO E FOLLETTA SUL DONDOLO */}
@@ -60,24 +45,11 @@ export default function HeroV3({ onExploreServices }: HeroV3Props) {
           </p>
 
           <div className="hero-v3__cta-group">
-            <button
-              type="button"
-              className="hero-v3__btn hero-v3__btn--primary"
-              onClick={scrollToServices}
-              title="Vai subito ai 5 servizi specialistici"
-            >
-              <span>Esplora i 5 Servizi</span>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <line x1="12" y1="5" x2="12" y2="19"></line>
-                <polyline points="19 12 12 19 5 12"></polyline>
-              </svg>
-            </button>
-
             <a
               href="https://wa.me/390815921176?text=Salve,%20vorrei%20informazioni%20sulle%20attivit%C3%A0%20della%20cooperativa%20Folli%20Folletti."
               target="_blank"
               rel="noopener noreferrer"
-              className="hero-v3__btn hero-v3__btn--secondary"
+              className="hero-v3__btn hero-v3__btn--primary"
               title="Scrivici direttamente su WhatsApp"
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">

@@ -2,7 +2,7 @@ import { useState, type FormEvent } from 'react';
 import './Footer.css';
 
 interface FooterProps {
-  onNavigate?: (page: 'home' | 'privacy' | 'cookies') => void;
+  onNavigate?: (page: 'home' | 'privacy' | 'cookies', hash?: string) => void;
   onOpenCookieSettings?: () => void;
 }
 
@@ -18,31 +18,21 @@ export default function Footer({ onNavigate, onOpenCookieSettings }: FooterProps
   };
 
   const handleLinkClick = (page: 'home' | 'privacy' | 'cookies', hashTarget?: string) => (e: React.MouseEvent) => {
-    if (page === 'privacy') {
+    if (page === 'privacy' || page === 'cookies') {
       e.preventDefault();
-      window.location.hash = '#privacy';
-      if (onNavigate) onNavigate('privacy');
+      onNavigate?.(page);
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
 
-    if (page === 'cookies') {
-      e.preventDefault();
-      window.location.hash = '#cookies';
-      if (onNavigate) onNavigate('cookies');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      return;
-    }
-
-    if (onNavigate) {
-      onNavigate('home');
-    }
     if (hashTarget) {
-      // If we are navigating to an anchor in home
-      if (window.location.hash === '#privacy' || window.location.hash === '#cookies') {
-        window.location.hash = hashTarget;
-      }
+      e.preventDefault();
+      onNavigate?.('home', hashTarget);
+      return;
     }
+
+    e.preventDefault();
+    onNavigate?.('home');
   };
 
   const currentYear = new Date().getFullYear();

@@ -170,7 +170,7 @@
 /* Vertical rectangular card with sequential entrance animation */
 .info-card {
   flex: 0 0 auto;
-  width: clamp(290px, 24vw, 330px);
+  width: clamp(300px, 24vw, 340px);
   min-height: 450px;
   scroll-snap-align: start;
   display: flex;
