@@ -52,11 +52,11 @@ export default function ServicesMosaicV3({ onOpenContactForm: _onOpenContactForm
           </div>
 
           <h2 id="mosaic-heading" className="services-mosaic-v3__title">
-            I Nostri 5 Servizi Specialistici
+            I Nostri Servizi Specialistici per le Famiglie
           </h2>
 
           <p className="services-mosaic-v3__subtitle">
-            Dalla ludoteca autorizzata dal Comune di Napoli al supporto scolastico, screening DSA, campus e consulenze.
+            Dal centro infanzia autorizzato dal Comune di Napoli al supporto scolastico, screening DSA, campus e consulenze: offriamo tanti servizi essenziali a supporto delle famiglie, di cui questi sono alcuni tra i percorsi più importanti per la crescita e l’inclusione dei vostri figli.
           </p>
         </div>
 

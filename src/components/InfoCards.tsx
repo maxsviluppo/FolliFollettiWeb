@@ -132,7 +132,7 @@ export default function InfoCards() {
               I Nostri Servizi
             </h2>
             <p className="info-section__desc">
-              Nata dall’unione tra <strong>pedagogia ed esperienza ludica</strong>, la nostra cooperativa offre <strong>servizi integrati per la crescita</strong> di bambini e ragazzi e il <strong>supporto alle famiglie</strong>. Con uno <strong>staff multidisciplinare</strong> di insegnanti, psicologi, educatori specializzati BES/DSA e animatori, gestiamo una <strong>ludoteca autorizzata dal Comune di Napoli</strong>, <strong>prima infanzia</strong>, eventi ed <strong>educative territoriali dai 6 ai 18 anni</strong>.
+              Nata dall’unione tra <strong>pedagogia ed esperienza ludica</strong>, la nostra cooperativa offre <strong>servizi integrati per la crescita</strong> di bambini e ragazzi e il <strong>supporto alle famiglie</strong>. Con uno <strong>staff multidisciplinare</strong> di insegnanti, psicologi, educatori specializzati BES/DSA e animatori, gestiamo un <strong>centro infanzia autorizzato dal Comune di Napoli</strong>, <strong>ludoteca</strong>, <strong>prima infanzia</strong>, eventi ed <strong>educative territoriali dai 6 ai 18 anni</strong>.
             </p>
           </div>
 

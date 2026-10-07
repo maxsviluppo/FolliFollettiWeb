@@ -29,13 +29,13 @@ export const SERVICES_DATA: ServiceDetail[] = [
     "id": 1,
     "slug": "ludoteca",
     "category": "Spazio, Gioco & Potenziamento",
-    "badge": "Autorizzata Comune di Napoli",
-    "title": "Ludoteca",
+    "badge": "Autorizzato Comune di Napoli",
+    "title": "Centro Infanzia & Ludoteca",
     "subtitle": "Gioco Strutturato, Laboratori di Potenziamento e Social Skill",
     "shortDesc": "Spazio accreditato con laboratori di potenziamento cognitivo, gioco e social skill.",
-    "fullDesc": "La nostra ludoteca, ufficialmente autorizzata dal Comune di Napoli, è un ambiente colorato, igienizzato e protetto dove ogni bambino trova stimoli su misura per la propria crescita. Oltre al gioco libero e strutturato con educatori qualificati, la struttura integra laboratori specialistici di potenziamento cognitivo per lettura, scrittura e calcolo, percorsi di Social Skill Training e servizi di animazione per feste ed eventi privati.",
+    "fullDesc": "Il nostro centro infanzia e ludoteca, ufficialmente autorizzato dal Comune di Napoli, è un ambiente colorato, igienizzato e protetto dove ogni bambino trova stimoli su misura per la propria crescita. Oltre al gioco libero e strutturato con educatori qualificati, la struttura integra laboratori specialistici di potenziamento cognitivo per lettura, scrittura e calcolo, percorsi di Social Skill Training e servizi di animazione per feste ed eventi privati.",
     "ageGroup": "Bambini e ragazzi dai 3 ai 12 anni",
-    "keyFeature": "Struttura autorizzata & Laboratori di Potenziamento",
+    "keyFeature": "Centro infanzia autorizzato & Laboratori di Potenziamento",
     "schedule": "Lunedì – Venerdì: 08:30 – 19:30 | Sabato per eventi su prenotazione",
     "tags": [
       "Laboratori Potenziamento",
@@ -44,7 +44,7 @@ export const SERVICES_DATA: ServiceDetail[] = [
       "Gioco Guidato"
     ],
     "highlights": [
-      "Struttura autorizzata dal Comune di Napoli nel rispetto dei più alti standard di sicurezza",
+      "Centro infanzia autorizzato dal Comune di Napoli nel rispetto dei più alti standard di sicurezza",
       "Laboratori di Potenziamento Didattico e Cognitivo (lettura, calcolo, memoria e attenzione)",
       "Social Skill Training: percorsi di gruppo per la gestione emotiva e l'inclusione tra pari",
       "Educatrici e animatori professionisti costantemente presenti in sala",
